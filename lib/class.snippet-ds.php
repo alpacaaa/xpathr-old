@@ -58,6 +58,15 @@
 						)
 					);
 				}
+				elseif ($selected == 'add-resource')
+				{
+					$current->appendChild(
+						new XMLElement(
+							'resource', 'paste here',
+							array('file' => 'filename.xml')
+						)
+					);
+				}
 				else
 				{
 					$resource = $obj->getResource($selected);

@@ -150,6 +150,45 @@
 			$this->saveResource('parameters', serialize($params));
 		}
 		
+		public function save($data)
+		{
+			$fields = array(
+				'uniq-id', 'title', 'description',
+				'main-xml-file', 'main-xsl-file'
+			);
+
+			$query = SymWrite(self::$section);
+			foreach ($fields as $f)
+			{
+				if (isset($data[$f])) $data[$f] = $this->get($f);
+				$query->set($f, $data[$f]);
+			}
+			
+			
+			return $query->write();
+		}
+		
+		public function saveInfo($data)
+		{
+			return $this->save(array(
+				'title' => $data['title'],
+				'description' => $data['description']
+			));
+		}
+		
+		public function setAsMainResource($file)
+		{
+			$resource = $this->getResource($file);
+			$data = array();
+
+			if ($resource->isXML())
+				$data['main-xml-file'] = $file;
+			else
+				$data['main-xsl-file'] = $file;
+
+			return $this->save($data);
+		}
+		
 		public function getParameters()
 		{
 			try {

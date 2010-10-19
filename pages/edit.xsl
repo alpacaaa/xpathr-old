@@ -45,7 +45,14 @@
 			<xsl:when test="result">Result</xsl:when>
 
 			<xsl:otherwise>
-				<input type="text" name="snippet[resources][{@file}][name]" value="{$resource}" />
+				<xsl:variable name="file" select="resource/@file" />
+				<input type="text" name="snippet[resources][{$file}][name]" value="{$file}" />
+
+				<xsl:if test="$resource != 'add-resource'">
+					<button type="submit" name="action[save-snippet]" value="main-resource">
+						<xsl:text>Set as main resource</xsl:text>
+					</button>
+				</xsl:if>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:if>
@@ -53,6 +60,13 @@
 
 <xsl:template match="snippet-data/error">
 	<xsl:value-of select="text()" />
+</xsl:template>
+
+<xsl:template match="snippet-data/current" mode="main">
+	<xsl:if test="count(resource) &gt; 1">
+		<xsl:attribute name="class">split</xsl:attribute>
+	</xsl:if>
+	<xsl:apply-templates select="resource" mode="main" />
 </xsl:template>
 
 <xsl:template match="snippet-data/current/resource" mode="main">

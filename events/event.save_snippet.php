@@ -49,9 +49,16 @@
 			$obj  = Snippet::findById($snip, $user);
 			if (!$obj) throw new SnippetException('Snippet not found');
 
-			$data = $_POST['snippet']['resources']['parameters'];
+			$resource = Snippet::clean($env['resource']);
+			$info = $_POST['snippet'];
+			$params = $_POST['snippet']['resources']['parameters'];
+
 			try {
-				$obj->saveParameters($data);
+				$obj->saveInfo($info);
+				if ($params) $obj->saveParameters($params);
+				
+				if ($_POST['action']['save-snippet'] == 'main-resource')
+					$obj->setAsMainResource($resource);
 			}catch (SnippetException $ex)
 			{
 				$xml->setValue($data);
