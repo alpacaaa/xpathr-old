@@ -2,34 +2,34 @@
 
 	require_once(TOOLKIT . '/class.datasource.php');
 	require_once(WORKSPACE. '/lib/class.snippet.php');
-
-
-	class datasourcesnippet_resource extends Datasource{
+	
+	class datasourcesnippet_main_resources extends Datasource{
 		
-		public $dsParamROOTELEMENT = 'snippet-resource';
+		public $dsParamROOTELEMENT = 'snippet-main-resources';
 
 		public function about(){
 			return array(
-					 'name' => 'Snippet Resource',
+					 'name' => 'Snippet Main Resources',
 					 'author' => array(
 							'name' => 'Marco Sampellegrini',
 							'website' => 'http://192.168.1.57/ninja',
 							'email' => 'm@rcosa.mp'),
 					 'version' => '1.0',
-					 'release-date' => '2010-10-19T07:59:07+00:00');	
+					 'release-date' => '2010-10-19T14:16:49+00:00');	
 		}
 
 		public function allowEditorToParse(){
 			return false;
 		}
-
+		
 		public function grab(&$param_pool=NULL){
 			$result = new XMLElement($this->dsParamROOTELEMENT);
 				
 			try {
-				$snippet  = Snippet::findFromEnv($this->_env);
-				$resource = $snippet->getResourceFromEnv($this->_env);
-				$result->appendChild($resource->toXMLElement());
+				$snippet = Snippet::findFromEnv($this->_env);
+				$main = $snippet->getMainResources();
+				foreach ($main as $resource)
+					$result->appendChild($resource->toXMLElement());
 			}
 			catch(Exception $e) {
 				$result->appendChild(new XMLElement('error', $e->getMessage()));

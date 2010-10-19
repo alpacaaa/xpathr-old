@@ -24,6 +24,7 @@
 			$xml->setValue($this->getProcessedContent());
 			$xml->setAttribute('file', $this->file);
 			$xml->setAttribute('main', $this->main ? 'true' : 'false');
+			$xml->setAttribute('type', self::getType($this));
 
 			return $xml;
 		}

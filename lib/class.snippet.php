@@ -16,18 +16,16 @@
 	{
 		public static $section = 'snippets';
 
-		protected $snippet;
 		protected $data;
 
-		public function __construct(SymRead $snippet, array $data)
+		public function __construct(array $data = array())
 		{
-			$this->snippet = $snippet;
 			$this->data = $data;
 		}
 		
 		public function listResources()
 		{
-			$dir  = SnippetHelper::getUserDataFolder();
+			$dir  = self::getUserDataFolder();
 			$dir .= $this->getUser(). '/'. $this->get('uniq-id');
 
 			if (!is_dir($dir)) return array();
