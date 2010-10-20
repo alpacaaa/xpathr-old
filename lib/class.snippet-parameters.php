@@ -1,27 +1,34 @@
 <?php
 
+	class SnippetParametersException extends Exception
+	{
+	}
+
 	require_once('snippet-processors.php');
+	require_once('class.snippet-data.php');
 
-	class SnippetParametersException extends Exception {}
-
-	class SnippetParameters extends SnippetResource
+	class SnippetParameters extends SnippetData
 	{
 		protected $data;
-		protected $snippet;
 		protected $processor;
 
-		public function __construct(array $data, Snippet $snippet)
+		public function __construct(Snippet $snippet)
 		{
-			$this->data = $data;
-			$this->snippet = $snippet;
+			parent::__construct($snippet);
 			$this->processor = new RawDataProcessor();
 		}
 		
 		public function getData()
 		{
-			return $this->data;
+			if ($this->data) return $this->data;
+			if (!$this->storage->hasKey('parameters'))
+				return $this->data = array();
+
+			return $this->data = self::load(
+				$this->storage->retrieve('parameters')
+			);
 		}
-		
+
 		public function toXMLElement()
 		{
 			$xml = new XMLElement('parameters');
@@ -29,27 +36,31 @@
 
 			return $xml;
 		}
-		
+
 		public function getProcessedContent()
 		{
 			return $this->processor->processParameters($this);
 		}
 		
+		public function save()
+		{
+			$this->storage->store(
+				'parameters', serialize($this->getData)
+			);
+		}
+
 		public static function find(Snippet $snippet)
 		{
-			$dir  = $snippet->getSnippetFolder();
-			$file = $dir. '/parameters';
-			if (!file_exists($file))
+			if (!parent::find('parameters', $snippet))
 			{
-				throw new SnippetResourceException(
-					'Parameters not found'
+				throw new SnippetParametersException(
+					'Snippet has no parameter'
 				);
 			}
 
-			$data = self::load(file_get_contents($file));
-			return new self($data, $snippet);
+			return new self($snippet);
 		}
-		
+
 		public static function load($str)
 		{
 			return unserialize($str);

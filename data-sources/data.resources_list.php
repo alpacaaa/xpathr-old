@@ -32,6 +32,7 @@
 			try {
 				$snippet = Snippet::findFromEnv($this->_env);
 				$list = $snippet->listResources();
+
 				foreach ($list as $resource)
 				{
 					$resource->setProcessor($emptyProcessor);

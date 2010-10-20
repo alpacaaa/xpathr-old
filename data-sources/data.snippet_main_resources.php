@@ -24,7 +24,7 @@
 		
 		public function grab(&$param_pool=NULL){
 			$result = new XMLElement($this->dsParamROOTELEMENT);
-				
+	
 			try {
 				$snippet = Snippet::findFromEnv($this->_env);
 				$main = $snippet->getMainResources();

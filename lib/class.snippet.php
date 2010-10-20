@@ -178,21 +178,10 @@
 			try {
 				return SnippetParameters::find($this);
 			}catch (SnippetParametersException $ex) {
-				return new SnippetParameters(array(), $this);
+				return new SnippetParameters($this);
 			}
 		}
 
-		public function getSnippetFolder()
-		{
-			$dir  = self::getUserDataFolder();
-			$dir .= $this->getUser(). '/'. $this->get('uniq-id');
-
-			if (!is_dir($dir))
-				throw new SnippetException('Snippet has no resources');
-
-			return $dir;
-		}
-		
 		public static function findById($snip, $user)
 		{
 			$snippet = SymRead(self::$section)
@@ -230,18 +219,5 @@
 		{
 			if (is_array($el) && array_key_exists('value', $el))
 				return $el['value'];
-		}
-		
-		public static function getUserDataFolder()
-		{
-			$dir = Symphony::Configuration()->get('ninja', 'user-data');
-			if (!$dir) $dir = WORKSPACE. '/user-data/';
-
-			if (!is_dir($dir) || !is_writeable($dir))
-				throw new SnippetException(
-					'User data folder does not exist or have wrong permission'
-				);
-
-			return $dir;
 		}
 	}

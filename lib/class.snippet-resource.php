@@ -1,24 +1,26 @@
 <?php
 
-	require_once('snippet-processors.php');
-	
-	class SnippetResourceException extends Exception {}
+	class SnippetResourceException extends Exception
+	{
+	}
 
-	class SnippetResource
+	require_once('snippet-processors.php');
+	require_once('class.snippet-data.php');
+
+	class SnippetResource extends SnippetData
 	{
 		protected $path;
 		protected $main;
 		protected $file;
-		protected $snippet;
 		protected $content;
 		protected $processor;
 
 		public function __construct($file, Snippet $snippet)
 		{
-			$this->path = $file;
-			$this->file = basename($file);
+			parent::__construct($snippet);
+
+			$this->file = $file;
 			$this->main = $snippet->isMainResource($this);
-			$this->snippet = $snippet;
 			$this->processor = new RawDataProcessor();
 		}
 
@@ -31,6 +33,12 @@
 			$xml->setAttribute('type', self::getType($this));
 
 			return $xml;
+		}
+
+		public function save()
+		{
+			$content = $this->getContent();
+			$this->storage->store($this->file, $content);
 		}
 		
 		public function toDomDocument()
@@ -54,7 +62,7 @@
 		public function getContent()
 		{
 			if ($this->content) return $this->content;
-			return $this->content = file_get_contents($this->path);
+			return $this->content = $this->storage->retrieve($this->file);
 		}
 		
 		public function getProcessedContent()
@@ -79,13 +87,10 @@
 		
 		public static function find($file, Snippet $snippet)
 		{
-			//TODO check realpath!
-			$dir  = $snippet->getSnippetFolder();
-			$file = $dir. '/'. $file;
-			if (!file_exists($file))
+			if (!parent::find($file, $snippet))
 			{
 				throw new SnippetResourceException(
-					'Resource does not exists'
+					'Resource does not exist'
 				);
 			}
 
@@ -94,16 +99,11 @@
 
 		public static function listAll(Snippet $snippet)
 		{
-			try {
-				$dir  = $snippet->getSnippetFolder();
-			}catch(SnippetException $ex) {
-				return array();
-			}
-
-			$list = glob($dir. '/*.*');
+			$list = self::getStorage($snippet)->getAllKeys();
 			$ret  = array();
 			foreach ($list as $file)
-				$ret[] = new self($file, $snippet);
+				if ($file !== 'parameters')
+					$ret[] = new self($file, $snippet);
 
 			return $ret;
 		}
