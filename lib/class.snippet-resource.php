@@ -1,21 +1,25 @@
 <?php
 
-	require_once('resource-processors.php');
+	require_once('snippet-processors.php');
+	
+	class SnippetResourceException extends Exception {}
 
 	class SnippetResource
 	{
 		protected $path;
 		protected $main;
 		protected $file;
+		protected $snippet;
 		protected $content;
 		protected $processor;
 
-		public function __construct($file, $main = false)
+		public function __construct($file, Snippet $snippet)
 		{
 			$this->path = $file;
-			$this->main = $main;
 			$this->file = basename($file);
-			$this->processor = new RawResourceProcessor();
+			$this->main = $snippet->isMainResource($this);
+			$this->snippet = $snippet;
+			$this->processor = new RawDataProcessor();
 		}
 
 		public function toXMLElement()
@@ -39,12 +43,12 @@
 		
 		public function isXML()
 		{
-			return 'xml' == self::getType($this->file);
+			return 'xml' == $this->getType();
 		}
 		
 		public function isXSL()
 		{
-			return 'xsl' == self::getType($this->file);
+			return 'xsl' == $this->getType();
 		}
 
 		public function getContent()
@@ -55,16 +59,52 @@
 		
 		public function getProcessedContent()
 		{
-			return $this->processor->process($this);
+			return $this->processor->processResource($this);
 		}
 		
-		public function setProcessor(ResourceProcessor $processor)
+		public function setProcessor(SnippetDataProcessor $processor)
 		{
 			$this->processor = $processor;
 		}
 
-		public static function getType($file)
+		public function getType()
 		{
-			return substr($file, -3);
+			return substr($this->file, -3);
+		}
+		
+		public function getFile()
+		{
+			return $this->file;
+		}
+		
+		public static function find($file, Snippet $snippet)
+		{
+			//TODO check realpath!
+			$dir  = $snippet->getSnippetFolder();
+			$file = $dir. '/'. $file;
+			if (!file_exists($file))
+			{
+				throw new SnippetResourceException(
+					'Resource does not exists'
+				);
+			}
+
+			return new self($file, $snippet);
+		}
+
+		public static function listAll(Snippet $snippet)
+		{
+			try {
+				$dir  = $snippet->getSnippetFolder();
+			}catch(SnippetException $ex) {
+				return array();
+			}
+
+			$list = glob($dir. '/*.*');
+			$ret  = array();
+			foreach ($list as $file)
+				$ret[] = new self($file, $snippet);
+
+			return $ret;
 		}
 	}

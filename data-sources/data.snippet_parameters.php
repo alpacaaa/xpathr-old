@@ -29,7 +29,7 @@
 			try {
 				$snippet = Snippet::findFromEnv($this->_env);
 				$params  = $snippet->getParameters();
-				$result->appendChild($resource->toXMLElement());
+				$result->appendChild($params->toXMLElement());
 			}
 			catch(Exception $e) {
 				$result->appendChild(new XMLElement('error', $e->getMessage()));

@@ -27,7 +27,7 @@
 			$result = new XMLElement($this->dsParamROOTELEMENT);
 			$all = new XMLElement('all');
 			$result->appendChild($all);
-			$emptyProcessor = new EmptyResourceProcessor();
+			$emptyProcessor = new EmptyDataProcessor();
 				
 			try {
 				$snippet = Snippet::findFromEnv($this->_env);
@@ -38,7 +38,7 @@
 					$all->appendChild($resource->toXMLElement());
 				}
 			}
-			catch(Exception $e) {
+			catch(SnippetException $e) {
 				$result->appendChild(new XMLElement('error', $e->getMessage()));
 				return $result;
 			}

@@ -31,7 +31,7 @@
 				foreach ($main as $resource)
 					$result->appendChild($resource->toXMLElement());
 			}
-			catch(Exception $e) {
+			catch(SnippetException $e) {
 				$result->appendChild(new XMLElement('error', $e->getMessage()));
 				return $result;
 			}

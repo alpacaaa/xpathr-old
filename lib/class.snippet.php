@@ -25,43 +25,17 @@
 		
 		public function listResources()
 		{
-			$dir  = self::getUserDataFolder();
-			$dir .= $this->getUser(). '/'. $this->get('uniq-id');
-
-			if (!is_dir($dir)) return array();
-
-			$list = glob($dir. '/*');
-			$ret  = array();
-			foreach ($list as $file)
-			{
-				$ret[] = new SnippetResource(
-					$file,
-					$this->isMainResource($file)
-				);
-			}
-
-			return $ret;
+			return SnippetResource::listAll($this);
 		}
 		
 		public function getResource($file)
 		{
-			$dir = $this->getSnippetFolder();
-			$file = $dir. '/'. $file;
-
-			if (!file_exists($file))
-				throw new SnippetException('The resource does not exist');
-
-			return new SnippetResource(
-				$file,
-				$this->isMainResource($file)
-			);
+			return SnippetResource::find($file, $this);
 		}
 
 		public function get($what)
 		{
-			$ret = $this->data[$what];
-			if (!is_array($ret)) return $ret;
-			return $ret['value'];
+			return $this->data[$what];
 		}
 		
 		public function getUser()
@@ -69,20 +43,31 @@
 			return 'all';
 		}
 
-		public function isMainResource($file)
+		public function isMainResource(SnippetResource $resource)
 		{
-			$type = SnippetResource::getType($file);
+			$type = $resource->getType();
 			$main = $this->get('main-'. $type. '-file');
 
-			return $main == basename($file);
+			return $main == $resource->getFile();
 		}
 		
 		public function getMainResources()
 		{
-			return array(
-				$this->get('main-xml-file'),
-				$this->get('main-xsl-file')
+			$ret = array(
+				'main-xml-file' => null,
+				'main-xsl-file' => null
 			);
+
+			try {
+				$ret['main-xml-file'] = $this->getResource(
+					$this->get('main-xml-file')
+				);
+				$ret['main-xsl-file'] = $this->getResource(
+					$this->get('main-xsl-file')
+				);
+			} catch(SnippetResourceException $ex){ }
+
+			return $ret;
 		}
 		
 		public function process()
@@ -191,22 +176,71 @@
 		public function getParameters()
 		{
 			try {
-				$params = $this->getResource('parameters');
+				return SnippetParameters::find($this);
+			}catch (SnippetParametersException $ex) {
+				return new SnippetParameters(array(), $this);
 			}
-			catch(SnippetException $ex) {
-				return array();
-			}
-
-			return unserialize($params->getContent());
 		}
 
 		public function getSnippetFolder()
 		{
-			$dir  = SnippetHelper::getUserDataFolder();
+			$dir  = self::getUserDataFolder();
 			$dir .= $this->getUser(). '/'. $this->get('uniq-id');
 
 			if (!is_dir($dir))
 				throw new SnippetException('Snippet has no resources');
+
+			return $dir;
+		}
+		
+		public static function findById($snip, $user)
+		{
+			$snippet = SymRead(self::$section)
+				->getAll()
+				->where('uniq-id', $snip)
+				//->where('user', $user);
+				->perPage(1);
+
+			$data = $snippet->readDataIterator()->current();
+			if (!$data) return null;
+
+			$data = array_map(array('self', 'keepValue'), $data);
+			return new self($data);
+		}
+		
+		public static function findFromEnv($env)
+		{
+			$url  = $env['env']['url'];
+			$snip = $url['snip-id'];
+			$user = $url['user'];
+			if (!$user) $user = 'all';
+
+			$obj = self::findById($snip, $user);
+			if (!is_object($obj))
+			{
+				throw new SnippetException(
+					'Snippet does not exist'
+				);
+			}
+
+			return $obj;
+		}
+		
+		public static function keepValue($el)
+		{
+			if (is_array($el) && array_key_exists('value', $el))
+				return $el['value'];
+		}
+		
+		public static function getUserDataFolder()
+		{
+			$dir = Symphony::Configuration()->get('ninja', 'user-data');
+			if (!$dir) $dir = WORKSPACE. '/user-data/';
+
+			if (!is_dir($dir) || !is_writeable($dir))
+				throw new SnippetException(
+					'User data folder does not exist or have wrong permission'
+				);
 
 			return $dir;
 		}
