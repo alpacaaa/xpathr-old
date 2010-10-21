@@ -25,18 +25,20 @@
 
 		public function grab(&$param_pool=NULL){
 			$result = new XMLElement($this->dsParamROOTELEMENT);
-			$all = new XMLElement('all');
-			$result->appendChild($all);
+
 			$emptyProcessor = new EmptyDataProcessor();
+			$url  = $this->_env['env']['url'];
+			$snip = $url['snip-id'];
+			$user = $url['user'];
 				
 			try {
-				$snippet = Snippet::findFromEnv($this->_env);
+				$snippet = Snippet::find($snip, $user);
 				$list = $snippet->listResources();
 
 				foreach ($list as $resource)
 				{
 					$resource->setProcessor($emptyProcessor);
-					$all->appendChild($resource->toXMLElement());
+					$result->appendChild($resource->toXMLElement());
 				}
 			}
 			catch(SnippetException $e) {

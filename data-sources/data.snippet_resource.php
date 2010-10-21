@@ -25,10 +25,18 @@
 
 		public function grab(&$param_pool=NULL){
 			$result = new XMLElement($this->dsParamROOTELEMENT);
-				
+
+			$url  = $this->_env['env']['url'];
+			$snip = $url['snip-id'];
+			$user = $url['user'];
+			$file = $url['resource'];
+
+			$encodedProcessor = new EncodedDataProcessor();
+
 			try {
-				$snippet  = Snippet::findFromEnv($this->_env);
-				$resource = $snippet->getResourceFromEnv($this->_env);
+				$snippet  = Snippet::find($snip, $user);
+				$resource = $snippet->getResource($file);
+				$resource->setProcessor($encodedProcessor);
 				$result->appendChild($resource->toXMLElement());
 			}
 			catch(Exception $e) {

@@ -25,9 +25,12 @@
 
 		public function grab(&$param_pool=NULL){
 			$result = new XMLElement($this->dsParamROOTELEMENT);
+			$url  = $this->_env['env']['url'];
+			$snip = $url['snip-id'];
+			$user = $url['user'];
 				
 			try {
-				$snippet = Snippet::findFromEnv($this->_env);
+				$snippet = Snippet::find($snip, $user);
 				$params  = $snippet->getParameters();
 				$result->appendChild($params->toXMLElement());
 			}

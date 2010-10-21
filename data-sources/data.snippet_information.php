@@ -9,6 +9,7 @@
 		public $dsParamLIMIT = '1';
 		public $dsParamREDIRECTONEMPTY = 'yes';
 		public $dsParamREQUIREDPARAM = '$snip-id';
+		public $dsParamPARAMOUTPUT = 'system:id';
 		public $dsParamSORT = 'system:id';
 		public $dsParamSTARTPAGE = '1';
 		public $dsParamASSOCIATEDENTRYCOUNTS = 'no';
@@ -37,7 +38,7 @@
 							'website' => 'http://192.168.1.57/ninja',
 							'email' => 'm@rcosa.mp'),
 					 'version' => '1.0',
-					 'release-date' => '2010-10-19T07:58:31+00:00');	
+					 'release-date' => '2010-10-21T07:43:40+00:00');	
 		}
 		
 		public function getSource(){

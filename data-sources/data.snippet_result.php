@@ -2,20 +2,20 @@
 
 	require_once(TOOLKIT . '/class.datasource.php');
 	require_once(WORKSPACE. '/lib/class.snippet.php');
-	
-	class datasourcesnippet_main_resources extends Datasource{
 
-		public $dsParamROOTELEMENT = 'snippet-main-resources';
+	class datasourcesnippet_result extends Datasource{
+		
+		public $dsParamROOTELEMENT = 'snippet-result';
 
 		public function about(){
 			return array(
-					 'name' => 'Snippet Main Resources',
+					 'name' => 'Snippet Result',
 					 'author' => array(
 							'name' => 'Marco Sampellegrini',
 							'website' => 'http://192.168.1.57/ninja',
 							'email' => 'm@rcosa.mp'),
 					 'version' => '1.0',
-					 'release-date' => '2010-10-19T14:16:49+00:00');	
+					 'release-date' => '2010-10-21T08:59:20+00:00');	
 		}
 
 		public function allowEditorToParse(){
@@ -24,25 +24,18 @@
 		
 		public function grab(&$param_pool=NULL){
 			$result = new XMLElement($this->dsParamROOTELEMENT);
-
 			$url  = $this->_env['env']['url'];
 			$snip = $url['snip-id'];
 			$user = $url['user'];
 
-			$encodedProcessor = new EncodedDataProcessor();
-
+			$snippet = Snippet::find($snip, $user);
 			try {
-				$snippet = Snippet::find($snip, $user);
-				$main = $snippet->getMainResources();
-				foreach ($main as $resource)
-				{
-					$resource->setProcessor($encodedProcessor);
-					$result->appendChild($resource->toXMLElement());
-				}
+				$process = $snippet->process();
+				$result->setValue($process);
 			}
-			catch(SnippetException $e) {
-				$result->appendChild(new XMLElement('error', $e->getMessage()));
-				return $result;
+			catch (SnippetProcessException $ex)
+			{
+				die(var_dump($ex));
 			}
 
 			return $result;
