@@ -36,6 +36,10 @@
 			try {
 				$snippet  = Snippet::find($snip, $user);
 				$resource = $snippet->getResource($file);
+				if (!$resource) throw new Exception(
+					'The resource does not exist'
+				);
+
 				$resource->setProcessor($encodedProcessor);
 				$result->appendChild($resource->toXMLElement());
 			}

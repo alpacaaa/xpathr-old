@@ -10,15 +10,15 @@
 	<div id="header">
 
 		<div id="information">
-			<xsl:apply-templates select="snippet-data/info/entry" mode="info" />
+			<xsl:apply-templates select="snippet-information/entry" mode="info" />
 		</div>
 
 		<div id="current-resource">
-			<xsl:apply-templates select="snippet-data/current" mode="title" />
+			<xsl:call-template name="resource-title" />
 		</div>
 
 		<ul id="resources">
-			<xsl:apply-templates select="snippet-data/all" />
+			<xsl:apply-templates select="resources-list" />
 		</ul>
 
 		<ul id="actions">
@@ -27,18 +27,13 @@
 	</div>
 
 	<div id="main">
-		<xsl:apply-templates select="snippet-data/current" mode="main" />
-		<xsl:apply-templates select="snippet-data/error" />
-		<xsl:apply-templates select="events/save-snippet/error" />
+		<xsl:call-template name="get-main-resource" />
 	</div>
 </form>
 </xsl:template>
 
 <xsl:template name="actions"></xsl:template>
+<xsl:template name="resource-title"></xsl:template>
+<xsl:template name="get-main-resource"></xsl:template>
 
-<xsl:template match="snippet-data/current/result" mode="main">
-	<pre id="result">
-		<xsl:value-of select="text()" />
-	</pre>
-</xsl:template>
 </xsl:stylesheet>

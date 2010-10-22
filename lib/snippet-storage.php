@@ -7,6 +7,7 @@
 	interface SnippetDataStorage {
 		public function store($key, $value);
 		public function retrieve($key);
+		public function delete($key);
 		public function hasKey($key);
 		public function getAllKeys();
 		public function setContext(Snippet $context);
@@ -20,21 +21,25 @@
 		public function store($key, $value)
 		{
 			$path = $this->buildPath($key);
+			return file_put_contents($path, $value);
 		}
 		
 		public function retrieve($key)
 		{
-			if (!$this->hasKey($key))
-			{
-				throw new SnippetDataStorageException(
-					'Key does not exist'
-				);
-			}
+			if (!$this->hasKey($key)) return null;
 
 			$file = $this->buildPath($key);
 			return file_get_contents($file);
 		}
-		
+
+		public function delete($key)
+		{
+			if (!$this->hasKey($key)) return true;
+
+			$path = $this->buildPath($key);
+			return unlink($path);
+		}
+
 		public function hasKey($key)
 		{
 			$file = $this->buildPath($key);

@@ -53,39 +53,33 @@
 		
 		public function getMainResources()
 		{
-			$ret = array(
-				'main-xml-file' => null,
-				'main-xsl-file' => null
-			);
+			$ret = array();
 
-			try {
-				$ret['main-xml-file'] = $this->getResource(
-					$this->get('main-xml-file')
-				);
-				$ret['main-xsl-file'] = $this->getResource(
-					$this->get('main-xsl-file')
-				);
-			} catch(SnippetResourceException $ex){ }
+			$xml = $this->get('main-xml-file');
+			$xml = empty($xml) ? '' : $this->getResource($xml);
+
+			$xsl = $this->get('main-xsl-file');
+			$xsl = empty($xsl) ? '' : $this->getResource($xsl);
+
+			is_object($xml) ? $ret['main-xml-file'] = $xml : null;
+			is_object($xsl) ? $ret['main-xsl-file'] = $xsl : null;
 
 			return $ret;
 		}
 		
 		public function process()
 		{
-			$files = $this->getMainResources();
+			$resources = $this->getMainResources();
+			if (count($resources) !== 2)
+			{
+				throw new SnippetProcessException(
+					'Not enough resources to proceed'
+				);
+			}
 			$proc  = new XSLTProcessor;
 
-			foreach ($files as $f)
+			foreach ($resources as $resource)
 			{
-				try {
-					$resource = $this->getResource($f);
-				}
-				catch (SnippetException $ex) {
-					throw new SnippetProcessException(
-						'Not enough resources to proceed'
-					);
-				}
-
 				if ($resource->isXML())
 					$xml = $resource->toDomDocument();
 
@@ -96,53 +90,36 @@
 				}
 			}
 			
-			//$proc->setParameter('', $parameters);
+			$parameters = $this->getParameters()->getData();
+			$proc->setParameter('', $parameters);
+
 			return $proc->transformToXML($xml);
 		}
 
-		public function saveResource($file, $content)
+		public function getParameters()
 		{
-			if ($file !== SnippetHelper::sanitizeFilename($file))
-				throw new SnippetException('Filename is badformed');
-
-			$dir = $this->getSnippetFolder();
-			if (!file_put_contents($dir. '/'. $file, $content))
-				throw new SnippetException(
-					'An error occurred while attempting to save'
-				);
-		}
-
-		public function saveParameters($data)
-		{
-			$rows = array_map('trim', explode("\n", $data));
-			$params = array();
-			foreach ($rows as $i => $row)
-			{
-				if (strpos($row, '=') === false)
-					throw new SnippetException(
-						'You have an error on line '. ($i+1)
-					);
-
-				list($k, $v) = array_map('trim', explode('=', $row));
-				$k = SnippetHelper::cleanParameter($k);
-
-				$first = substr($v, 0, 1);
-				$last  = substr($v, -1);
-
-				if (($first == "'" || $first == '"')
-				&& $first !== $last && !is_numeric($v))
-				{
-					throw new SnippetException(
-						'You have an error on line '. ($i+1)
-					);
-				}
-
-				$params[$k] = is_numeric($v) ? (float) $v : (string) $v;
+			try {
+				return SnippetParameters::find($this);
+			}catch (SnippetParametersException $ex) {
+				return new SnippetParameters($this);
 			}
-
-			$this->saveResource('parameters', serialize($params));
 		}
-		
+
+		public static function find($snip, $user)
+		{
+			$snippet = SymRead(self::$section)
+				->getAll()
+				->where('uniq-id', $snip)
+				//->where('user', $user);
+				->perPage(1);
+
+			$data = $snippet->readDataIterator()->current();
+			if (!$data) return null;
+
+			$data = array_map(array('self', 'keepValue'), $data);
+			return new self($data);
+		}
+
 		public function save($data)
 		{
 			$fields = array(
@@ -172,31 +149,7 @@
 
 			return $this->save($data);
 		}
-		
-		public function getParameters()
-		{
-			try {
-				return SnippetParameters::find($this);
-			}catch (SnippetParametersException $ex) {
-				return new SnippetParameters($this);
-			}
-		}
 
-		public static function findById($snip, $user)
-		{
-			$snippet = SymRead(self::$section)
-				->getAll()
-				->where('uniq-id', $snip)
-				//->where('user', $user);
-				->perPage(1);
-
-			$data = $snippet->readDataIterator()->current();
-			if (!$data) return null;
-
-			$data = array_map(array('self', 'keepValue'), $data);
-			return new self($data);
-		}
-		
 		public static function findFromEnv($env)
 		{
 			$url  = $env['env']['url'];
@@ -204,7 +157,7 @@
 			$user = $url['user'];
 			if (!$user) $user = 'all';
 
-			$obj = self::findById($snip, $user);
+			$obj = self::find($snip, $user);
 			if (!is_object($obj))
 			{
 				throw new SnippetException(

@@ -2,14 +2,23 @@
 <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:output method="xml"
-	doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
-	doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
-	omit-xml-declaration="yes"
-	encoding="UTF-8"
-	indent="yes" />
+<xsl:import href="edit.xsl" />
 
-<xsl:template match="/">
-	<h1><xsl:value-of select="$page-title"/></h1>
+<xsl:template name="resource-title">
+	<xsl:variable name="res" select="snippet-resource/resource" />
+
+	<xsl:if test="$res">
+		<input type="text" name="snippet[resources][{$res/@file}][filename]" value="{$res/@file}" />
+		<input type="checkbox" name="snippet[main-resource]" id="snippet[main-resource]">
+			<xsl:if test="$res/@main = 'true'">
+				<xsl:attribute name="checked">checked</xsl:attribute>
+			</xsl:if>
+		</input>
+		<label for="snippet[main-resource]">Main resource</label>
+	</xsl:if>
+</xsl:template>
+
+<xsl:template name="get-main-resource">
+	<xsl:apply-templates select="snippet-resource/*" mode="main" />
 </xsl:template>
 </xsl:stylesheet>

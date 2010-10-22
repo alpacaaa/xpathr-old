@@ -38,13 +38,13 @@
 		public function save()
 		{
 			$content = $this->getContent();
-			$this->storage->store($this->file, $content);
+			return $this->storage->store($this->file, $content);
 		}
 		
 		public function toDomDocument()
 		{
 			$dom = new DomDocument();
-			$dom->load($this->path);
+			$dom->load($this->storage->buildPath($this->file));
 
 			return $dom;
 		}
@@ -63,6 +63,11 @@
 		{
 			if ($this->content) return $this->content;
 			return $this->content = $this->storage->retrieve($this->file);
+		}
+
+		public function setContent($content)
+		{
+			$this->content = $content;
 		}
 		
 		public function getProcessedContent()
@@ -84,16 +89,33 @@
 		{
 			return $this->file;
 		}
-		
+
+		public function rename($newfile)
+		{
+			$newfile = self::clean($newfile);
+			if (empty($newfile))
+				throw new SnippetResourceException(
+					'Bad filename'
+				);
+
+			if ($this->storage->hasKey($newfile))
+				throw new SnippetResourceException(
+					'File already exists'
+				);
+
+
+			if (!$this->storage->delete($this->getFile()))
+				throw new SnippetResourceException(
+					'Cannot delete resource'
+				);
+
+			$this->file = $newfile;
+			return true;
+		}
+
 		public static function find($file, Snippet $snippet)
 		{
-			if (!parent::find($file, $snippet))
-			{
-				throw new SnippetResourceException(
-					'Resource does not exist'
-				);
-			}
-
+			if (!parent::find($file, $snippet)) return null;
 			return new self($file, $snippet);
 		}
 
@@ -106,5 +128,11 @@
 					$ret[] = new self($file, $snippet);
 
 			return $ret;
+		}
+
+		public static function clean($str)
+		{
+			$str = strtolower($str);
+			return preg_replace ("/([^a-z0-9\.\-]+)/", "", $str);
 		}
 	}
