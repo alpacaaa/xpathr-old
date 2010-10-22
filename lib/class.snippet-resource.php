@@ -38,6 +38,7 @@
 		public function save()
 		{
 			$content = $this->getContent();
+			$this->file = self::clean($this->file);
 			return $this->storage->store($this->file, $content);
 		}
 		
@@ -90,6 +91,11 @@
 			return $this->file;
 		}
 
+		public function delete()
+		{
+			return $this->storage->delete($this->getFile());
+		}
+
 		public function rename($newfile)
 		{
 			$newfile = self::clean($newfile);
@@ -104,13 +110,12 @@
 				);
 
 
-			if (!$this->storage->delete($this->getFile()))
+			if (!$this->delete())
 				throw new SnippetResourceException(
 					'Cannot delete resource'
 				);
 
-			$this->file = $newfile;
-			return true;
+			return $this->file = $newfile;
 		}
 
 		public static function find($file, Snippet $snippet)
@@ -133,6 +138,6 @@
 		public static function clean($str)
 		{
 			$str = strtolower($str);
-			return preg_replace ("/([^a-z0-9\.\-]+)/", "", $str);
+			return preg_replace("/([^a-z0-9\.\-]+)/", "", $str);
 		}
 	}

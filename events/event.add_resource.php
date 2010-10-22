@@ -4,13 +4,13 @@
 	require_once(WORKSPACE. '/lib/class.snippet.php');
 
 
-	class eventsave_resource extends Event{
+	class eventadd_resource extends Event{
 		
-		const ROOTELEMENT = 'save-resource';
+		const ROOTELEMENT = 'add-resource';
 
 		public static function about(){
 			return array(
-					 'name' => 'Save Resource',
+					 'name' => 'Add Resource',
 					 'author' => array(
 							'name' => 'Marco Sampellegrini',
 							'website' => 'http://192.168.1.57/ninja',
@@ -42,54 +42,31 @@
 			$url  = $this->_env['env']['url'];
 			$snip = $url['snip-id'];
 			$user = $url['user'];
-			$resource = $url['resource'];
-
-			if (empty($resource)) return;
 
 			$snippet = Snippet::find($snip, $user);
 			if (!$snippet) return;
 
-			$resource = $snippet->getResource($resource);
-			if (!$resource) return;
+			$data = $_POST['snippet']['new-resource'];
+			$file = SnippetResource::clean($data['filename']);
+			if (is_object($snippet->getResource($file)))
+				return self::buildXML('Resource already exists', $data);
 
-			$file = $resource->getFile();
-			$data = $_POST['snippet']['resources'][$file];
+			$resource = new SnippetResource($file, $snippet);
 			$resource->setContent($data['content']);
-
-			$newfilename = $data['filename'];
-			if ($newfilename == $file) return $this->saveResource($resource);
-
-			if (!$resource->rename($newfilename))
-				return self::buildXML('error', 'Cannot rename resource', $data);
-
-			$type = $resource->getType();
-			if ($_POST['fields']['main-'. $type. '-file'] == $file)
-				$_POST['fields']['main-'. $type. '-file'] =  $resource->getFile(); //renamed
-
-			$redirect = 'http://'. DOMAIN. '/edit/resource/'. $snip. '/'. $resource->getFile();
-			return $this->saveResource($resource, $redirect);
-		}		
-
-		public function saveResource(SnippetResource $resource, $redirect = null)
-		{
-			$status  = 'error';
-			$message = 'Cannot save resource';
 
 			if ($resource->save())
 			{
-				$status  = 'success';
-				$message = 'Resource saved';
-				if ($redirect)
-					$_REQUEST['redirect'] = $redirect;
+				$redirect = 'http://'. DOMAIN. '/edit/resource/'. $snip. '/'. $resource->getFile();
+				$_REQUEST['redirect'] = $redirect;
 			}
 
-			return self::buildXML($status, $message);
+			return self::buildXML('Failed to save resource', $data);
 		}
-
-		public static function buildXML($status, $message, $data)
+		
+		public static function buildXML($message, $data)
 		{
 			$result = new XMLElement(self::ROOTELEMENT);
-			$result->setAttribute('result', $status);
+			$result->setAttribute('result', 'error');
 			$result->appendChild(new XMLElement('message', $message));
 			$result->appendChild(new XMLElement(
 				'post-data', $data['content'], array('filename' => $data['filename'])

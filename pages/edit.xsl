@@ -49,6 +49,7 @@
 
 <xsl:template name="get-main-resource">
 	<xsl:attribute name="class">split</xsl:attribute>
+	<xsl:apply-templates select="events/save-main-resources/*" mode="main" />
 	<xsl:apply-templates select="snippet-main-resources/*" mode="main" />
 </xsl:template>
 
@@ -58,7 +59,7 @@
 	</textarea>
 </xsl:template>
 
-<xsl:template match="error" mode="main">
-	<div class="error"><xsl:value-of select="text()" /></div>
+<xsl:template match="message" mode="main">
+	<div class="{../@result}"><xsl:value-of select="text()" /></div>
 </xsl:template>
 </xsl:stylesheet>
