@@ -28,14 +28,17 @@
 			return '';
 		}
 		
-		public function load(){			
+		public function priority()
+		{
+			return 10;
+		}
+		
+		public function load(){		
 			if(isset($_POST['action']['save-snippet'])) return $this->__trigger();
 		}
 		
-		protected function __trigger(){
-			$result  = new XMLElement(self::ROOTELEMENT);
-			$message = new XMLELement('message');
-
+		protected function __trigger()
+		{
 			$url  = $this->_env['env']['url'];
 			$snip = $url['snip-id'];
 			$user = $url['user'];
@@ -54,33 +57,40 @@
 			$resource->setContent($data['content']);
 
 			$newfilename = $data['filename'];
-			if ($newfilename == $file) return;
+			if ($newfilename == $file) return $this->saveResource($resource);
 
 			if (!$resource->rename($newfilename))
-			{
-				$result->setAttribute('result', 'error');
-				$message->setValue('Cannot rename resource');
-				$result->appendChild($message);
-				return $result;
-			}
+				return self::buildXML('error', 'Cannot rename resource');
 
 			$type = $resource->getType();
 			if ($_POST['fields']['main-'. $type. '-file'] == $file)
 				$_POST['fields']['main-'. $type. '-file'] =  $resource->getFile(); //renamed
 
-			$status = 'error';
-			$msg = 'Cannot save resource';
-			if (!$resource->save()){
-				$status = 'success';
-				$msg = 'Resource saved';
-				$_POST['redirect'] = DOMAIN. '/edit/'. $snip. '/resource/'. $resource->getFile();
-			}
-
-			$result->setAttribute('result', $status);
-			$message->setValue($msg);
-			$result->appendChild($message);
-			return $result;
+			$redirect = 'http://'. DOMAIN. '/edit/resource/'. $snip. '/'. $resource->getFile();
+			return $this->saveResource($resource, $redirect);
 		}		
 
-	}
+		public function saveResource(SnippetResource $resource, $redirect = null)
+		{
+			$status  = 'error';
+			$message = 'Cannot save resource';
 
+			if ($resource->save())
+			{
+				$status  = 'success';
+				$message = 'Resource saved';
+				if ($redirect)
+					$_REQUEST['redirect'] = $redirect;
+			}
+
+			return self::buildXML($status, $message);
+		}
+
+		public static function buildXML($status, $message)
+		{
+			$result = new XMLElement(self::ROOTELEMENT);
+			$result->setAttribute('result', $status);
+			$result->appendChild(new XMLElement('message', $message));
+			return $result;
+		}
+	}
