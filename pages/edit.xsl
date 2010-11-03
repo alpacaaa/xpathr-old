@@ -5,9 +5,10 @@
 <xsl:import href="../utilities/snippet-master.xsl" />
 
 <xsl:template match="snippet-information/entry" mode="info">
+	<img src="{$workspace}/images/gravatar-140.png" alt="gravatar" />
 	<input type="hidden" name="id" value="{@id}" />
 	<input type="text" name="fields[title]" value="{title/text()}" />
-	<input type="text" name="fields[description]" value="{description/text()}" />
+	<input type="text" name="fields[description]" value="{description/text()}" class="description" />
 </xsl:template>
 
 <xsl:template match="resources-list">

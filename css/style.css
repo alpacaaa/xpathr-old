@@ -1,3 +1,12 @@
+html {
+	font-size: 100.01%;
+	font-family: sans-serif;
+}
+
+body {
+	/*font-size: 90%;*/
+}
+
 #header {
 	width: 100%;
 	background: #2e3436;
@@ -5,22 +14,72 @@
 }
 
 #header > * {
-	background: green;
+	background: #383c3e;
 	float: left;
 	width: 10%;
+	height: 50px;
 	margin: 1%;
 }
 
 #header h1 {
 	width: 140px;
+	height: 50px;
+	color: #e1e2e3;
+	font-size: 140%;
+	background: none;
 }
 
 #header #information {
 	width: 30%;
+	position: relative;
+}
+
+#header #information img {
+	height: 50px;
+	margin: 0 20px;
+}
+
+#header #information input {
+	position: absolute;
+	left: 90px;
+}
+
+#header #information input.description {
+	top: 25px;
 }
 
 #header #current-resource {
 	width: 30%;
+	text-align: center;
+	position: relative;
+}
+
+#header #current-resource label {
+	color: #e1e2e3;
+	font-size: 84%;
+}
+
+#header #current-resource input[type="text"] {
+	display: block;
+	margin: 0 auto 5px auto;
+}
+
+#header #current-resource input.delete {
+	background: url('../images/delete.png') no-repeat right #383c3e;
+	border: none;
+	color: #383c3e;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 80px;
+	padding: 0 20px 0 0;
+	margin: 3px;
+	font-size: 76%;
+}
+
+#header #current-resource input.delete:hover {
+	color: red;
+	cursor: pointer;
 }
 
 #header #actions {
@@ -44,7 +103,16 @@
 	background: #38ad3e;
 }
 
+#header input[type="text"] {
+	width: 50%;
+}
+
+
+
+
+
+
 #main textarea {
-	width: 99%;
-	border: 1px solid black;
+	width: 100%;
+	border: none;
 }

@@ -16,7 +16,7 @@
 		</input>
 		<label for="snippet[main-resource]">Main resource</label>
 
-		<input type="submit" name="action[delete-resource]" value="Delete Resource" />
+		<input type="submit" name="action[delete-resource]" value="Delete" class="delete" />
 	</xsl:if>
 </xsl:template>
 
