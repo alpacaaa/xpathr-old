@@ -7,6 +7,23 @@ body {
 	/*font-size: 90%;*/
 }
 
+#header input[type="text"] {
+	width: 50%;
+}
+
+#header a, #header a:visited,
+#header a:hover, #header a:active {
+	text-decoration: none;
+	color: #e1e2e3;
+}
+
+#header a:hover, #header a:active {
+	border-bottom: 1px solid #e1e2e3;
+}
+
+
+
+
 #header {
 	width: 100%;
 	background: #2e3436;
@@ -82,13 +99,25 @@ body {
 	cursor: pointer;
 }
 
-#header #actions {
-	width: 10%;
-	float: left;
-}
-
 #header #resources {
 	position: relative;
+	background: none;
+	height: 20px;
+	top: 15px;
+}
+
+
+#header #resources > * {
+	background: #18191a;
+	color: #e1e2e3;
+	font-size: 85%;
+	width: 100%;
+	display: block;
+}
+
+#header #resources span {
+	background: url('../images/drop.png') right no-repeat #18191a;
+	padding: 5px;
 }
 
 #header #resources ul {
@@ -100,11 +129,34 @@ body {
 	display: block;
 	position: absolute;
 	width: 100%;
-	background: #38ad3e;
 }
 
-#header input[type="text"] {
-	width: 50%;
+#header #resources ul li {
+	padding: 5px;
+	font-size: 80%;
+	background: #18191a;
+	width: 100%;
+	display: block;
+}
+
+#header #resources ul li:hover,
+#header #resources ul li:hover a {
+	background: #60676b;
+	border: none;
+}
+
+#header #actions {
+	width: 10%;
+}
+
+#header #actions ul {
+	text-align: center;
+	margin-top: 10px;
+	height: 30px;
+}
+
+#header #actions li {
+	display: inline;
 }
 
 

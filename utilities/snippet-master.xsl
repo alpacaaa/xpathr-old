@@ -25,9 +25,11 @@
 			</ul>
 		</div>
 
-		<ul id="actions">
-			<xsl:call-template name="actions" />
-		</ul>
+		<div id="actions">
+			<ul>	
+				<xsl:call-template name="actions" />
+			</ul>
+		</div>
 	</div>
 
 	<div id="main">
