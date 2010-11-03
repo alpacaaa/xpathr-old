@@ -89,9 +89,11 @@
 					$proc->importStyleSheet($xsl);
 				}
 			}
-			
+
+			/*
 			$parameters = $this->getParameters()->getData();
 			$proc->setParameter('', $parameters);
+			*/
 
 			return $proc->transformToXML($xml);
 		}

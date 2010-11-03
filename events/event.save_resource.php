@@ -30,7 +30,7 @@
 		
 		public function priority()
 		{
-			return 10;
+			return self::kHIGH;
 		}
 		
 		public function load(){		
@@ -86,14 +86,17 @@
 			return self::buildXML($status, $message);
 		}
 
-		public static function buildXML($status, $message, $data)
+		public static function buildXML($status, $message, $data = null)
 		{
 			$result = new XMLElement(self::ROOTELEMENT);
 			$result->setAttribute('result', $status);
 			$result->appendChild(new XMLElement('message', $message));
-			$result->appendChild(new XMLElement(
-				'post-data', $data['content'], array('filename' => $data['filename'])
-			));
+			if ($data)
+			{
+				$result->appendChild(new XMLElement(
+					'post-data', $data['content'], array('filename' => $data['filename'])
+				));
+			}
 
 			return $result;
 		}

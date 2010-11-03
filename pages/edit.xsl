@@ -11,10 +11,6 @@
 </xsl:template>
 
 <xsl:template match="resources-list">
-	<li>
-		<a href="{$root}/edit/parameters/{$snip-id}/">Parameters</a>
-	</li>
-	
 	<xsl:apply-templates select="resource" />
 	
 	<li>

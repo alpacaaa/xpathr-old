@@ -33,6 +33,7 @@
 				
 			try {
 				$snippet = Snippet::find($snip, $user);
+				if (!$snippet) return $result;
 				$list = $snippet->listResources();
 
 				foreach ($list as $resource)

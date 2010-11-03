@@ -1,0 +1,50 @@
+#header {
+	width: 100%;
+	background: #2e3436;
+	height: 80px;
+}
+
+#header > * {
+	background: green;
+	float: left;
+	width: 10%;
+	margin: 1%;
+}
+
+#header h1 {
+	width: 140px;
+}
+
+#header #information {
+	width: 30%;
+}
+
+#header #current-resource {
+	width: 30%;
+}
+
+#header #actions {
+	width: 10%;
+	float: left;
+}
+
+#header #resources {
+	position: relative;
+}
+
+#header #resources ul {
+	display: none;
+}
+
+#header #resources span:hover + ul,
+#header #resources span + ul:hover {
+	display: block;
+	position: absolute;
+	width: 100%;
+	background: #38ad3e;
+}
+
+#main textarea {
+	width: 99%;
+	border: 1px solid black;
+}
