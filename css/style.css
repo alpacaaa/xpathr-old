@@ -49,6 +49,7 @@ body {
 #header #information {
 	width: 30%;
 	position: relative;
+	color: #e1e2e3;
 }
 
 #header #information img {
@@ -56,23 +57,40 @@ body {
 	margin: 0 20px;
 }
 
-#header #information input {
+#header #information > input, h2, .description {
 	position: absolute;
+	top: 0;
 	left: 90px;
 }
 
-#header #information input.description {
+#header #information h2 {
+	font-size: 120%;
+	padding: 3px;
+}
+
+#header #information .description {
 	top: 25px;
+}
+
+#header #information div.description {
+	font-size: 84%;
+	font-style: italic;
+	padding: 3px;
 }
 
 #header #current-resource {
 	width: 30%;
 	text-align: center;
 	position: relative;
+	color: #e1e2e3;
+}
+
+#header #current-resource h3 {
+	font-size: 150%;
+	padding: 10px;
 }
 
 #header #current-resource label {
-	color: #e1e2e3;
 	font-size: 84%;
 }
 
@@ -102,8 +120,7 @@ body {
 #header #resources {
 	position: relative;
 	background: none;
-	height: 20px;
-	top: 15px;
+	top: 10px;
 }
 
 
@@ -162,7 +179,9 @@ body {
 
 
 
-
+#main {
+	clear: both;
+}
 
 #main textarea {
 	width: 100%;

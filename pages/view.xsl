@@ -6,34 +6,30 @@
 
 <xsl:template match="snippet-information/entry" mode="info">
 	<img src="{$workspace}/images/gravatar-140.png" alt="gravatar" />
-	<input type="hidden" name="id" value="{@id}" />
-	<input type="text" name="fields[title]" value="{title/text()}" />
-	<input type="text" name="fields[description]" value="{description/text()}" class="description" />
+	<h2><xsl:value-of select="title/text()" /></h2>
+	<div class="description"><xsl:value-of select="description/text()" /></div>
 </xsl:template>
 
 <xsl:template match="resources-list">
 	<xsl:apply-templates select="resource" />
-	
-	<li>
-		<a href="{$root}/edit/add-resource/{$snip-id}/">Add Resource</a>
-	</li>
 </xsl:template>
 
 <xsl:template match="resources-list/resource">
 	<li>
-		<a href="{$root}/edit/resource/{$snip-id}/{@file}/">
+		<a href="{$root}/view/resource/{$snip-id}/{@file}/">
 			<xsl:value-of select="@file" />
 		</a>
-
-		<xsl:if test="@main = 'true'">
-			<input type="hidden" name="fields[main-{@type}-file]" value="{@file}" />
-		</xsl:if>
 	</li>
 </xsl:template>
 
 <xsl:template name="actions">
 	<li>
-		<input type="submit" name="action[save-snippet]" value="Save" />
+		<a>
+			<xsl:attribute name="href">
+				<xsl:call-template name="get-edit-link" />
+			</xsl:attribute>
+			<xsl:text>Edit</xsl:text>
+		</a>
 	</li>
 	<li>
 		<a href="{$root}/edit/result/{$snip-id}/">Result</a>
@@ -51,12 +47,12 @@
 </xsl:template>
 
 <xsl:template match="resource" mode="main">
-	<textarea name="snippet[resources][{@file}][content]" rows="30" cols="160">
+	<pre>
 		<xsl:value-of select="text()" />
-	</textarea>
+	</pre>
 </xsl:template>
 
-<xsl:template match="message" mode="main">
-	<div class="{../@result}"><xsl:value-of select="text()" /></div>
+<xsl:template name="get-edit-link">
+	<xsl:value-of select="concat($root, '/edit/', $snip-id, '/')" />
 </xsl:template>
 </xsl:stylesheet>
