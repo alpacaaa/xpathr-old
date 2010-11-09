@@ -8,7 +8,7 @@
 	<img src="{$workspace}/images/gravatar-140.png" alt="gravatar" />
 	<input type="hidden" name="id" value="{@id}" />
 	<input type="text" name="fields[title]" value="{title/text()}" />
-	<input type="text" name="fields[description]" value="{description/text()}" class="description" />
+	<!-- <input type="text" name="fields[description]" value="{description/text()}" class="description" /> -->
 </xsl:template>
 
 <xsl:template match="resources-list">
@@ -52,7 +52,7 @@
 
 <xsl:template match="resource" mode="main">
 	<textarea name="snippet[resources][{@file}][content]" rows="30" cols="160">
-		<xsl:value-of select="text()" />
+		<xsl:value-of select="text()" disable-output-escaping="yes" />
 	</textarea>
 </xsl:template>
 

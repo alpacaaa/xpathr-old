@@ -1,186 +1,174 @@
 html {
 	font-size: 100.01%;
 	font-family: sans-serif;
+	background: #181b1f;
 }
-
-body {
-	/*font-size: 90%;*/
-}
-
-#header input[type="text"] {
-	width: 50%;
-}
-
-#header a, #header a:visited,
-#header a:hover, #header a:active {
-	text-decoration: none;
-	color: #e1e2e3;
-}
-
-#header a:hover, #header a:active {
-	border-bottom: 1px solid #e1e2e3;
-}
-
-
-
 
 #header {
-	width: 100%;
-	background: #2e3436;
-	height: 80px;
+	height: 70px;
+	width: 960px;
+	color: white;
+	margin: 0 auto;
+	position: relative;
+}
+
+#header * {
+	font-size: 16px;
+	line-height: 24px;
+}
+
+#header a:active,
+#header a:hover,
+#header a:link,
+#header a:visited {
+	color: white;
+	text-decoration: none;
 }
 
 #header > * {
-	background: #383c3e;
-	float: left;
-	width: 10%;
-	height: 50px;
-	margin: 1%;
+	width: 290px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 7.5px 0;
+	height: 45px;
+}
+
+#header > div {
+	background: #2e3436;
+	padding: 2.5px;
+	-moz-border-radius: 7px;
 }
 
 #header h1 {
-	width: 140px;
-	height: 50px;
-	color: #e1e2e3;
-	font-size: 140%;
-	background: none;
+	font-size: 13px;
+	line-height: 19px;
+	padding: 8px 0;
+	width: 50px;
 }
 
 #header #information {
-	width: 30%;
-	position: relative;
-	color: #e1e2e3;
+	left: 60px;
 }
 
 #header #information img {
-	height: 50px;
-	margin: 0 20px;
+	width: 25px;
+	height: 25px;
+	display: inline;
+	padding: 12px 20px;
 }
 
-#header #information > input, h2, .description {
+#header #information h2,
+#header #information div.description {
 	position: absolute;
+	left: 70px;
 	top: 0;
-	left: 90px;
-}
-
-#header #information h2 {
-	font-size: 120%;
-	padding: 3px;
-}
-
-#header #information .description {
-	top: 25px;
+	padding: 8px 0;
 }
 
 #header #information div.description {
-	font-size: 84%;
+	top: 16px;
+	font-size: 12px;
 	font-style: italic;
-	padding: 3px;
+}
+
+#header #information input {
+	position: absolute;
+	left: 55px;
+	top: 13px;
 }
 
 #header #current-resource {
-	width: 30%;
-	text-align: center;
-	position: relative;
-	color: #e1e2e3;
+	left: 360px;
+	width: 360px;
 }
 
 #header #current-resource h3 {
-	font-size: 150%;
-	padding: 10px;
-}
-
-#header #current-resource label {
-	font-size: 84%;
-}
-
-#header #current-resource input[type="text"] {
-	display: block;
-	margin: 0 auto 5px auto;
-}
-
-#header #current-resource input.delete {
-	background: url('../images/delete.png') no-repeat right #383c3e;
-	border: none;
-	color: #383c3e;
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 80px;
-	padding: 0 20px 0 0;
-	margin: 3px;
-	font-size: 76%;
-}
-
-#header #current-resource input.delete:hover {
-	color: red;
-	cursor: pointer;
+	margin: 8.5px 0;
+	background: #0e1314;
+	height: 28px;
+	padding-left: 40px;
+	line-height: 28px;
 }
 
 #header #resources {
-	position: relative;
+	left: 360px;
+	width: 0;
+	height: 0;
 	background: none;
-	top: 10px;
-}
-
-
-#header #resources > * {
-	background: #18191a;
-	color: #e1e2e3;
-	font-size: 85%;
-	width: 100%;
-	display: block;
 }
 
 #header #resources span {
-	background: url('../images/drop.png') right no-repeat #18191a;
-	padding: 5px;
-}
-
-#header #resources ul {
 	display: none;
 }
 
-#header #resources span:hover + ul,
-#header #resources span + ul:hover {
-	display: block;
+#header #resources ul {
+	background: url('../images/drop-down.png') no-repeat 13px 0;
+	/*width: 32px;*/
+	width: 360px;
+	height: 20px;
 	position: absolute;
-	width: 100%;
+	top: 19px;
+	left: 2.5px;
 }
 
 #header #resources ul li {
-	padding: 5px;
-	font-size: 80%;
-	background: #18191a;
-	width: 100%;
+	display: none;
+	padding: 6px 0 6px 40px;
+	background: #0e1314;
+	width: 320px;
+}
+
+#header #resources ul li:first-child {
+	margin-top: 20px;
+}
+
+#header #resources ul:hover li {
 	display: block;
 }
 
-#header #resources ul li:hover,
-#header #resources ul li:hover a {
-	background: #60676b;
-	border: none;
+#header #resources ul li:hover {
+	background: #333;
+}
+
+#header #resources ul li a {
+	font-size: 12px;
+}
+
+#header #resources .main {
+	font-weight: bold;
 }
 
 #header #actions {
-	width: 10%;
+	left: 730px;
+	width: 220px;
 }
 
 #header #actions ul {
 	text-align: center;
-	margin-top: 10px;
-	height: 30px;
+	padding: 9px 0;
 }
 
 #header #actions li {
 	display: inline;
 }
 
+#header #actions a {
+	background: #0e1314;
+	padding: 8px 10px;
+}
 
-
+#header #actions a:hover {
+	background: #1c2628;
+}
 
 #main {
 	clear: both;
+}
+
+#main pre {
+	background: white;
+	padding: 1%;
 }
 
 #main textarea {

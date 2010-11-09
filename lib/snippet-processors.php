@@ -64,9 +64,9 @@
 		}
 	}
 
-	class BitterHighlighterDataProcessor extends EmptyDataProcessor
+	class BitterHighlighterDataProcessor extends RawDataProcessor
 	{
-		public function processResource(SnippetResource $resource)
+		public function aprocessResource(SnippetResource $resource)
 		{
 			if (!defined('BITTER_LANGUAGE_PATH')) {
 				define('BITTER_LANGUAGE_PATH', EXTENSIONS . '/debugdevkit/lib/bitter/languages');

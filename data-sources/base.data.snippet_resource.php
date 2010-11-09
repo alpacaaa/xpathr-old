@@ -21,7 +21,7 @@
 			$file = $url['resource'];
 
 			
-			$encodedProcessor = $this->getProcessor();
+			$processor = $this->getProcessor();
 
 			try {
 				$snippet  = Snippet::find($snip, $user);
@@ -30,7 +30,7 @@
 					'The resource does not exist'
 				);
 
-				$resource->setProcessor($encodedProcessor);
+				$resource->setProcessor($processor);
 				$result->appendChild($resource->toXMLElement());
 			}
 			catch(Exception $e) {

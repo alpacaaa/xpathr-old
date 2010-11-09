@@ -4,6 +4,8 @@
 
 <xsl:import href="../utilities/snippet-master.xsl" />
 
+<xsl:param name="resource" />
+
 <xsl:template match="snippet-information/entry" mode="info">
 	<img src="{$workspace}/images/gravatar-140.png" alt="gravatar" />
 	<h2><xsl:value-of select="title/text()" /></h2>
@@ -11,12 +13,17 @@
 </xsl:template>
 
 <xsl:template match="resources-list">
-	<xsl:apply-templates select="resource" />
+	<xsl:apply-templates select="resource[@file != $resource]">
+		<xsl:sort select="@main" order="descending" />
+	</xsl:apply-templates>
 </xsl:template>
 
 <xsl:template match="resources-list/resource">
 	<li>
-		<a href="{$root}/view/resource/{$snip-id}/{@file}/">
+		<a href="{$root}/view/resource/{$user}/{$snip-id}/{@file}/">
+			<xsl:if test="@main = 'true'">
+				<xsl:attribute name="class">main</xsl:attribute>
+			</xsl:if>
 			<xsl:value-of select="@file" />
 		</a>
 	</li>
@@ -32,7 +39,7 @@
 		</a>
 	</li>
 	<li>
-		<a href="{$root}/edit/result/{$snip-id}/">Result</a>
+		<a href="{$root}/view/result/{$user}/{$snip-id}/" class="result">Result</a>
 	</li>
 </xsl:template>
 

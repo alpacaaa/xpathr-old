@@ -2,14 +2,15 @@
 <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:output method="xml"
-	doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
-	doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
-	omit-xml-declaration="yes"
-	encoding="UTF-8"
-	indent="yes" />
+<xsl:import href="view.xsl" />
 
-<xsl:template match="/">
-	<h1><xsl:value-of select="$page-title"/></h1>
+<xsl:template name="resource-title">
+	<h3>Result</h3>
+</xsl:template>
+
+<xsl:template name="get-main-resource">
+	<pre>
+		<xsl:value-of select="snippet-result/text()" />
+	</pre>
 </xsl:template>
 </xsl:stylesheet>
