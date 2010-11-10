@@ -9,13 +9,18 @@
 <form action="" method="post">
 	<div id="header">
 
-		<h1>Logo Needed!</h1>
+		<h1>Logo</h1>
+
 		<div id="information">
-			<xsl:apply-templates select="snippet-information/entry" mode="info" />
+			<p>
+				<xsl:apply-templates select="snippet-information/entry" mode="info" />
+			</p>
 		</div>
 
 		<div id="current-resource">
-			<xsl:call-template name="resource-title" />
+			<p>
+				<xsl:call-template name="resource-title" />
+			</p>
 		</div>
 
 		<div id="resources">
@@ -30,6 +35,7 @@
 				<xsl:call-template name="actions" />
 			</ul>
 		</div>
+
 	</div>
 
 	<div id="main">

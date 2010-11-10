@@ -12,8 +12,15 @@
 <xsl:template match="/">
 	<html xmlns="http://www.w3.org/1999/xhtml" lang="en">	
 		<head>
+		<!--
 			<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.1/build/reset/reset-min.css" media="screen" />
-			<link rel="stylesheet" type="text/css" href="{$workspace}/css/style.css" media="screen" />
+			<link rel="stylesheet" type="text/css" href="{$workspace}/css/style.css" media="screen" /> -->
+			
+
+			<link href="{$workspace}/assets/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+			<link href="{$workspace}/assets/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+			<link href="{$workspace}/assets/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
 			<title>XPath of the Ninja</title>
 		</head>
 		<body>

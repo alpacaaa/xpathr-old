@@ -6,12 +6,19 @@
 
 <xsl:template match="snippet-information/entry" mode="info">
 	<!-- <img src="{$workspace}/images/gravatar-140.png" alt="gravatar" /> -->
+
 	<input type="hidden" name="id" value="{@id}" />
 
-	<label for="title">title</label>
-	<input type="text" name="fields[title]" value="{title/text()}" id="title"/>
-	<label for="description">description</label>
-	<input type="text" name="fields[description]" value="{description/text()}" id="description" />
+	<label>title
+		<input type="text" name="fields[title]" value="{title/text()}" />
+	</label>
+
+	<label>description
+		<!-- <input type="text" name="fields[description]" value="{description/text()}" /> -->
+		<textarea name="fields[description]">
+			<xsl:value-of select="description/text()" />
+		</textarea>
+	</label>
 </xsl:template>
 
 <xsl:template match="resources-list">

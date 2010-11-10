@@ -7,7 +7,9 @@
 <xsl:template name="resource-title">
 	<xsl:variable name="res" select="snippet-resource/resource" />
 
-	<input type="text" name="snippet[resources][{$res/@file}][filename]" value="{$res/@file}" />
+	<label for="filename">filename</label>
+	<input type="text" name="snippet[resources][{$res/@file}][filename]" value="{$res/@file}" id="filename" />
+
 	<input type="checkbox" name="snippet[main-resource]" id="snippet[main-resource]">
 		<xsl:if test="$res/@main = 'true'">
 			<xsl:attribute name="checked">checked</xsl:attribute>
@@ -15,7 +17,7 @@
 	</input>
 	<label for="snippet[main-resource]">Main resource</label>
 
-	<input type="submit" name="action[delete-resource]" value="Delete" class="delete" />
+	<input type="submit" name="action[delete-resource]" value="Delete" />
 </xsl:template>
 
 <xsl:template name="get-main-resource">

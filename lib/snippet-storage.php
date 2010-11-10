@@ -67,16 +67,17 @@
 			$dir  = $this->getSnippetFolder();
 			$key  = '/'. trim($key, '/');
 			$file = $dir. $key;
-			$path = str_replace($key, '', $file);
+			$file = new SplFileInfo($file);
+			$path = $file->getPathInfo()->getRealPath();
 
-			if (realpath($file) == $file)
+			if ($path == $dir)
 				return $file;
 
 			throw new SnippetDataStorageException(
 				'Error while retrieving data'
 			);
 		}
-		
+
 		public static function checkFile($file)
 		{
 			return file_exists($file) && !is_dir($file) && is_writeable($file);
@@ -92,7 +93,7 @@
 
 			return $dir;
 		}
-		
+
 		public static function getUserDataFolder()
 		{
 			$dir = Symphony::Configuration()->get('ninja', 'user-data');
