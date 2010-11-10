@@ -19,7 +19,7 @@
 		</div>
 
 		<div id="resources">
-			<span>Resources</span>
+			<span>resources</span>
 			<ul>
 				<xsl:apply-templates select="resources-list" />
 			</ul>

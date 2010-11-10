@@ -5,10 +5,13 @@
 <xsl:import href="../utilities/snippet-master.xsl" />
 
 <xsl:template match="snippet-information/entry" mode="info">
-	<img src="{$workspace}/images/gravatar-140.png" alt="gravatar" />
+	<!-- <img src="{$workspace}/images/gravatar-140.png" alt="gravatar" /> -->
 	<input type="hidden" name="id" value="{@id}" />
-	<input type="text" name="fields[title]" value="{title/text()}" />
-	<!-- <input type="text" name="fields[description]" value="{description/text()}" class="description" /> -->
+
+	<label for="title">title</label>
+	<input type="text" name="fields[title]" value="{title/text()}" id="title"/>
+	<label for="description">description</label>
+	<input type="text" name="fields[description]" value="{description/text()}" id="description" />
 </xsl:template>
 
 <xsl:template match="resources-list">
@@ -36,7 +39,7 @@
 		<input type="submit" name="action[save-snippet]" value="Save" />
 	</li>
 	<li>
-		<a href="{$root}/edit/result/{$snip-id}/">Result</a>
+		<a href="{$root}/edit/result/{$snip-id}/" class="result">process</a>
 	</li>
 </xsl:template>
 
