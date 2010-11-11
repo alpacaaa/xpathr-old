@@ -6,12 +6,23 @@
 
 <xsl:template name="resource-title">
 	<h3>Result</h3>
+	<ul>
+		<xsl:apply-templates select="resources-list/resource[@main = 'true']" mode="list"/>
+	</ul>
 </xsl:template>
 
 <xsl:template name="get-main-resource">
 	<pre>
 		<xsl:value-of select="snippet-result/text()" />
 	</pre>
+</xsl:template>
+
+<xsl:template match="resource" mode="list">
+	<li>
+		<a href="{$root}/edit/resource/{$snip-id}/{@file}/">
+			<xsl:value-of select="@file" />
+		</a>
+	</li>
 </xsl:template>
 
 </xsl:stylesheet>

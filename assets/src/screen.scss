@@ -7,9 +7,14 @@
 /* Layout -------------------------------------------------------------- */
 
 @include susy;
+$second: #ff6400;
+$second-hover: #ff7922;
 
 // change '.container' to match your HTML container element
 // or @extend it to apply multiple containers on your site.
+
+// http://www.colourlovers.com/palette/405256/feed_me
+
 .container {
   @include container;
   @include show-grid("http://sdev/test/assets/images/grid.png"); }
@@ -28,13 +33,22 @@
 	}
 
 	input, textarea {
-		@include adjust-font-size-to(12px);
+		@include adjust-font-size-to(14px);
 		background: #000;
 		color: #fff;
+
+		&:hover {
+			background: #222;
+		}
+
+		&:focus {
+			background: #000;
+		}
 	}
 
 	textarea {
-		height: $base-line-height / 14px * 3.3em;
+		height: $px2em * $base-line-height *3;
+		margin-bottom: $px2em * 14px;
 	}
 
 	input[type='submit'] {
@@ -71,6 +85,109 @@
 	padding: $px2em * 6px;
 }
 
+.logo {
+	@include columns(1);
+	@include alpha;
+	@include monospace-family;
+	color: #fff;
+
+	a {
+		@include adjust-font-size-to(7px);
+	}
+}
+
+.actions {
+	@include columns(2);
+	@include omega;
+
+	ul {
+		@include horizontal-list;
+
+		li:last-child {
+			padding-top: $px2em * 3px;
+		}
+	}
+
+	input[type='submit'] {
+		@include rhythm-borders(1px, 0.25, 14px);
+		background: #000;
+		border-color: $base;
+		color: #fff;
+	
+		&:hover {
+			background: #222;
+		}
+	}
+
+	a.process {
+		@include rhythm-borders(1px, 0.25, 14px);
+		@include adjust-font-size-to(14px);
+		border-color: $base;
+		background: $second;
+		color: #fff;
+		text-decoration: none;
+	
+		&:hover {
+			background: $second-hover;
+		}
+	}
+}
+
+
+
+.resources {
+	position: relative;
+	color: #fff;
+
+	ul {
+		@extend .black-box;
+		
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: none;
+		margin-top: $px2em * $base-line-height;
+		margin-left: 0;
+		width: $px2em * 120px;
+
+
+		a {
+			color: white;
+			text-decoration: none;
+		}
+
+		li {
+			@include adjust-font-size-to(12px);
+			padding-left: $px2em * 30px - 0.375em;
+
+			&:hover {
+				background: #333;
+			}
+
+			&.current {
+				background: $second;
+			}
+
+			&.main {
+				font-weight: bold;
+			}
+		}
+	}
+
+	span {
+		@extend .black-box;
+		padding-left: $px2em * 25px;
+		background: url('../images/drop-down.png') no-repeat left #000;
+		cursor: pointer;
+		width: $px2em * 101px; /* wtf */
+	}
+
+	span:hover + ul,
+	ul:hover {
+		display: block;
+	}
+}
+
 // show-grid loads a 64+16x24 grid image by default
 // For other grid settings, run `compass grid-img 30+10x20`
 // Where 30 is the column width, 10 is the gutter width,
@@ -82,18 +199,17 @@ body {
 	background: #181b1f;
 }
 
-#header {
+
+/* EDIT */
+#edit #header {
 	@extend .container;
 	@include sans-family;
 	@include leader(1, 21px);
 	@include trailer(1, 21px);
 
 	h1 {
-		@include columns(1);
-		@include alpha;
-		@include monospace-family;
+		@extend .logo;
 		@extend .vertical-centered;
-		color: #fff;
 	}
 
 	#information {
@@ -112,103 +228,86 @@ body {
 	#current-resource {
 		@include columns(3);
 		@extend .panel;
+
+		h3 {
+			@include leader(1, $base-line-height);
+			margin-bottom: 0;
+			text-align: center;
+		}
+
+		ul {
+			@include no-bullets;
+			margin: 0;
+			text-align: center;
+
+			a {
+				color: #ccc;
+			}
+		}
+
+		input[type='text'] {
+			margin-bottom: $px2em * 2px;
+		}
 	}
 
 	#resources {
+		@extend .resources;
 		@include columns(2);
-		@include omega;
 		@include leader(1, $base-line-height);
-		position: relative;
-		color: #fff;
-
-		ul {
-			@extend .black-box;
-			
-			position: absolute;
-			top: 0;
-			left: 0;
-			display: none;
-			margin-top: $px2em * $base-line-height;
-			margin-left: 0;
-			width: $px2em * 120px;
-
-
-			a {
-				color: white;
-				text-decoration: none;
-			}
-
-			li {
-				@include adjust-font-size-to(12px);
-				padding-left: $px2em * 30px - 0.375em;
-
-				&:hover {
-					background: #333;
-				}
-
-				&.current {
-					background: #8c3130;
-				}
-
-				&.main {
-					font-weight: bold;
-				}
-			}
-		}
-
-		span {
-			@extend .black-box;
-			padding-left: $px2em * 25px;
-			background: url('../images/drop-down.png') no-repeat left #000;
-			cursor: pointer;
-			width: $px2em * 101px; /* wtf */
-		}
-
-		span:hover + ul,
-		ul:hover {
-			display: block;
-		}
+		@include omega;
 	}
 
 	#actions {
-
-		@include columns(2);
-		@include omega;
+		@extend .actions;
 		@include leader(1, $base-line-height);
-
-		ul {
-			@include horizontal-list;
-		}
-
-		input[type='submit'] {
-			@include rhythm-borders(1px, 0.25, 14px);
-			background: #000;
-			border-color: $base;
-			color: #fff;
-		
-			&:hover {
-				background: #222;
-			}
-		}
-
-		a.process {
-			@include rhythm-borders(1px, 0.25, 14px);
-			border-color: $base;
-			background: #8c3130;
-			color: #fff;
-			text-decoration: none;
-		
-			&:hover {
-				background: #222;
-			}
-		}
-	}
-
-	ul {
-		@include no-bullets;
 	}
 }
 
+
+
+
+/* VIEW */
+#view #header {
+	@extend .container;
+	@include sans-family;
+	@include leader(1, 21px);
+	@include trailer(1, 21px);
+
+	h1 {
+		@extend .logo;
+	}
+
+	#information {
+		@include columns(3);
+		color: #bbb;
+		text-align: center;
+
+		div.description {
+			display: none;
+		}
+	}
+
+	#current-resource {
+		@include columns(3);
+		color: #ccc;
+		text-align: center;
+	}
+
+	#resources {
+		@extend .resources;
+		@include columns(3);
+	}
+
+	#actions {
+		@extend .actions;
+	}
+}
+
+
+
+
+
+/* MAIN */
 #main {
 	textarea {
 		height: 25em;
@@ -229,4 +328,8 @@ body {
 		color: #000;
 		padding: $px2em * 16px;
 	}
+}
+
+ul {
+	@include no-bullets;
 }

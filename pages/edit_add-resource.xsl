@@ -14,7 +14,9 @@
 		</xsl:choose>
 
 	</xsl:variable>
-	<input type="text" name="snippet[new-resource][filename]" value="{$filename}" />
+	
+	<label for="filename">filename</label>
+	<input type="text" name="snippet[new-resource][filename]" value="{$filename}" id="filename" />
 
 	<input type="checkbox" name="snippet[main-resource]" id="snippet[main-resource]">
 		<xsl:if test="count(resources-list/resource[@main = 'true']) &lt; 2">

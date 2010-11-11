@@ -22,37 +22,12 @@
 </xsl:template>
 
 <xsl:template match="resources-list">
-	<xsl:apply-templates select="resource" />
-	
+	<xsl:apply-templates select="resource">
+		<xsl:sort select="@main" order="descending" />
+	</xsl:apply-templates>
+
 	<li>
 		<a href="{$root}/edit/add-resource/{$snip-id}/">Add Resource</a>
-	</li>
-</xsl:template>
-
-<xsl:template match="resources-list/resource">
-	<li>
-		<xsl:variable name="class">
-			<xsl:if test="@main = 'true'">
-				<xsl:text>main</xsl:text>
-			</xsl:if>
-			<xsl:if test="@file = $resource">
-				<xsl:text> current</xsl:text>
-			</xsl:if>
-		</xsl:variable>
-
-		<xsl:if test="$class != ''">
-			<xsl:attribute name="class">
-				<xsl:value-of select="$class" />
-			</xsl:attribute>
-		</xsl:if>
-
-		<a href="{$root}/edit/resource/{$snip-id}/{@file}/">
-			<xsl:value-of select="@file" />
-		</a>
-
-		<xsl:if test="@main = 'true'">
-			<input type="hidden" name="fields[main-{@type}-file]" value="{@file}" />
-		</xsl:if>
 	</li>
 </xsl:template>
 

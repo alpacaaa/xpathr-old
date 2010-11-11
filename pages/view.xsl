@@ -12,24 +12,6 @@
 	<div class="description"><xsl:value-of select="description/text()" /></div>
 </xsl:template>
 
-<xsl:template match="resources-list">
-	<!-- [@file != $resource] -->
-	<xsl:apply-templates select="resource">
-		<xsl:sort select="@main" order="descending" />
-	</xsl:apply-templates>
-</xsl:template>
-
-<xsl:template match="resources-list/resource">
-	<li>
-		<a href="{$root}/view/resource/{$user}/{$snip-id}/{@file}/">
-			<xsl:if test="@main = 'true'">
-				<xsl:attribute name="class">main</xsl:attribute>
-			</xsl:if>
-			<xsl:value-of select="@file" />
-		</a>
-	</li>
-</xsl:template>
-
 <xsl:template name="actions">
 	<li>
 		<a>
@@ -40,7 +22,7 @@
 		</a>
 	</li>
 	<li>
-		<a href="{$root}/view/result/{$user}/{$snip-id}/" class="result">Result</a>
+		<a href="{$root}/view/result/{$user}/{$snip-id}/" class="process">Process</a>
 	</li>
 </xsl:template>
 
