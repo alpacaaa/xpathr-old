@@ -10,12 +10,12 @@
 	<label for="filename">filename</label>
 	<input type="text" name="snippet[resources][{$res/@file}][filename]" value="{$res/@file}" id="filename" />
 
-	<input type="checkbox" name="snippet[main-resource]" id="snippet[main-resource]">
+	<input type="checkbox" name="snippet[main-resource]" id="snippet-main-resource">
 		<xsl:if test="$res/@main = 'true'">
 			<xsl:attribute name="checked">checked</xsl:attribute>
 		</xsl:if>
 	</input>
-	<label for="snippet[main-resource]">Main resource</label>
+	<label for="snippet-main-resource">Main resource</label>
 
 	<input type="submit" name="action[delete-resource]" value="Delete" />
 </xsl:template>

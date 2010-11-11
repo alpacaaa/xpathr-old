@@ -15,7 +15,7 @@
 
 	<label>description
 		<!-- <input type="text" name="fields[description]" value="{description/text()}" /> -->
-		<textarea name="fields[description]">
+		<textarea name="fields[description]" rows="2" cols="30">
 			<xsl:value-of select="description/text()" />
 		</textarea>
 	</label>
@@ -52,7 +52,7 @@
 
 <xsl:template match="resource" mode="main">
 	<textarea name="snippet[resources][{@file}][content]" rows="30" cols="160">
-		<xsl:value-of select="text()" disable-output-escaping="yes" />
+		<xsl:value-of select="text()" />
 	</textarea>
 </xsl:template>
 

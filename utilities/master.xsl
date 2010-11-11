@@ -10,7 +10,7 @@
 	indent="yes" />
 
 <xsl:template match="/">
-	<html xmlns="http://www.w3.org/1999/xhtml" lang="en">	
+	<html>	
 		<head>
 
 		<!--
