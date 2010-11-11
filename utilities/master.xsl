@@ -9,8 +9,10 @@
 	encoding="UTF-8"
 	indent="yes" />
 
+<xsl:preserve-space elements="resource" />
 <xsl:template match="/">
 	<html xmlns="http://www.w3.org/1999/xhtml" lang="en">	
+
 		<head>
 		<!--
 			<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.1/build/reset/reset-min.css" media="screen" />

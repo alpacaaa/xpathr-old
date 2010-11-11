@@ -54,7 +54,7 @@
 	{
 		public function processResource(SnippetResource $resource)
 		{
-			return htmlentities(parent::processResource($resource));
+			return htmlentities("\n". parent::processResource($resource));
 		}
 
 		public function processParameters(SnippetParameters $parameters)
@@ -64,7 +64,7 @@
 		}
 	}
 
-	class BitterHighlighterDataProcessor extends RawDataProcessor
+	class BitterHighlighterDataProcessor extends EncodedDataProcessor
 	{
 		public function aprocessResource(SnippetResource $resource)
 		{

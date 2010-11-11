@@ -18,7 +18,7 @@
 	background: #333;
 	color: #fff;
 	
-	p {
+	div:first-child {
 		padding: 5px;
 		margin: 0;
 	}
@@ -47,10 +47,21 @@
 			background: #222;
 		}
 	}
+
+
+	h3 {
+		@include leader(1, $base-line-height);
+		/* @include trailer(3, $base-line-height); */
+		text-align: center;
+	}
+
+	div.description {
+		
+	}
 }
 
 .vertical-centered {
-	@include leader(2, 16px);
+	@include leader(1, 16px);
 }
 
 .black-box {
@@ -106,21 +117,51 @@ body {
 	#resources {
 		@include columns(2);
 		@include omega;
+		@include leader(1, $base-line-height);
 		position: relative;
 		color: #fff;
 
 		ul {
 			@extend .black-box;
+			
 			position: absolute;
 			top: 0;
 			left: 0;
 			display: none;
-			margin-top: $px2em * 18px;
+			margin-top: $px2em * $base-line-height;
 			margin-left: 0;
+			width: $px2em * 120px;
+
+
+			a {
+				color: white;
+				text-decoration: none;
+			}
+
+			li {
+				@include adjust-font-size-to(12px);
+				padding-left: $px2em * 30px - 0.375em;
+
+				&:hover {
+					background: #333;
+				}
+
+				&.current {
+					background: #8c3130;
+				}
+
+				&.main {
+					font-weight: bold;
+				}
+			}
 		}
 
 		span {
 			@extend .black-box;
+			padding-left: $px2em * 25px;
+			background: url('../images/drop-down.png') no-repeat left #000;
+			cursor: pointer;
+			width: $px2em * 101px; /* wtf */
 		}
 
 		span:hover + ul,
@@ -130,10 +171,37 @@ body {
 	}
 
 	#actions {
-		/*
-		@include columns(3);
+
+		@include columns(2);
 		@include omega;
-		*/
+		@include leader(1, $base-line-height);
+
+		ul {
+			@include horizontal-list;
+		}
+
+		input[type='submit'] {
+			@include rhythm-borders(1px, 0.25, 14px);
+			background: #000;
+			border-color: $base;
+			color: #fff;
+		
+			&:hover {
+				background: #222;
+			}
+		}
+
+		a.process {
+			@include rhythm-borders(1px, 0.25, 14px);
+			border-color: $base;
+			background: #8c3130;
+			color: #fff;
+			text-decoration: none;
+		
+			&:hover {
+				background: #222;
+			}
+		}
 	}
 
 	ul {
@@ -143,6 +211,22 @@ body {
 
 #main {
 	textarea {
-		height: 100%;
+		height: 25em;
+	}
+	
+	&.split div {
+		width: 50%;
+		float: left;
+
+		a {
+			text-align: center;
+		}
+	}
+
+	pre {
+		white-space: pre;
+		background: #fff;
+		color: #000;
+		padding: $px2em * 16px;
 	}
 }

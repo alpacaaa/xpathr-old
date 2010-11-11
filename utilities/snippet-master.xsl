@@ -12,15 +12,21 @@
 		<h1>Logo</h1>
 
 		<div id="information">
-			<p>
+			<div>
 				<xsl:apply-templates select="snippet-information/entry" mode="info" />
-			</p>
+			</div>
 		</div>
 
 		<div id="current-resource">
-			<p>
+			<div>
 				<xsl:call-template name="resource-title" />
-			</p>
+			</div>
+		</div>
+
+		<div id="actions">
+			<ul>	
+				<xsl:call-template name="actions" />
+			</ul>
 		</div>
 
 		<div id="resources">
@@ -30,11 +36,6 @@
 			</ul>
 		</div>
 
-		<div id="actions">
-			<ul>	
-				<xsl:call-template name="actions" />
-			</ul>
-		</div>
 
 	</div>
 

@@ -7,13 +7,14 @@
 <xsl:param name="resource" />
 
 <xsl:template match="snippet-information/entry" mode="info">
-	<img src="{$workspace}/images/gravatar-140.png" alt="gravatar" />
+	<!-- <img src="{$workspace}/images/gravatar-140.png" alt="gravatar" /> -->
 	<h2><xsl:value-of select="title/text()" /></h2>
 	<div class="description"><xsl:value-of select="description/text()" /></div>
 </xsl:template>
 
 <xsl:template match="resources-list">
-	<xsl:apply-templates select="resource[@file != $resource]">
+	<!-- [@file != $resource] -->
+	<xsl:apply-templates select="resource">
 		<xsl:sort select="@main" order="descending" />
 	</xsl:apply-templates>
 </xsl:template>
@@ -50,13 +51,26 @@
 <xsl:template name="get-main-resource">
 	<xsl:attribute name="class">split</xsl:attribute>
 	<xsl:apply-templates select="events/save-main-resources/*" mode="main" />
-	<xsl:apply-templates select="snippet-main-resources/*" mode="main" />
+	<xsl:apply-templates select="snippet-main-resources" mode="main" />
 </xsl:template>
 
 <xsl:template match="resource" mode="main">
 	<pre>
-		<xsl:value-of select="text()" />
+		<code>
+			<xsl:value-of select="text()" />
+		</code>
 	</pre>
+</xsl:template>
+
+<xsl:template match="snippet-main-resources" mode="main">
+	<xsl:for-each select="resource">
+		<div id="{@file}">
+			<a href="{$root}/view/resource/{$user}/{$snip-id}/{@file}/">
+				<xsl:value-of select="@file" />
+			</a>
+			<xsl:apply-templates select="." mode="main" />
+		</div>
+	</xsl:for-each>
 </xsl:template>
 
 <xsl:template name="get-edit-link">

@@ -31,6 +31,21 @@
 
 <xsl:template match="resources-list/resource">
 	<li>
+		<xsl:variable name="class">
+			<xsl:if test="@main = 'true'">
+				<xsl:text>main</xsl:text>
+			</xsl:if>
+			<xsl:if test="@file = $resource">
+				<xsl:text> current</xsl:text>
+			</xsl:if>
+		</xsl:variable>
+
+		<xsl:if test="$class != ''">
+			<xsl:attribute name="class">
+				<xsl:value-of select="$class" />
+			</xsl:attribute>
+		</xsl:if>
+
 		<a href="{$root}/edit/resource/{$snip-id}/{@file}/">
 			<xsl:value-of select="@file" />
 		</a>
@@ -46,7 +61,7 @@
 		<input type="submit" name="action[save-snippet]" value="Save" />
 	</li>
 	<li>
-		<a href="{$root}/edit/result/{$snip-id}/" class="result">process</a>
+		<a href="{$root}/edit/result/{$snip-id}/" class="process">Process</a>
 	</li>
 </xsl:template>
 
