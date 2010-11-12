@@ -4,13 +4,23 @@
 
 <xsl:import href="view.xsl" />
 
-<xsl:template name="resource-title">
-	<h3>Result</h3>
+<xsl:template match="snippet-information/entry">
+	<p>
+		This is the processed result of 
+		<a>
+			<xsl:attribute name="href">
+				<xsl:call-template name="get-view-link" />
+			</xsl:attribute>
+			<xsl:value-of select="title/text()" />
+		</a>.
+	</p>
 </xsl:template>
 
 <xsl:template name="get-main-resource">
 	<pre>
-		<xsl:value-of select="snippet-result/text()" />
+		<code>
+			<xsl:value-of select="snippet-result/text()" />
+		</code>
 	</pre>
 </xsl:template>
 </xsl:stylesheet>

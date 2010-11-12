@@ -2,32 +2,112 @@
 <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+
+
 <xsl:import href="../utilities/snippet-master.xsl" />
+<xsl:import href="../utilities/truncate.xsl" />
+
 
 <xsl:param name="resource" />
+<xsl:param name="url-description" select="'less'" />
+<xsl:param name="files-list-message" select="'Files'" />
 
-<xsl:template match="snippet-information/entry" mode="info">
-	<!-- <img src="{$workspace}/images/gravatar-140.png" alt="gravatar" /> -->
-	<h2><xsl:value-of select="title/text()" /></h2>
-	<div class="description"><xsl:value-of select="description/text()" /></div>
+
+<xsl:template match="data">
+
+<form action="" method="post" id="{$root-page}">
+	<div id="header">
+
+		<h1>Logo</h1>
+
+		<div id="information">
+			
+			<xsl:apply-templates select="snippet-information/entry" />
+			<xsl:apply-templates select="resources-list" />
+		</div>
+
+		<div id="actions">
+			<p>
+				You can <a href="{$root}/view/result/{$user}/{$snip-id}/">process</a> or 
+				<a href="#">fork</a> this snippet.
+			</p>
+		</div>
+
+	</div>
+
+	<div id="main">
+		<xsl:call-template name="get-main-resource" />
+	</div>
+</form>
 </xsl:template>
 
-<xsl:template name="actions">
-	<li>
+<xsl:template match="snippet-information/entry">
+	<p>
+		This is 
 		<a>
 			<xsl:attribute name="href">
-				<xsl:call-template name="get-edit-link" />
+				<xsl:call-template name="get-view-link" />
 			</xsl:attribute>
-			<xsl:text>Edit</xsl:text>
+			<xsl:value-of select="title/text()" />
 		</a>
-	</li>
-	<li>
-		<a href="{$root}/view/result/{$user}/{$snip-id}/" class="process">Process</a>
-	</li>
+		<xsl:if test="description/text() != ''">
+			<xsl:if test="$url-description = 'less'">
+				<xsl:text>, </xsl:text>
+			</xsl:if>
+			<xsl:if test="$url-description != 'less'">
+				<br />
+			</xsl:if>
+
+			<q>
+				<xsl:variable name="base">
+					<xsl:choose>
+						<xsl:when test="contains($current-url, '?description')">
+							<xsl:value-of select="substring-before($current-url, '?description')" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="$current-url" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+
+				<xsl:choose>
+					<xsl:when test="$url-description = 'less'">
+						<xsl:variable name="truncate">
+							<xsl:call-template name="truncate">
+								<xsl:with-param name="node" select="description" />
+								<xsl:with-param name="limit" select="40" />
+								<xsl:with-param name="suffix" select="''" />
+							</xsl:call-template>
+						</xsl:variable>
+
+						<xsl:choose>
+							<xsl:when test="string-length($truncate) = string-length(./description/text())">
+								<xsl:value-of select="description/text()" />
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:value-of select="$truncate" />&#x2026;
+								 (<a href="{$base}?description=more">more</a>)
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:when>
+
+					<xsl:otherwise>
+						<xsl:value-of select="description/text()" />
+						(<a href="{$base}?description=less">less</a>)
+					</xsl:otherwise>
+				</xsl:choose>
+			</q>
+		</xsl:if>
+	</p>
 </xsl:template>
 
-<xsl:template name="resource-title">
-	<h3>Main Files</h3>
+<xsl:template match="resources-list">
+	<xsl:value-of select="$files-list-message" />: 
+	<ul>
+		<xsl:apply-templates select="resource[@file != $resource]">
+			<xsl:sort select="@main" order="descending" />
+		</xsl:apply-templates>
+	</ul>
 </xsl:template>
 
 <xsl:template name="get-main-resource">
@@ -55,7 +135,7 @@
 	</xsl:for-each>
 </xsl:template>
 
-<xsl:template name="get-edit-link">
-	<xsl:value-of select="concat($root, '/edit/', $snip-id, '/')" />
+<xsl:template name="get-view-link">
+	<xsl:value-of select="concat($root, '/view/', $user, '/', $snip-id, '/')" />
 </xsl:template>
 </xsl:stylesheet>

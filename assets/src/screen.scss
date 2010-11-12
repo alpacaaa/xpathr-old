@@ -9,6 +9,8 @@
 @include susy;
 $second: #ff6400;
 $second-hover: #ff7922;
+$link: #8FD615;
+$link-hover: rgba(143, 214, 21, 0.8);
 
 // change '.container' to match your HTML container element
 // or @extend it to apply multiple containers on your site.
@@ -16,8 +18,9 @@ $second-hover: #ff7922;
 // http://www.colourlovers.com/palette/405256/feed_me
 
 .container {
-  @include container;
-  @include show-grid("http://sdev/test/assets/images/grid.png"); }
+	@include container;
+	@include show-grid("http://sdev/test/assets/images/grid.png");  
+}
   
 .panel {
 	background: #333;
@@ -166,7 +169,7 @@ $second-hover: #ff7922;
 			padding-left: $px2em * 30px - 0.375em;
 
 			&:hover {
-				background: #333;
+				background: #222;
 			}
 
 			&.current {
@@ -202,13 +205,27 @@ $second-hover: #ff7922;
 
 body {
 	background: #181b1f;
+	@include sans-family;
+}
+
+ul {
+	@include no-bullets;
+}
+
+a {
+	&:link, &:visited {
+		color: $link;
+	}
+
+	&:active {
+		color: $link-hover;
+	}
 }
 
 
 /* EDIT */
 #edit #header {
 	@extend .container;
-	@include sans-family;
 	@include leader(1, 21px);
 	@include trailer(1, 21px);
 
@@ -278,34 +295,48 @@ body {
 	@include sans-family;
 	@include leader(1, 21px);
 	@include trailer(1, 21px);
+	color: #eee;
+	text-align: center;
 
 	h1 {
 		@extend .logo;
 	}
 
 	#information {
-		@include columns(3);
-		color: #bbb;
-		text-align: center;
+		@include columns(9);
 
 		div.description {
 			display: none;
 		}
-	}
 
-	#current-resource {
-		@include columns(3);
-		color: #ccc;
-		text-align: center;
-	}
+		ul {
+			@include horizontal-list;
+			display: inline;
 
-	#resources {
-		@extend .resources;
-		@include columns(3);
+			li {
+				float: none;
+				&:after {
+					content: ',';
+				}
+
+				&:last-child:after {
+					content: '';
+				}
+			}
+		}
 	}
 
 	#actions {
-		@extend .actions;
+		@include columns(2);
+		@include omega;
+	}
+
+	p {
+		margin-bottom: 0;
+	}
+
+	.main {
+		font-weight: bold;
 	}
 }
 
@@ -323,8 +354,13 @@ body {
 		width: 50%;
 		float: left;
 
+		&:hover {
+			background: #333;
+		}
+
 		a {
 			text-align: center;
+			display: block;
 		}
 	}
 
@@ -333,9 +369,7 @@ body {
 		background: #fff;
 		color: #000;
 		padding: $px2em * 16px;
+		margin-top: $px2em * 8px;
+		overflow: auto;
 	}
-}
-
-ul {
-	@include no-bullets;
 }
