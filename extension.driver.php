@@ -33,13 +33,13 @@
 			if ($context['params']['current-page'] == 'edit' ||
 				$context['params']['parent-path'] == '/edit')
 			{
-				$user = SnippetOwner::getName();
+				$user = SnippetUser::getName();
 				$snip = $context['params']['snip-id'];
 				$snippet = Snippet::find($snip, $user);
 
-				if (!$snippet) return;
-				if (SnippetOwner::owns($snippet))
-					$context['params']['owner'] = true;
+				if (!$snippet || !SnippetUser::owns($snippet)) return;
 			}
+
+			$context['params']['owner'] = true;
 		}
 	}

@@ -2,7 +2,7 @@
 
 	require_once('class.snippet-resource.php');
 	require_once('class.snippet-parameters.php');
-	require_once('class.snippet-owner.php');
+	require_once('class.snippet-user.php');
 
 	class SnippetException extends Exception
 	{
@@ -179,5 +179,82 @@
 		public static function anonymousUser()
 		{
 			return 'all';
+		}
+
+		public static function createNew()
+		{
+			$user = SnippetUser::getName();
+
+			do
+			{
+				$code = self::generateUniqId();
+			}
+			while (is_object(self::find($code, $user)));
+
+			$resources = array(
+				'xml' => array(
+					'file' => 'source.xml',
+					'text' => '<source>Paste here :)</source>'
+				),
+				'xsl' => array(
+					'file' => 'master.xsl',
+					'text' => join("\n", array(
+						'<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">',
+						'	<xsl:output method="text"/>',
+						'	<xsl:template match="/">',
+						'		<xsl:apply-templates />',
+						'	</xsl:template>',
+						'</xsl:stylesheet>'
+						))
+				)
+			);
+
+			$data  = array(
+				'uniq-id' => $code,
+				'title' => 'Snippet #'. $code,
+				'main-xml-file' => $resources['xml']['file'],
+				'main-xsl-file' => $resources['xsl']['file']
+			);
+
+			if (SnippetUser::isLoggedIn())
+				$data['user'] = SnippetUser::getId();
+
+			$entry = SymWrite(self::$section);
+			foreach ($data as $field => $value)
+				$entry->set($field, $value);
+
+			try {
+				$entry = $entry->write();
+			}
+			catch (SymWriteException $ex) {
+				return false;
+			}
+
+			$snippet = new Snippet($data);
+			$storage = SnippetData::getStorage($snippet);
+
+			$init = $storage->initContext();
+			if (!$init)
+			{
+				$em = new EntryManager(Frontend::instance());
+				$em->delete($entry);
+				return false;
+			}
+
+			foreach ($resources as $r)
+			{
+				$resource = new SnippetResource($r['file'], $snippet);
+				$resource->setContent($r['text']);
+				$ret = $resource->save();
+				if (!$ret) return false;
+			}
+
+			SnippetUser::add($snippet);
+			return $code;
+		}
+
+		public static function generateUniqId()
+		{
+			return substr(md5(time(). rand()), rand(0, 22), 10);
 		}
 	}

@@ -1,6 +1,6 @@
 <?php
 
-	class SnippetOwner
+	class SnippetUser
 	{
 		public static $data = array();
 
@@ -30,7 +30,7 @@
 
 		public static function add(Snippet $snippet)
 		{
-			if (self::$data['openid']) return; // logged in
+			if (self::isLoggedIn()) return;
 
 			self::$data['snippets'][] = $snippet->get('uniq-id');
 
@@ -47,6 +47,11 @@
 		{
 			return self::$data['name'];
 		}
+
+		public static function isLoggedIn()
+		{
+			return self::$data['openid'];
+		}
 	}
 
-	SnippetOwner::init();
+	SnippetUser::init();

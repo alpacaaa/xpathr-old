@@ -11,8 +11,9 @@
 		public function hasKey($key);
 		public function getAllKeys();
 		public function setContext(Snippet $context);
+		public function initContext();
 	}
-	
+
 
 	class FilesystemStorage implements SnippetDataStorage
 	{
@@ -48,11 +49,8 @@
 		
 		public function getAllKeys()
 		{
-			try {
-				$dir = $this->getSnippetFolder();
-			}catch(SnippetDataStorageException $ex) {
-				return array();
-			}
+			$dir = $this->getSnippetFolder();
+			if (!is_dir($dir)) return array();
 
 			return array_map('basename', glob($dir. '/*'));
 		}
@@ -61,10 +59,23 @@
 		{
 			$this->context = $context;
 		}
-		
+
+		public function initContext()
+		{
+			$dir = $this->getSnippetFolder();
+			if (is_dir($dir)) return true;
+
+			return mkdir($dir);
+		}
+
 		public function buildPath($key)
 		{
 			$dir  = $this->getSnippetFolder();
+			if (!is_dir($dir))
+				throw new SnippetDataStorageException(
+					'Error while retrieving data'
+				);
+
 			$key  = '/'. trim($key, '/');
 			$file = $dir. $key;
 			$file = new SplFileInfo($file);
@@ -87,9 +98,6 @@
 		{
 			$dir  = self::getUserDataFolder();
 			$dir .= $this->context->getUser(). '/'. $this->context->get('uniq-id');
-
-			if (!is_dir($dir))
-				throw new SnippetDataStorageException('Snippet has no resources');
 
 			return $dir;
 		}

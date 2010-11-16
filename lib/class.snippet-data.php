@@ -16,13 +16,13 @@
 
 			$this->storage->setContext($snippet);
 		}
-		
+
 		public static function find($key, Snippet $snippet)
 		{
 			$storage = self::getStorage($snippet);
 			return $storage->hasKey($key);
 		}
-		
+
 		public static function getStorage(Snippet $snippet)
 		{
 			$storage = new self::$storageClass;

@@ -55,7 +55,7 @@
 			if (empty($resource)) return;
 
 			$snippet = Snippet::find($snip, $user);
-			if (!$snippet || !SnippetOwner::owns($snippet)) return false;
+			if (!$snippet || !SnippetUser::owns($snippet)) return false;
 
 			$resource = $snippet->getResource($resource);
 			if (!$resource) return;

@@ -41,7 +41,7 @@
 			$this->file = self::clean($this->file);
 			return $this->storage->store($this->file, $content);
 		}
-		
+
 		public function toDomDocument()
 		{
 			$dom = new DomDocument();
@@ -49,12 +49,12 @@
 
 			return $dom;
 		}
-		
+
 		public function isXML()
 		{
 			return 'xml' == $this->getType();
 		}
-		
+
 		public function isXSL()
 		{
 			return 'xsl' == $this->getType();
@@ -70,12 +70,12 @@
 		{
 			$this->content = $content;
 		}
-		
+
 		public function getProcessedContent()
 		{
 			return $this->processor->processResource($this);
 		}
-		
+
 		public function setProcessor(SnippetDataProcessor $processor)
 		{
 			$this->processor = $processor;

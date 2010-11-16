@@ -28,7 +28,7 @@
 		
 		public function priority()
 		{
-			return 10;
+			return self::kHIGH;
 		}
 		
 		public function load(){		
@@ -42,7 +42,7 @@
 			$user = $url['user'];
 
 			$snippet = Snippet::find($snip, $user);
-			if (!$snippet || !SnippetOwner::owns($snippet)) return;
+			if (!$snippet || !SnippetUser::owns($snippet)) return;
 
 			$data = $_POST['snippet']['new-resource'];
 			$file = SnippetResource::clean($data['filename']);

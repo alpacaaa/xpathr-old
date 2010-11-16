@@ -37,7 +37,7 @@
 			$user = $url['user'];
 
 			$snippet = Snippet::find($snip, $user);
-			if (!$snippet || !SnippetOwner::owns($snippet)) return;
+			if (!$snippet || !SnippetUser::owns($snippet)) return;
 
 			$resources = $snippet->getMainResources();
 			if (empty($resources)) return;
