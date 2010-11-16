@@ -8,7 +8,7 @@
 		public $dsParamORDER = 'desc';
 		public $dsParamLIMIT = '1';
 		public $dsParamREDIRECTONEMPTY = 'yes';
-		public $dsParamREQUIREDPARAM = '$snip-id';
+		public $dsParamREQUIREDPARAM = '$owner';
 		public $dsParamPARAMOUTPUT = 'system:id';
 		public $dsParamSORT = 'system:id';
 		public $dsParamSTARTPAGE = '1';
@@ -35,10 +35,10 @@
 					 'name' => 'Snippet Information',
 					 'author' => array(
 							'name' => 'Marco Sampellegrini',
-							'website' => 'http://192.168.1.57/ninja',
+							'website' => 'http://dev/ninja',
 							'email' => 'm@rcosa.mp'),
 					 'version' => '1.0',
-					 'release-date' => '2010-10-21T07:43:40+00:00');	
+					 'release-date' => '2010-11-16T10:23:01+00:00');	
 		}
 		
 		public function getSource(){

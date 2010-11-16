@@ -16,13 +16,4 @@
 		<xsl:value-of select="snippet-result/text()" />
 	</pre>
 </xsl:template>
-
-<xsl:template match="resource" mode="list">
-	<li>
-		<a href="{$root}/edit/resource/{$snip-id}/{@file}/">
-			<xsl:value-of select="@file" />
-		</a>
-	</li>
-</xsl:template>
-
 </xsl:stylesheet>
