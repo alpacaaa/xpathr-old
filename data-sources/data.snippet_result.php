@@ -1,7 +1,6 @@
 <?php
 
 	require_once(TOOLKIT . '/class.datasource.php');
-	require_once(WORKSPACE. '/lib/class.snippet.php');
 
 	class datasourcesnippet_result extends Datasource{
 		

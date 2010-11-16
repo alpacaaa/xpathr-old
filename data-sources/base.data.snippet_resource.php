@@ -1,8 +1,6 @@
 <?php
 
 	require_once(TOOLKIT . '/class.datasource.php');
-	require_once(WORKSPACE. '/lib/class.snippet.php');
-
 
 	abstract class baseDataSnippetResource extends Datasource{
 		

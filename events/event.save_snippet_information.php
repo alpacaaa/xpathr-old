@@ -1,8 +1,6 @@
 <?php
 
 	require_once(TOOLKIT . '/class.event.php');
-	require_once(WORKSPACE. '/lib/class.snippet.php');
-	
 
 	class eventsave_snippet_information extends Event{
 		
