@@ -29,7 +29,7 @@
 		<div id="actions">
 			<p>
 				You can <a href="{$root}/view/result/{$user}/{$snip-id}/">process</a> or 
-				<a href="#">fork</a> this snippet.
+				<button type="submit" name="action[fork-snippet]"><span>fork</span></button> this snippet.
 			</p>
 		</div>
 

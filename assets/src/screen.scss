@@ -204,8 +204,8 @@ $link-hover: rgba(143, 214, 21, 0.8);
 /* Styles -------------------------------------------------------------- */
 
 body {
-	background: #181b1f;
 	@include sans-family;
+	background: #181b1f;
 }
 
 ul {
@@ -329,6 +329,26 @@ a {
 	#actions {
 		@include columns(2);
 		@include omega;
+
+		button[type='submit'] {
+			@include sans-family;
+			background: none;
+			border: none;
+			color: $link;
+			font-size: 100%;
+			padding: 0;
+
+			span {
+				text-decoration: underline;
+			}
+
+			&:hover {
+				span {
+					text-decoration: none;
+					//color: $link-hover;
+				}
+			}
+		}
 	}
 
 	p {
@@ -346,21 +366,32 @@ a {
 
 /* MAIN */
 #main {
+	padding: $px2em * $base-line-height;
+	margin-bottom: $px2em * 40px;
+
 	textarea {
 		height: 25em;
 	}
 	
-	&.split div {
-		width: 50%;
-		float: left;
+	&.split {
+		padding: 0;
 
-		&:hover {
-			background: #333;
-		}
+		div {
+			width: 50%;
+			float: left;
 
-		a {
-			text-align: center;
-			display: block;
+			&:hover {
+				background: #333;
+			}
+
+			a {
+				text-align: center;
+				display: block;
+			}
+
+			pre {
+				margin: 1em;
+			}
 		}
 	}
 
@@ -369,7 +400,21 @@ a {
 		background: #fff;
 		color: #000;
 		padding: $px2em * 16px;
-		margin-top: $px2em * 8px;
 		overflow: auto;
+		margin: 0;
+		margin-top: $px2em * 8px;
 	}
+}
+
+
+
+/* FOOTER */
+#footer {
+	@include adjust-font-size-to(12px);
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	padding: $px2em * $base-line-height /4;
+	background: #111;
 }

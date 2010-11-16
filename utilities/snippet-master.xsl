@@ -47,6 +47,11 @@
 		<xsl:call-template name="get-main-resource" />
 	</div>
 </form>
+
+
+<div id="footer">
+	<a href="{$root}/view/all/{$snip-id}/">Snippet permalink</a>
+</div>
 </xsl:template>
 
 <xsl:template match="resources-list">
