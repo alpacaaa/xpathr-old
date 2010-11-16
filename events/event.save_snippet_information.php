@@ -39,7 +39,8 @@
 		}
 		
 		protected function __trigger(){
-			$this->processMainResources();
+			$own = $this->processMainResources();
+			if (!$own) return;
 			include(TOOLKIT . '/events/event.section.php');
 			return $result;
 		}
@@ -54,7 +55,7 @@
 			if (empty($resource)) return;
 
 			$snippet = Snippet::find($snip, $user);
-			if (!$snippet) return;
+			if (!$snippet || !SnippetOwner::owns($snippet)) return false;
 
 			$resource = $snippet->getResource($resource);
 			if (!$resource) return;
@@ -67,5 +68,6 @@
 			}
 
 			$_POST['fields']['main-'. $type. '-file'] = $resource->getFile();
+			return true;
 		}
 	}

@@ -4,7 +4,8 @@
 
 	class extension_Ninja extends Extension
 	{
-		public function about() {
+		public function about()
+		{
 			return array(
 				'name' => 'XPath Ninja',
 				'version' => '1.0',
@@ -14,5 +15,31 @@
 					'email' => 'm@rcosa.mp'
 				)
 			);
+		}
+
+		public function getSubscribedDelegates()
+		{
+			return array(
+				array(
+					'page' => '/frontend/',
+					'delegate' => 'FrontendParamsResolve',
+					'callback' => 'FrontendParamsResolve'
+				),
+			);
+		}
+
+		public function FrontendParamsResolve(&$context)
+		{
+			if ($context['params']['current-page'] == 'edit' ||
+				$context['params']['parent-path'] == '/edit')
+			{
+				$user = SnippetOwner::getName();
+				$snip = $context['params']['snip-id'];
+				$snippet = Snippet::find($snip, $user);
+
+				if (!$snippet) return;
+				if (SnippetOwner::owns($snippet))
+					$context['params']['owner'] = true;
+			}
 		}
 	}

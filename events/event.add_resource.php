@@ -42,7 +42,7 @@
 			$user = $url['user'];
 
 			$snippet = Snippet::find($snip, $user);
-			if (!$snippet) return;
+			if (!$snippet || !SnippetOwner::owns($snippet)) return;
 
 			$data = $_POST['snippet']['new-resource'];
 			$file = SnippetResource::clean($data['filename']);

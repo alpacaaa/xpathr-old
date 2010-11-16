@@ -2,7 +2,7 @@
 
 	require_once('class.snippet-resource.php');
 	require_once('class.snippet-parameters.php');
-
+	require_once('class.snippet-owner.php');
 
 	class SnippetException extends Exception
 	{
@@ -37,7 +37,7 @@
 		{
 			return $this->data[$what];
 		}
-		
+
 		public function getUser()
 		{
 			return 'all';
@@ -169,10 +169,15 @@
 
 			return $obj;
 		}
-		
+
 		public static function keepValue($el)
 		{
 			if (is_array($el) && array_key_exists('value', $el))
 				return $el['value'];
+		}
+
+		public static function anonymousUser()
+		{
+			return 'all';
 		}
 	}
