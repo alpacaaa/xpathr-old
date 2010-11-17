@@ -4,6 +4,8 @@
 
 <xsl:template match="/">
 
-asdf
+	<form action="?debug" method="post">
+		<input type="submit" name="action[new-snippet]" />
+	</form>
 </xsl:template>
 </xsl:stylesheet>
