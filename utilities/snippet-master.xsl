@@ -11,7 +11,7 @@
 <form action="" method="post" id="{$root-page}">
 	<div id="header">
 
-		<h1>Logo
+		<h1><a href="{$root}">Logo</a>
 			<!-- <a href="#">draw it!</a> -->
 		</h1>
 
@@ -43,6 +43,7 @@
 
 	</div>
 
+	<xsl:apply-templates select="events/*[name() != 'save-snippet-information']/message" mode="main" />
 	<div id="main">
 		<xsl:call-template name="get-main-resource" />
 	</div>
@@ -108,6 +109,10 @@
 	</xsl:if>
 
 	<xsl:value-of select="concat($snip-id, '/', $node/@file, '/')" />
+</xsl:template>
+
+<xsl:template match="message" mode="main">
+	<div class="{../@result}"><xsl:value-of select="text()" /></div>
 </xsl:template>
 
 </xsl:stylesheet>

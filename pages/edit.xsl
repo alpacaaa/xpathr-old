@@ -49,7 +49,6 @@
 
 <xsl:template name="get-main-resource">
 	<xsl:attribute name="class">split</xsl:attribute>
-	<xsl:apply-templates select="events/save-main-resources/*" mode="main" />
 	<xsl:apply-templates select="snippet-main-resources/*" mode="main" />
 </xsl:template>
 
@@ -57,10 +56,6 @@
 	<textarea name="snippet[resources][{@file}][content]" rows="30" cols="160">
 		<xsl:value-of select="text()" />
 	</textarea>
-</xsl:template>
-
-<xsl:template match="message" mode="main">
-	<div class="{../@result}"><xsl:value-of select="text()" /></div>
 </xsl:template>
 
 <xsl:template match="resource" mode="list">

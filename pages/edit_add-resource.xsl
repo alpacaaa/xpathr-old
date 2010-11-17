@@ -27,11 +27,10 @@
 </xsl:template>
 
 <xsl:template name="get-main-resource">
-	<xsl:apply-templates select="events/add-resource/message" mode="main" />
 	<textarea name="snippet[new-resource][content]" rows="30" cols="160">
 		<xsl:choose>
-			<xsl:when test="events/add-resource/post-data">
-				<xsl:value-of select="events/add-resource/post-data/text()" />
+			<xsl:when test="/data/events/add-resource/post-data">
+				<xsl:value-of select="/data/events/add-resource/post-data/text()" />
 			</xsl:when>
 			<xsl:otherwise><source>Paste here :)</source></xsl:otherwise>
 		</xsl:choose>

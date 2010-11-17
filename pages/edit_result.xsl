@@ -12,6 +12,7 @@
 </xsl:template>
 
 <xsl:template name="get-main-resource">
+	<xsl:apply-templates select="snippet-result/message" mode="main" />
 	<pre>
 		<xsl:value-of select="snippet-result/text()" />
 	</pre>

@@ -5,7 +5,19 @@
 <xsl:template match="/">
 
 	<form action="?debug" method="post">
-		<input type="submit" name="action[new-snippet]" />
+		<input type="submit" name="action[new-snippet]" value="new snippet" />
 	</form>
+	
+	<ul>
+		<xsl:apply-templates select="data/user-snippets/snippet" />
+	</ul>
+</xsl:template>
+
+<xsl:template match="snippet">
+	<li>
+		<a href="{$root}/edit/{@uniq-id}/">
+			<xsl:value-of select="@uniq-id" />
+		</a>
+	</li>
 </xsl:template>
 </xsl:stylesheet>

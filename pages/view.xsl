@@ -18,7 +18,7 @@
 <form action="" method="post" id="{$root-page}">
 	<div id="header">
 
-		<h1>Logo</h1>
+		<h1><a href="{$root}">Logo</a></h1>
 
 		<div id="information">
 			
@@ -29,7 +29,15 @@
 		<div id="actions">
 			<p>
 				You can <a href="{$root}/view/result/{$user}/{$snip-id}/">process</a> or 
-				<button type="submit" name="action[fork-snippet]"><span>fork</span></button> this snippet.
+				<xsl:choose>
+					<xsl:when test="user-snippets/snippet[@uniq-id = $snip-id]">
+						<a href="{$root}/edit/{$snip-id}">edit</a>
+					</xsl:when>
+					<xsl:otherwise>
+						<button type="submit" name="action[fork-snippet]"><span>fork</span></button>
+					</xsl:otherwise>
+				</xsl:choose>
+				 this snippet.
 			</p>
 		</div>
 
