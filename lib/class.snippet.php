@@ -33,9 +33,10 @@
 			return SnippetResource::find($file, $this);
 		}
 
-		public function get($what)
+		public function get($what = null)
 		{
-			return $this->data[$what];
+			if ($what) return $this->data[$what];
+			return $this->data;
 		}
 
 		public function getUser()
@@ -181,40 +182,20 @@
 			return 'all';
 		}
 
-		public static function createNew()
+		protected static function create(array $data, array $resources)
 		{
-			$user = SnippetUser::getName();
-
-			do
+			$code = $data['uniq-id'];
+			if (!$code)
 			{
-				$code = self::generateUniqId();
+				$user = SnippetUser::getName();
+
+				do
+				{
+					$code = self::generateUniqId();
+				}
+				while (is_object(self::find($code, $user)));
+				$data['uniq-id'] = $code;
 			}
-			while (is_object(self::find($code, $user)));
-
-			$resources = array(
-				'xml' => array(
-					'file' => 'source.xml',
-					'text' => '<source>Paste here :)</source>'
-				),
-				'xsl' => array(
-					'file' => 'master.xsl',
-					'text' => join("\n", array(
-						'<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">',
-						'	<xsl:output method="text"/>',
-						'	<xsl:template match="/">',
-						'		<xsl:apply-templates />',
-						'	</xsl:template>',
-						'</xsl:stylesheet>'
-						))
-				)
-			);
-
-			$data  = array(
-				'uniq-id' => $code,
-				'title' => 'Snippet #'. $code,
-				'main-xml-file' => $resources['xml']['file'],
-				'main-xsl-file' => $resources['xsl']['file']
-			);
 
 			if (SnippetUser::isLoggedIn())
 				$data['user'] = SnippetUser::getId();
@@ -234,23 +215,78 @@
 			$storage = SnippetData::getStorage($snippet);
 
 			$init = $storage->initContext();
-			if (!$init)
-			{
-				$em = new EntryManager(Frontend::instance());
-				$em->delete($entry);
-				return false;
-			}
+			if (!$init) return false;
 
 			foreach ($resources as $r)
 			{
-				$resource = new SnippetResource($r['file'], $snippet);
-				$resource->setContent($r['text']);
+				if ($r instanceof SnippetResource)
+				{
+					$file = $r->getFile();
+					$text = $r->getContent();
+				}
+				else
+				{
+					$file = $r['file'];
+					$text = $r['text'];
+				}
+
+				$resource = new SnippetResource($file, $snippet);
+				$resource->setContent($text);
 				$ret = $resource->save();
 				if (!$ret) return false;
 			}
 
 			SnippetUser::add($snippet);
 			return $code;
+		}
+
+		public static function createNew()
+		{
+			$resources = array(
+				'xml' => array(
+					'file' => 'source.xml',
+					'text' => '<source>Paste here :)</source>'
+				),
+				'xsl' => array(
+					'file' => 'master.xsl',
+					'text' => join("\n", array(
+						'<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">',
+						'	<xsl:output method="text"/>',
+						'	<xsl:template match="/">',
+						'		<xsl:apply-templates />',
+						'	</xsl:template>',
+						'</xsl:stylesheet>'
+						))
+				)
+			);
+
+			$data  = array(
+				'title' => 'Yet another snippet',
+				'main-xml-file' => $resources['xml']['file'],
+				'main-xsl-file' => $resources['xsl']['file']
+			);
+
+			return self::create($data, $resources);
+		}
+
+		public function fork()
+		{
+			$anonymous = $this->getUser() == self::anonymousUser();
+			if (!$anonymous)
+			{
+				$user = SnippetUser::getName();
+				if ($user == $this->getUser())
+					throw new SnippetException(
+						'You already have a fork of this snippet'
+					);
+			}
+
+			$resources = $this->listResources();
+			$data = $this->get();
+			$data['description'] .= ' (fork)';
+			if ($anonymous) unset($data['uniq-id']);
+
+			return self::create($data, $resources);
 		}
 
 		public static function generateUniqId()

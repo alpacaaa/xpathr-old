@@ -129,8 +129,7 @@
 			$list = self::getStorage($snippet)->getAllKeys();
 			$ret  = array();
 			foreach ($list as $file)
-				if ($file !== 'parameters')
-					$ret[] = new self($file, $snippet);
+				$ret[] = new self($file, $snippet);
 
 			return $ret;
 		}

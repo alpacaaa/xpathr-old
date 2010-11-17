@@ -2,13 +2,13 @@
 
 	require_once(TOOLKIT . '/class.event.php');
 
-	class eventnew_snippet extends Event{
+	class eventfork_snippet extends Event{
 
-		const ROOTELEMENT = 'new-snippet';
+		const ROOTELEMENT = 'fork-snippet';
 
 		public static function about(){
 			return array(
-					 'name' => 'New Snippet',
+					 'name' => 'Fork Snippet',
 					 'author' => array(
 							'name' => 'Marco Sampellegrini',
 							'website' => 'http://192.168.1.57/ninja',
@@ -26,19 +26,26 @@
 		}
 
 		public function load(){		
-			if(isset($_POST['action']['new-snippet'])) return $this->__trigger();
+			if(isset($_POST['action']['fork-snippet'])) return $this->__trigger();
 		}
 
 		protected function __trigger()
 		{
-			if ($snip = Snippet::createNew())
+			$url  = $this->_env['env']['url'];
+			$snip = $url['snip-id'];
+			$user = $url['user'];
+
+			$snippet = Snippet::find($snip, $user);
+			if (!$snippet) return;
+
+			if ($snip = $snippet->fork())
 			{
 				$redirect = 'http://'. DOMAIN. '/edit/'. $snip. '/';
 				redirect($redirect);
 			}
 
 			return new XMLElement(
-				self::ROOTELEMENT, 'Failed to create snippet',
+				self::ROOTELEMENT, 'Failed to fork snippet',
 				array('result' => 'error')
 			);
 		}

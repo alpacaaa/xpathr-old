@@ -52,19 +52,19 @@
 			$user = $url['user'];
 			$resource = $url['resource'];
 
-			if (empty($resource)) return;
+			if (empty($resource)) return true;
 
 			$snippet = Snippet::find($snip, $user);
 			if (!$snippet || !SnippetUser::owns($snippet)) return false;
 
 			$resource = $snippet->getResource($resource);
-			if (!$resource) return;
+			if (!$resource) return true;
 
 			$type = $resource->getType();
 			$main = $snippet->isMainResource($resource);
 			if ($main && !isset($_POST['snippet']['main-resource'])){
 				$_POST['fields']['main-'. $type. '-file'] = '';
-				return;
+				return true;
 			}
 
 			$_POST['fields']['main-'. $type. '-file'] = $resource->getFile();

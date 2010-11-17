@@ -56,6 +56,7 @@
 			{
 				$redirect = 'http://'. DOMAIN. '/edit/resource/'. $snip. '/'. $resource->getFile();
 				$_REQUEST['redirect'] = $redirect;
+				return;
 			}
 
 			return self::buildXML('Failed to save resource', $data);
