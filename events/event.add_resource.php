@@ -68,7 +68,7 @@
 			$result->setAttribute('result', 'error');
 			$result->appendChild(new XMLElement('message', $message));
 			$result->appendChild(new XMLElement(
-				'post-data', $data['content'], array('filename' => $data['filename'])
+				'post-data', htmlentities($data['content']), array('filename' => $data['filename'])
 			));
 
 			return $result;

@@ -34,7 +34,9 @@
 			}
 			catch (SnippetProcessException $ex)
 			{
-				die(var_dump($ex));
+				$result->appendChild(
+					new XMLElement('message', $ex->getMessage())
+				);
 			}
 
 			return $result;

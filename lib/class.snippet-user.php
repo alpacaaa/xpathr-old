@@ -35,7 +35,7 @@
 			self::$data['snippets'][] = $snippet->get('uniq-id');
 
 			$cookie = self::getCookie();
-			$cookie->set('snippets', self::$data['snippets']);
+			$cookie->set('snippets', array_unique(self::$data['snippets']));
 		}
 
 		public static function getCookie()
@@ -46,6 +46,17 @@
 		public static function getName()
 		{
 			return self::$data['name'];
+		}
+
+		public static function getSnippets()
+		{
+			if (self::isLoggedIn())
+			{
+				// symquery
+				return;
+			}
+
+			return self::$data['snippets'];
 		}
 
 		public static function isLoggedIn()
