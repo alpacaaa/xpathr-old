@@ -45,7 +45,7 @@
 		public function toDomDocument()
 		{
 			$dom = new DomDocument();
-			$dom->load($this->storage->buildPath($this->file));
+			$dom->load($this->getPath());
 
 			return $dom;
 		}
@@ -89,6 +89,11 @@
 		public function getFile()
 		{
 			return $this->file;
+		}
+
+		public function getPath()
+		{
+			return $this->storage->buildPath($this->file);
 		}
 
 		public function delete()

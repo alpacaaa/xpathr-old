@@ -27,6 +27,7 @@
 			$url  = $this->_env['env']['url'];
 			$snip = $url['snip-id'];
 			$user = $url['user'];
+			if (!$snip) throw new FrontendPageNotFoundException();
 
 			$encodedProcessor = new EncodedDataProcessor();
 

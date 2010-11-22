@@ -77,17 +77,22 @@
 					'Not enough resources to proceed'
 				);
 			}
-			$proc  = new XSLTProcessor;
+			$proc  = new XsltProcess;
 
 			foreach ($resources as $resource)
 			{
 				if ($resource->isXML())
-					$xml = $resource->toDomDocument();
+					$xml = $resource->getContent();
+					//$xml = $resource->toDomDocument();
 
 				if ($resource->isXSL())
 				{
-					$xsl = $resource->toDomDocument();
-					$proc->importStyleSheet($xsl);
+					//$xsl = $resource->toDomDocument();
+					//$proc->importStyleSheet($xsl);
+					$xsl = '<?xml version="1.0" encoding="UTF-8"?>
+					<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+						<xsl:import href="'. $resource->getPath(). '"/>
+					</xsl:stylesheet>';
 				}
 			}
 
@@ -96,7 +101,15 @@
 			$proc->setParameter('', $parameters);
 			*/
 
-			return $proc->transformToXML($xml);
+			$processed = $proc->process($xml, $xsl);
+			if (!$proc->isErrors()) return $processed;
+
+			$errstr = '';
+			while (list($key, $val) = $proc->getError()) {
+				$errstr .= 'Line: ' . $val['line'] . ' - ' . $val['message'] . "\n";
+			};
+
+			throw new SnippetProcessException($errstr);
 		}
 
 		public function getParameters()
@@ -108,7 +121,7 @@
 			}
 		}
 
-		public static function find($snip, $user)
+		public static function find($snip, $user = null)
 		{
 			$snippet = SymRead(self::$section)
 				->getAll()

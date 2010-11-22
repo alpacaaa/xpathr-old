@@ -39,12 +39,11 @@
 		{
 			$url  = $this->_env['env']['url'];
 			$snip = $url['snip-id'];
-			$user = $url['user'];
 			$resource = $url['resource'];
 
 			if (empty($resource)) return;
 
-			$snippet = Snippet::find($snip, $user);
+			$snippet = Snippet::find($snip);
 			if (!$snippet || !SnippetUser::owns($snippet)) return;
 
 			$resource = $snippet->getResource($resource);

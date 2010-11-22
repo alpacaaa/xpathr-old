@@ -34,6 +34,7 @@
 			}
 			catch (SnippetProcessException $ex)
 			{
+				$result->setAttribute('result', 'error');
 				$result->appendChild(
 					new XMLElement('message', $ex->getMessage())
 				);

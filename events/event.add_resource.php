@@ -39,9 +39,8 @@
 		{
 			$url  = $this->_env['env']['url'];
 			$snip = $url['snip-id'];
-			$user = $url['user'];
 
-			$snippet = Snippet::find($snip, $user);
+			$snippet = Snippet::find($snip);
 			if (!$snippet || !SnippetUser::owns($snippet)) return;
 
 			$data = $_POST['snippet']['new-resource'];

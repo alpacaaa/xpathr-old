@@ -31,7 +31,8 @@
 		public function FrontendParamsResolve(&$context)
 		{
 			if ($context['params']['current-page'] == 'edit' ||
-				$context['params']['parent-path'] == '/edit')
+				$context['params']['parent-path'] == '/edit' ||
+				(!empty($_POST) || $context['params']['url-edit']))
 			{
 				$user = SnippetUser::getName();
 				$snip = $context['params']['snip-id'];
