@@ -361,7 +361,20 @@ a {
 }
 
 
+div.success, div.error {
+	text-align: center;
+	@include adjust-font-size-to(14px);
+}
 
+div.success {
+	background: #DDFFAA;
+	color: #000;
+}
+
+div.error {
+	background: #eb4838;
+	color: #fff;
+}
 
 
 /* MAIN */
