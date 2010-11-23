@@ -23,7 +23,6 @@
 
 		public function grab(&$param_pool=NULL){
 			$result = new XMLElement($this->dsParamROOTELEMENT);
-			$key = 'ds-' . $this->dsParamROOTELEMENT;
 
 			$list = SnippetUser::getSnippets();
 			foreach ($list as $snippet)
@@ -33,8 +32,8 @@
 					)
 				);
 
+			$key = 'ds-' . $this->dsParamROOTELEMENT;
 			$param_pool[$key] = join(',', $list);
 			return $result;
 		}
 	}
-

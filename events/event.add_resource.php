@@ -45,6 +45,9 @@
 
 			$data = $_POST['snippet']['new-resource'];
 			$file = SnippetResource::clean($data['filename']);
+
+			if (empty($file)) return;
+
 			if (is_object($snippet->getResource($file)))
 				return self::buildXML('Resource already exists', $data);
 
@@ -53,8 +56,14 @@
 
 			if ($resource->save())
 			{
-				$redirect = 'http://'. DOMAIN. '/edit/resource/'. $snip. '/'. $resource->getFile();
+				$user = SnippetUser::getName();
+				$redirect = 'http://'. DOMAIN. '/snippet/resource/'. $user. '/'. $snip. '/'. $resource->getFile();
 				$_REQUEST['redirect'] = $redirect;
+
+				$type = $resource->getType();
+				if ($data['main-resource'] == 'on')
+					$_POST['fields']['main-'. $type. '-file'] =  $resource->getFile();
+
 				return;
 			}
 

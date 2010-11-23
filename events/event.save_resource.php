@@ -51,8 +51,10 @@
 
 			$file = $resource->getFile();
 			$data = $_POST['snippet']['resources'][$file];
-			$resource->setContent($data['content']);
 
+			if (empty($data['filename'])) return;
+
+			$resource->setContent($data['content']);
 			$newfilename = $data['filename'];
 			if ($newfilename == $file) return $this->saveResource($resource);
 
@@ -63,7 +65,8 @@
 			if ($_POST['fields']['main-'. $type. '-file'] == $file)
 				$_POST['fields']['main-'. $type. '-file'] =  $resource->getFile(); //renamed
 
-			$redirect = 'http://'. DOMAIN. '/edit/resource/'. $snip. '/'. $resource->getFile();
+			$user = SnippetUser::getName();
+			$redirect = 'http://'. DOMAIN. '/snippet/resource/'. $user. '/'. $snip. '/'. $resource->getFile();
 			return $this->saveResource($resource, $redirect);
 		}		
 

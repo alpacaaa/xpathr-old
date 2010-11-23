@@ -30,17 +30,19 @@
 
 		public function FrontendParamsResolve(&$context)
 		{
-			if ($context['params']['current-page'] == 'edit' ||
-				$context['params']['parent-path'] == '/edit' ||
-				(!empty($_POST) || $context['params']['url-edit']))
-			{
-				$user = SnippetUser::getName();
-				$snip = $context['params']['snip-id'];
-				$snippet = Snippet::find($snip, $user);
+			$user = SnippetUser::getName();
+			$snip = $context['params']['snip-id'];
+			$snippet = Snippet::find($snip, $user);
 
-				if (!$snippet || !SnippetUser::owns($snippet)) return;
+			if (!$snippet) return;
+			$owner = SnippetUser::owns($snippet);
+
+			if (!empty($_POST) || $context['params']['url-edit'])
+			{
+				if (!$owner)
+					return $context['params']['url-edit'] = 'nada';
 			}
 
-			$context['params']['owner'] = true;
+			$context['params']['owner'] = $owner ? 'true' : 'false';
 		}
 	}
