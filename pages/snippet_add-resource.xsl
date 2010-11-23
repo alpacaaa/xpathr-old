@@ -41,7 +41,7 @@
 			<xsl:when test="/data/events/add-resource/post-data">
 				<xsl:value-of select="/data/events/add-resource/post-data/text()" />
 			</xsl:when>
-			<xsl:otherwise><source>Paste here :)</source></xsl:otherwise>
+			<xsl:otherwise>&lt;source&gt;Paste here :)&lt;/source&gt;</xsl:otherwise>
 		</xsl:choose>
 	</textarea>
 

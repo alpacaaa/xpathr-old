@@ -56,7 +56,6 @@ h2, h3 {
 fieldset {
 	@include adjust-font-size-to(14px);
 	@include trailer;
-	padding: 0;
 	border: 0;
 
 	legend {
@@ -76,17 +75,8 @@ fieldset {
 		float: right;
 	}
 
-	sa {
-		margin-right: $px2em * 20px;
-
-		&:link, &:visited, &:active {
-			text-decoration: underline;
-			border-bottom: 0;
-		}
-
-		&:hover {
-			text-decoration: none;
-		}
+	a {
+		@include adjust-font-size-to(14px);
 	}
 }
 
@@ -95,7 +85,85 @@ body > form {
 	@include leader(1);
 }
 
+input {
+	@include box-sizing(border-box);
+	@include rhythm-borders(1px, 0.25, 14px);
+	border-color: #555;
+}
 
+input[type='submit'] {
+	@include adjust-font-size-to(14px);
+	background: #222;
+	color: #f7f7f7;
+
+	&:hover {
+		background: #333;
+	}
+}
+
+
+
+
+
+#header {
+	width: 100%;
+	background: #020202;
+
+	form {
+		@include container;
+			padding: $base-leader 0;
+
+		h1 {
+			@include columns(2);
+			//@include prefix(1);
+			margin: 0;
+			@include alpha;
+			font-family: 'Lobster', serif;
+
+			span {
+				@include adjust-font-size-to(12px);
+			}
+
+			a {
+				color: #f7f7f7;
+				border: 0;
+			}
+		}
+
+		p {
+			margin: 0;
+		}
+
+		p.tagline {
+			@include columns(4);
+			@include adjust-font-size-to(10px, 1, 12px);
+			@extend .serif;
+			@include alpha;
+			font-style: italic;
+
+			acronym {
+				@include adjust-font-size-to(8px, 1, 10px);
+				border-bottom: 1px dotted;
+				font-style: normal;
+				cursor: help;
+			}
+		}
+
+		p.create {
+			@include prefix(2);
+			@include omega;
+
+			input[type='submit'] {
+				font-weight: bold;
+				background: $second;
+
+				&:hover {
+					background: $second-hover;
+				}
+			}
+		}
+	}
+}
 
 
 
@@ -158,10 +226,6 @@ body > form {
 		li:last-child:before {
 			content: '';
 		}
-
-		ali:not(.main) > a {
-			border-style: dotted;
-		}
 	}
 
 	a.new {
@@ -196,5 +260,21 @@ body > form {
 
 	pre {
 		@include adjust-font-size-to(14px);
+		background: #eee;
+		color: #000;
+		text-align: start;
+		white-space: pre;
+		overflow: auto;
+		margin: $base-rhythm-unit 0;
+		padding: 0 $base-rhythm-unit;
+	}
+
+	&.split > div {
+		text-align: center;
+
+		pre {
+			height: $px2em * 16px * 24;
+			margin-top: 0.75em;
+		}
 	}
 }

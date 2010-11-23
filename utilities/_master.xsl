@@ -17,10 +17,31 @@
 	<html>	
 
 		<head>
-			<link rel="stylesheet" href="{$workspace}/assets/stylesheets/screen.css" />
+			<link rel="stylesheet" href="{$workspace}/assets/stylesheets/screen.css" type="text/css" />
+			<link href="http://fonts.googleapis.com/css?family=Lobster:regular&amp;subset=latin" rel="stylesheet" type="text/css" />
 			<title>XPath of the Ninja</title>
 		</head>
 		<body>
+			<div id="header">
+				<form action="" method="post">
+					<h1>
+						<a href="{$root}/">
+							Xpath <span>of the</span> Ninja
+						</a>
+					</h1>
+					<p class="tagline">
+						paste service for 
+						<acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym> 
+						code
+					</p>
+
+					<p class="create">
+						<input type="submit" name="action[new-snippet]" value="Create new" />
+					</p>
+					
+				</form>
+			</div>
+
 			<form action="" method="post">
 				<xsl:apply-templates select="data" />
 			</form>
