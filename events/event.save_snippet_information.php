@@ -3,13 +3,10 @@
 	require_once(TOOLKIT . '/class.event.php');
 
 	class eventsave_snippet_information extends Event{
-		
+
 		const ROOTELEMENT = 'save-snippet-information';
-		
-		public $eParamFILTERS = array(
-			
-		);
-			
+
+
 		public static function about(){
 			return array(
 					 'name' => 'Save Snippet Information',
@@ -33,40 +30,19 @@
 		public static function documentation(){
 			return '';
 		}
-		
+
 		public function load(){			
 			if(isset($_POST['action']['save-snippet'])) return $this->__trigger();
 		}
-		
+
 		protected function __trigger(){
-			$own = $this->processMainResources();
-			if (!$own) return;
-			include(TOOLKIT . '/events/event.section.php');
-			return $result;
-		}
-		
-		protected function processMainResources()
-		{
 			$url  = $this->_env['env']['url'];
 			$snip = $url['snip-id'];
-			$resource = $url['resource'];
-
-			if (empty($resource)) return true;
 
 			$snippet = Snippet::find($snip);
-			if (!$snippet || !SnippetUser::owns($snippet)) return false;
+			if (!$snippet || !SnippetUser::owns($snippet)) return;
 
-			$resource = $snippet->getResource($resource);
-			if (!$resource) return true;
-
-			$type = $resource->getType();
-			$main = $snippet->isMainResource($resource);
-			if ($main && !isset($_POST['snippet']['main-resource'])){
-				$_POST['fields']['main-'. $type. '-file'] = '';
-				return true;
-			}
-
-			$_POST['fields']['main-'. $type. '-file'] = $resource->getFile();
-			return true;
+			include(TOOLKIT . '/events/event.section.php');
+			return $result;
 		}
 	}

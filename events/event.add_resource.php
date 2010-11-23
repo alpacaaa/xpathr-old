@@ -31,17 +31,18 @@
 			return self::kHIGH;
 		}
 		
-		public function load(){		
-			if(isset($_POST['action']['save-snippet'])) return $this->__trigger();
+		public function load()
+		{
+			if (!$this->getSnippet())
+				throw new FrontendPageNotFoundException();
+
+			if (isset($_POST['action']['save-snippet'])) return $this->__trigger();
 		}
 		
 		protected function __trigger()
 		{
-			$url  = $this->_env['env']['url'];
-			$snip = $url['snip-id'];
-
-			$snippet = Snippet::find($snip);
-			if (!$snippet || !SnippetUser::owns($snippet)) return;
+			$snippet = $this->getSnippet();
+			if (!$snippet) return;
 
 			$data = $_POST['snippet']['new-resource'];
 			$file = SnippetResource::clean($data['filename']);
@@ -57,7 +58,9 @@
 			if ($resource->save())
 			{
 				$user = SnippetUser::getName();
-				$redirect = 'http://'. DOMAIN. '/snippet/resource/'. $user. '/'. $snip. '/'. $resource->getFile();
+				$redirect = 'http://'. DOMAIN. '/snippet/resource/'. 
+					join('/', array($user, $snippet->get('uniq-id'), $resource->getFile()));
+
 				$_REQUEST['redirect'] = $redirect;
 
 				$type = $resource->getType();
@@ -80,5 +83,16 @@
 			));
 
 			return $result;
+		}
+
+		public function getSnippet()
+		{
+			$url  = $this->_env['env']['url'];
+			$snip = $url['snip-id'];
+
+			$snippet = Snippet::find($snip);
+			if (!$snippet || !SnippetUser::owns($snippet)) return false;
+
+			return $snippet;
 		}
 	}

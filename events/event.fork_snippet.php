@@ -40,7 +40,8 @@
 
 			if ($snip = $snippet->fork())
 			{
-				$redirect = 'http://'. DOMAIN. '/edit/'. $snip. '/';
+				$user = SnippetUser::getName();
+				$redirect = 'http://'. DOMAIN. '/snippet/'. $user. '/'. $snip. '/';
 				redirect($redirect);
 			}
 

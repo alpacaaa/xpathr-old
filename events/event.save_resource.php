@@ -56,17 +56,23 @@
 
 			$resource->setContent($data['content']);
 			$newfilename = $data['filename'];
+
+			$type = $resource->getType();
+			if ($data['main-resource'] == 'on')
+				$_POST['fields']['main-'. $type. '-file'] =  $resource->getFile();
+
 			if ($newfilename == $file) return $this->saveResource($resource);
 
 			if (!$resource->rename($newfilename))
 				return self::buildXML('error', 'Cannot rename resource', $data);
 
-			$type = $resource->getType();
 			if ($_POST['fields']['main-'. $type. '-file'] == $file)
-				$_POST['fields']['main-'. $type. '-file'] =  $resource->getFile(); //renamed
+				$_POST['fields']['main-'. $type. '-file'] =  $resource->getFile(); // rename
 
 			$user = SnippetUser::getName();
-			$redirect = 'http://'. DOMAIN. '/snippet/resource/'. $user. '/'. $snip. '/'. $resource->getFile();
+			$redirect = 'http://'. DOMAIN. '/snippet/resource/'.
+				join('/', array($user, $snip, $resource->getFile()));
+
 			return $this->saveResource($resource, $redirect);
 		}		
 
