@@ -19,11 +19,6 @@ $side-gutter-width: $gutter-width;
 // Don't move this @import above the GRID and FONT-SIZE variables.
 @import "susy/susy";
 
-// Colors --------------------------------------------------------------
-
-$base: #4c4c4c;
-$alt: #005498;
-
 // Fonts --------------------------------------------------------------
 
 @mixin sans-family {

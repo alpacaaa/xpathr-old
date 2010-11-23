@@ -9,7 +9,7 @@
 </xsl:template>
 
 <xsl:template match="snippet-resource/resource">
-	<xsl:if test="$url-edit = 'snip-resource'">
+	<xsl:if test="$owner = 'true' and $url-edit = 'snip-resource'">
 		<fieldset>
 			<legend>Snippet Resource</legend>
 			<label for="resource-filename">Filename</label>
@@ -22,18 +22,25 @@
 			</input>
 			<label for="snippet-main-resource">Main resource</label>
 
-			<input type="submit" name="action[save-snippet]" value="Save" />
-			<input type="submit" name="action[delete-resource]" value="Delete" />
-
-			<a href="{$root}/snippet/resource/{$user}/{$snip-id}/{$resource}/">back</a>
+			<ul>
+				<li><a href="{$root}/snippet/resource/{$user}/{$snip-id}/{$resource}/">back</a></li>
+				<li><input type="submit" name="action[delete-resource]" value="Delete" /></li>
+				<li><input type="submit" name="action[save-snippet]" value="Save" /></li>
+			</ul>
 		</fieldset>
 	</xsl:if>
 
 	<xsl:if test="$url-edit != 'snip-resource'">
 		<h3><xsl:value-of select="@file" /></h3>
-		<a href="{$root}/snippet/resource/{$user}/{$snip-id}/{$resource}/?edit=snip-resource">
-			edit
-		</a>
+		<xsl:if test="@main = 'true'">
+			<span>(main)</span>
+		</xsl:if>
+
+		<xsl:if test="$owner = 'true'">
+			<a href="{$root}/snippet/resource/{$user}/{$snip-id}/{$resource}/?edit=snip-resource">
+				edit
+			</a>
+		</xsl:if>
 	</xsl:if>
 </xsl:template>
 

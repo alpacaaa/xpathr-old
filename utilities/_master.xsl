@@ -17,6 +17,7 @@
 	<html>	
 
 		<head>
+			<link rel="stylesheet" href="{$workspace}/assets/stylesheets/screen.css" />
 			<title>XPath of the Ninja</title>
 		</head>
 		<body>
@@ -50,7 +51,7 @@
 
 	<input type="hidden" name="id" value="{@id}" />
 
-	<xsl:if test="$url-edit = 'snip-info'">
+	<xsl:if test="$owner = 'true' and $url-edit = 'snip-info'">
 		<fieldset>
 			<legend>Snippet Information</legend>
 			<label for="snip-title">Title</label>
@@ -61,28 +62,39 @@
 				<xsl:value-of select="description" />
 			</textarea>
 
-			<input type="submit" name="action[save-snippet]" value="Save" />
-			<a href="{substring-before($current-url, '?edit=')}">back</a>
+			<ul>
+				<li><a href="{substring-before($current-url, '?edit=')}">back</a></li>
+				<li><input type="submit" name="action[save-snippet]" value="Save" /></li>
+			</ul>
 		</fieldset>
 	</xsl:if>
 
 	<xsl:if test="$url-edit != 'snip-info'">
 		<h2>
-			<a href="{$root}/snippet/{$user}/{$snip-id}/">
+			<!-- <a href="{$root}/snippet/{$user}/{$snip-id}/"> -->
 				<xsl:value-of select="title" />
-			</a>
+			<!-- </a> -->
 		</h2>
-		<a href="{substring-before($current-url, '?edit=')}?edit=snip-info">
-			edit
-		</a>
+
+		<xsl:if test="$owner = 'true'">
+			<a href="{substring-before($current-url, '?edit=')}?edit=snip-info">
+				edit
+			</a>
+		</xsl:if>
+
+		<xsl:if test="$owner != 'true'">
+			<a href="{substring-before($current-url, '?edit=')}?edit=snip-info">
+				fork
+			</a>
+		</xsl:if>
 
 		<div class="description">
 			<xsl:value-of select="description" />
 		</div>
 
-		<p class="author">
+		<span class="author">
 			by <a href="#">anonymous</a>
-		</p>
+		</span>
 
 		<a href="{$root}/snippet/process/{$user}/{$snip-id}/" class="process">
 			Process
@@ -96,27 +108,37 @@
 </xsl:template>
 
 <xsl:template match="resources-list">
+	<xsl:variable name="link">
+		<xsl:if test="$owner = 'true'">
+			<a href="{$root}/snippet/add-resource/{$user}/{$snip-id}/" class="new">
+				new file
+			</a>
+		</xsl:if>
+	</xsl:variable>
+
 	<xsl:choose>
 		<xsl:when test="count(resource) &gt; 0">
 
-			<p>Files:</p>
+			<p>Files</p>
 			<ul>
 				<xsl:apply-templates select="resource">
 					<xsl:sort select="@main" order="descending" />
 				</xsl:apply-templates>
+
+				<li>
+					<xsl:copy-of select="$link" />
+				</li>
 			</ul>
 
 		</xsl:when>
 
 		<xsl:otherwise>
 			<p>Snippet has no file.</p>
+			<xsl:copy-of select="$link" />
 		</xsl:otherwise>
 
 	</xsl:choose>
-
-	<a href="{$root}/snippet/add-resource/{$user}/{$snip-id}/" class="new">
-		new file
-	</a>
+	
 </xsl:template>
 
 <xsl:template match="resources-list/resource">
