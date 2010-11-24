@@ -13,6 +13,8 @@ $second-hover: #ff7922;
 $link: #8FD615;
 $link-hover: rgba(143, 214, 21, 0.8);
 
+$color: #f7f7f7;
+
 .action {
 	border-bottom: 1px dotted $second-hover;
 
@@ -24,7 +26,7 @@ $link-hover: rgba(143, 214, 21, 0.8);
 body {
 	@extend .sans;
 	background: $background;
-	color: #f7f7f7;
+	color: $color;
 }
 
 a {
@@ -49,6 +51,7 @@ h2, h3 {
 
 		&:link, &:visited, &:active {
 			@extend .action;
+			float: right;
 		}
 	}
 }
@@ -94,7 +97,7 @@ input {
 input[type='submit'] {
 	@include adjust-font-size-to(14px);
 	background: #222;
-	color: #f7f7f7;
+	color: $color;
 
 	&:hover {
 		background: #333;
@@ -111,7 +114,7 @@ input[type='submit'] {
 
 	form {
 		@include container;
-			padding: $base-leader 0;
+		padding: $base-leader 0;
 
 		h1 {
 			@include columns(2);
@@ -125,7 +128,7 @@ input[type='submit'] {
 			}
 
 			a {
-				color: #f7f7f7;
+				color: $color;
 				border: 0;
 			}
 		}
@@ -135,7 +138,7 @@ input[type='submit'] {
 		}
 
 		p.tagline {
-			@include columns(4);
+			@include columns(3);
 			@include adjust-font-size-to(10px, 1, 12px);
 			@extend .serif;
 			@include alpha;
@@ -149,11 +152,37 @@ input[type='submit'] {
 			}
 		}
 
+		ul#nav {
+			@include columns(5);
+			@include adjust-font-size-to(10px, 1, 12px);
+			text-align: right;
+
+			li {
+				@include full;
+				display: inline;
+
+				a {
+					color: $color;
+					border: 0;
+
+					&:hover {
+						border-bottom: 1px solid;
+					}
+				}
+
+				&.help {
+					font-weight: bold;
+				}
+			}
+		}
+
 		p.create {
-			@include prefix(2);
+			@include columns(2);
 			@include omega;
+			text-align: right;
 
 			input[type='submit'] {
+				@include border-radius(5px);
 				font-weight: bold;
 				background: $second;
 
@@ -174,16 +203,25 @@ input[type='submit'] {
 
 	h2 {
 		@include adjust-font-size-to(16px);
+
+		a {
+			color: $color;
+			border: 0;
+		}
 	}
 
 	.description {
-		@include adjust-font-size-to(14px);
+		@include adjust-font-size-to(12px);
+		@include trailer(0.5);
 	}
 
 	.author {
 		@include adjust-font-size-to(12px);
-		font-style: italic;
+		@include border-radius(5px);
+		//font-style: italic;
 		margin-bottom: 0;
+		padding: 5px;
+		background: #272c32;
 	}
 
 	a.process {
@@ -226,13 +264,20 @@ input[type='submit'] {
 		li:last-child:before {
 			content: '';
 		}
+
+		li:last-child {
+			margin-left: $px2em * 10px;
+		}
 	}
 
 	a.new {
 		@extend .action;
-		margin-left: $px2em * 10px;
 	}
 }
+
+
+
+
 
 
 
@@ -244,6 +289,15 @@ input[type='submit'] {
 	text-align: center;
 	
 }
+
+
+
+
+
+
+
+
+
 
 
 

@@ -11,7 +11,7 @@
 
 <xsl:param name="url-edit" />
 <xsl:param name="resource" />
-
+<xsl:param name="owner" />
 
 <xsl:template match="/">
 	<html>	
@@ -19,6 +19,18 @@
 		<head>
 			<link rel="stylesheet" href="{$workspace}/assets/stylesheets/screen.css" type="text/css" />
 			<link href="http://fonts.googleapis.com/css?family=Lobster:regular&amp;subset=latin" rel="stylesheet" type="text/css" />
+			<link id="bespin_base" href="{$workspace}/bespin" />
+			<script src="{$workspace}/bespin/BespinEmbedded.js" type="text/javascript"></script>
+			<script type="text/javascript">
+				window.onload = function(){
+					var node = document.getElementById("snippet-resource-content");
+					if (node == null) return;
+					bespin.useBespin(node).then(function(env) {
+						// env.editor.syntax = "xml";
+					});
+				}
+			</script>
+
 			<title>XPath of the Ninja</title>
 		</head>
 		<body>
@@ -34,6 +46,21 @@
 						<acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym> 
 						code
 					</p>
+
+					<ul id="nav">
+						<li>
+							<a href="{$root}">Home</a>
+						</li>
+						<li>
+							<a href="snippets">Snippets</a>
+						</li>
+						<li>
+							<a href="users">Users</a>
+						</li>
+						<li class="help">
+							<a href="help">Help</a>
+						</li>
+					</ul>
 
 					<p class="create">
 						<input type="submit" name="action[new-snippet]" value="Create new" />
@@ -92,9 +119,9 @@
 
 	<xsl:if test="$url-edit != 'snip-info'">
 		<h2>
-			<!-- <a href="{$root}/snippet/{$user}/{$snip-id}/"> -->
+			<a href="{$root}/snippet/{$user}/{$snip-id}/">
 				<xsl:value-of select="title" />
-			<!-- </a> -->
+			</a>
 		</h2>
 
 		<xsl:if test="$owner = 'true'">
@@ -113,9 +140,9 @@
 			<xsl:value-of select="description" />
 		</div>
 
-		<span class="author">
+		<p class="author">
 			by <a href="#">anonymous</a>
-		</span>
+		</p>
 
 		<a href="{$root}/snippet/process/{$user}/{$snip-id}/" class="process">
 			Process
