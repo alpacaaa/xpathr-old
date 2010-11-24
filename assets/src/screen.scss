@@ -23,6 +23,17 @@ $color: #f7f7f7;
 	}
 }
 
+.normalize-link {
+	a {
+		&:link, &:visited, &:active {
+			color: $color;
+			border: 0;
+		}
+	}
+}
+
+
+
 body {
 	@extend .sans;
 	background: $background;
@@ -33,16 +44,18 @@ a {
 	&:link, &:visited, &:active {
 		color: $link;
 		text-decoration: none;
-		border-bottom: 1px solid;
+		//border-bottom: 1px solid;
 	}
 
 	&:hover {
-		border-bottom-color: $background;
+		//border-bottom-color: $background;
+		border-bottom: 1px solid;
 	}
 }
 
 h2, h3 {
 	@include adjust-font-size-to(18px);
+	@extend .normalize-link;
 	display: inline;
 	font-weight: bold;
 
@@ -118,6 +131,7 @@ input[type='submit'] {
 
 		h1 {
 			@include columns(2);
+			@extend .normalize-link;
 			//@include prefix(1);
 			margin: 0;
 			@include alpha;
@@ -125,11 +139,6 @@ input[type='submit'] {
 
 			span {
 				@include adjust-font-size-to(12px);
-			}
-
-			a {
-				color: $color;
-				border: 0;
 			}
 		}
 
@@ -159,15 +168,11 @@ input[type='submit'] {
 
 			li {
 				@include full;
+				@extend .normalize-link;
 				display: inline;
 
-				a {
-					color: $color;
-					border: 0;
-
-					&:hover {
-						border-bottom: 1px solid;
-					}
+				a:hover {
+					border-bottom: 1px solid;
 				}
 
 				&.help {
@@ -203,11 +208,6 @@ input[type='submit'] {
 
 	h2 {
 		@include adjust-font-size-to(16px);
-
-		a {
-			color: $color;
-			border: 0;
-		}
 	}
 
 	.description {

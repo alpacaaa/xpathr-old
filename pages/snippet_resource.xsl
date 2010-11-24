@@ -31,7 +31,12 @@
 	</xsl:if>
 
 	<xsl:if test="$url-edit = 'snip-info' or $owner != 'true'">
-		<h3><xsl:value-of select="@file" /></h3>
+		<h3>
+			<a href="{$root}/snippet/resource/{$user}/{$snip-id}/{$resource}/">
+				<xsl:value-of select="@file" />
+			</a>
+		</h3>
+
 		<xsl:if test="@main = 'true'">
 			<span>(main)</span>
 		</xsl:if>
