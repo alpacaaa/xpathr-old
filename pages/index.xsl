@@ -56,7 +56,7 @@
 				<ul>
 					<li>
 						<dl>
-							<dt>for <strong>genin</strong> (aka noobs)</dt>
+							<dt>for <strong>genin</strong> <span>noobs</span></dt>
 							<dd>
 								Can't get your head around a compile error?
 								Paste your code and wait for someone to <!-- fork&amp;fix<sup>tm</sup>.-->
@@ -66,7 +66,7 @@
 					</li>
 					<li>
 						<dl>
-							<dt>for <strong>chunin</strong> (aka intermediate)</dt>
+							<dt>for <strong>chunin</strong> <span>(aka intermediate)</span></dt>
 							<dd>
 								Paste your most interesting stuff so you 
 								don't need to search your whole codebase.
@@ -75,10 +75,11 @@
 					</li>
 					<li>
 						<dl>
-							<dt>for <strong>junin</strong> (aka masters)</dt>
+							<dt>for <strong>junin</strong> <span>(aka masters)</span></dt>
 							<dd>
 								After years of hard trainig, you're able to master
-								very complex techniques. Share the knowledge.
+								very complex techniques. Paste smart snippets and share 
+								the knowledge.
 							</dd>
 						</dl>
 					</li>
@@ -106,6 +107,8 @@
 						<h5>Users</h5>
 						<p>
 							Semantic <a href="sadfasd">markup</a> can benefit advanced content management systems. 
+								Bob Boiko (The Content Management Bible, p457.).<br />
+								Semantic <a href="sadfasd">markup</a> can benefit advanced content management systems. 
 								Bob Boiko (The Content Management Bible, p457.).
 						</p>
 					</li>

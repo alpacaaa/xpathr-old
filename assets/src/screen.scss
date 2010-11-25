@@ -437,12 +437,18 @@ sup {
 		@include leader(.3);
 		@include trailer(.1);
 		//font-weight: bold;
-		font-family: 'Droid Sans';
+
+		span {
+			display: none;
+			@include adjust-font-size-to(14px, 1, 21px);
+			padding-left: 0.2em;
+		}
 	}
 
 	dd {
 		@include adjust-font-size-to(14px);
 		@include trailer(.1);
+		color: #333;
 	}
 
 	sup {
@@ -500,7 +506,6 @@ sup {
 
 	h5 {
 		@include adjust-font-size-to(21px);
-		font-family: 'Droid Sans';
 		padding: $base-rhythm-unit 0 $base-rhythm-unit/3 0;
 		margin: 0;
 	}
