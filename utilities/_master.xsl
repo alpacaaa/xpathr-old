@@ -18,7 +18,7 @@
 
 		<head>
 			<link rel="stylesheet" href="{$workspace}/assets/stylesheets/screen.css" type="text/css" />
-			<link href="http://fonts.googleapis.com/css?family=Lobster:regular&amp;subset=latin" rel="stylesheet" type="text/css" />
+			<link href="http://fonts.googleapis.com/css?family=Lobster:regular|Droid+Sans&amp;subset=latin" rel="stylesheet" type="text/css" />
 			<link id="bespin_base" href="{$workspace}/bespin" />
 			<script src="{$workspace}/bespin/BespinEmbedded.js" type="text/javascript"></script>
 			<script type="text/javascript">

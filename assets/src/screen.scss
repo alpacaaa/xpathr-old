@@ -41,6 +41,7 @@ body {
 	@extend .sans;
 	background: $background;
 	color: $color;
+	font-family: 'Droid Sans', sans;
 }
 
 a {
@@ -125,6 +126,12 @@ acronym {
 	border-bottom: 1px dotted;
 	font-style: normal;
 	cursor: help;
+}
+
+
+sup {
+	vertical-align: super;
+	font-size: smaller;
 }
 
 
@@ -388,10 +395,7 @@ acronym {
 	h1 {
 		@extend .normalize-link;
 		font-family: 'Lobster', serif;
-
-		a {
-			@include adjust-font-size-to(36px);
-		}
+		@include adjust-font-size-to(36px);
 	}
 
 	p.tagline {
@@ -409,6 +413,7 @@ acronym {
 #index #use-case {
 	background: $link;
 	color: #000;
+	
 
 	ul {
 		@include container;
@@ -429,11 +434,20 @@ acronym {
 
 	dt {
 		@include adjust-font-size-to(21px);
+		@include leader(.3);
+		@include trailer(.1);
 		//font-weight: bold;
+		font-family: 'Droid Sans';
 	}
 
 	dd {
-		//@include adjust-font-size-to(14px);
+		@include adjust-font-size-to(14px);
+		@include trailer(.1);
+	}
+
+	sup {
+		text-transform: uppercase;
+		@include adjust-font-size-to(10px);
 	}
 }
 
@@ -445,6 +459,7 @@ acronym {
 	@include trailer;
 	@include adjust-font-size-to(36px);
 	text-align: center;
+	font-weight: 400;
 
 	p {
 		margin: 0;
@@ -485,6 +500,7 @@ acronym {
 
 	h5 {
 		@include adjust-font-size-to(21px);
+		font-family: 'Droid Sans';
 		padding: $base-rhythm-unit 0 $base-rhythm-unit/3 0;
 		margin: 0;
 	}

@@ -15,7 +15,7 @@
 
 		<head>
 			<link rel="stylesheet" href="{$workspace}/assets/stylesheets/screen.css" type="text/css" />
-			<link href="http://fonts.googleapis.com/css?family=Lobster:regular&amp;subset=latin" rel="stylesheet" type="text/css" />
+			<link href="http://fonts.googleapis.com/css?family=Lobster:regular|Droid+Sans&amp;subset=latin" rel="stylesheet" type="text/css" />
 			<title>XPath of the Ninja</title>
 		</head>
 		<body id="index">
@@ -41,7 +41,8 @@
 
 			<div id="logo">
 				<h1>
-					<a href="{$root}/">XPath of the Ninja</a>
+					<!-- <a href="{$root}/">XPath of the Ninja</a> -->
+					XPath of the Ninja
 				</h1>
 				<p class="tagline">
 					paste service for 
@@ -55,19 +56,20 @@
 				<ul>
 					<li>
 						<dl>
-							<dt>for <strong>junin</strong> (aka noobs)</dt>
+							<dt>for <strong>genin</strong> (aka noobs)</dt>
 							<dd>
-								Semantic markup can benefit advanced content management systems. 
-								Bob Boiko (The Content Management Bible, p457.).
+								Can't get your head around a compile error?
+								Paste your code and wait for someone to <!-- fork&amp;fix<sup>tm</sup>.-->
+								fork and fix.
 							</dd>
 						</dl>
 					</li>
 					<li>
 						<dl>
-							<dt>for <strong>junin</strong> (aka intermediate)</dt>
+							<dt>for <strong>chunin</strong> (aka intermediate)</dt>
 							<dd>
-								Semantic markup can benefit advanced content management systems. 
-								Bob Boiko (The Content Management Bible, p457.).
+								Paste your most interesting stuff so you 
+								don't need to search your whole codebase.
 							</dd>
 						</dl>
 					</li>
@@ -75,8 +77,8 @@
 						<dl>
 							<dt>for <strong>junin</strong> (aka masters)</dt>
 							<dd>
-								Semantic markup can benefit advanced content management systems. 
-								Bob Boiko (The Content Management Bible, p457.).
+								After years of hard trainig, you're able to master
+								very complex techniques. Share the knowledge.
 							</dd>
 						</dl>
 					</li>
