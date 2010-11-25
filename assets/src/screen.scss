@@ -230,7 +230,6 @@ acronym {
 		@include adjust-font-size-to(12px);
 		@include border-radius(5px);
 		//font-style: italic;
-		margin-bottom: 0;
 		padding: 5px;
 		background: #272c32;
 	}
@@ -279,6 +278,10 @@ acronym {
 		li:last-child {
 			margin-left: $px2em * 10px;
 		}
+	}
+
+	& > fieldset + p + ul {
+		line-height: 2.5em;
 	}
 
 	a.new {
@@ -396,7 +399,7 @@ acronym {
 
 	img {
 		position: absolute;
-		left: 19.7%;
+		left: 20%;
 		top: -50px;
 	}
 }
