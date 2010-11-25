@@ -37,6 +37,7 @@ $link: #ffd02e; //darker
 
 
 
+
 body {
 	@extend .sans;
 	background: $background;
@@ -63,13 +64,13 @@ h2, h3 {
 	display: inline;
 	font-weight: bold;
 
-	& + a, & + span, & + span + a {
+	& + a, & + button {
 		@include adjust-font-size-to(12px);
-
-		&:link, &:visited, &:active {
-			@extend .action;
-			float: right;
-		}
+		@extend .action;
+		float: right;
+		background: none;
+		color: $link;
+		padding: 0;
 	}
 }
 
@@ -308,11 +309,15 @@ sup {
 	@include leader;
 	@include adjust-font-size-to(14px);
 	text-align: center;
-	
+	padding: 5px 0;
 }
 
 
-
+.success {
+	background: #98cda1;
+	color: #2f6239;
+	font-weight: bold;
+}
 
 
 
@@ -413,6 +418,8 @@ sup {
 #index #use-case {
 	background: $link;
 	color: #000;
+	border-top: 1px solid #ffeba5;
+	//border-bottom: 1px solid #ffeba5;
 	
 
 	ul {
@@ -467,18 +474,22 @@ sup {
 	text-align: center;
 	font-weight: 400;
 
-	p {
+	form {
 		margin: 0;
 		@include full;
 	}
 
-	a {
+	input {
+		@include adjust-font-size-to(16px);
 		color: $second;
+		border: 0;
+		padding: 0;
+		background: none;
 		//border-bottom: 1px solid;
 
 		&:hover {
 			color: $second-hover;
-			border: 0;
+			//border: 0;
 		}
 	}
 }
@@ -487,12 +498,14 @@ sup {
 
 #index #footer {
 	background: #000;
+	border-top: 1px solid #333;
+	width: 100%;
 
-	ul {
+	& > ul {
 		@include container;
 	}
 
-	li {
+	& > ul > li {
 		@include columns(3);
 
 		&:first-child {
@@ -510,7 +523,8 @@ sup {
 		margin: 0;
 	}
 
-	p {
+	li p, li ul {
 		@include adjust-font-size-to(14px);
+		@include trailer;
 	}
 }

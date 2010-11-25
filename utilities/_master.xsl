@@ -131,9 +131,7 @@
 		</xsl:if>
 
 		<xsl:if test="$owner != 'true'">
-			<a href="{substring-before($current-url, '?edit=')}?edit=snip-info">
-				fork
-			</a>
+			<button type="submit" name="action[fork-snippet]">fork</button>
 		</xsl:if>
 
 		<div class="description">

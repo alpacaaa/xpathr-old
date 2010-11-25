@@ -10,7 +10,10 @@
 	indent="yes" />
 
 <xsl:template match="/">
+	<xsl:apply-templates select="data" />
+</xsl:template>
 
+<xsl:template match="data">
 	<html>	
 
 		<head>
@@ -41,8 +44,8 @@
 
 			<div id="logo">
 				<h1>
-					<!-- <a href="{$root}/">XPath of the Ninja</a> -->
-					XPath of the Ninja
+					<!-- <a href="{$root}/">Xpath of the Ninja</a> -->
+					Xpath of the Ninja
 				</h1>
 				<p class="tagline">
 					paste service for 
@@ -87,21 +90,20 @@
 			</div>
 
 			<div id="paste-now">
-				<p>				
+				<form action="" method="post">				
 					And now some pasting!
-					<a href="sdf">Create</a> 
+					<input type="submit" name="action[new-snippet]" value="Create" />
 					a new snippet.
-				</p>
+				</form>
 			</div>
 
 			<div id="footer">
 				<ul>
 					<li>
 						<h5>Snippets</h5>
-						<p>
-							Semantic markup can benefit <a href="sadfasd">advanced</a> content management systems. 
-								Bob Boiko (The Content Management Bible, p457.).
-						</p>
+						<ul>
+							<xsl:apply-templates select="snippet-list/entry" />
+						</ul>
 					</li>
 					<li>
 						<h5>Users</h5>
@@ -122,13 +124,21 @@
 					<li>
 						<h5>About</h5>
 						<p>
-							Semantic <a href="sadfasd">markup can benefit</a> advanced content management systems. 
-								Bob Boiko (The Content Management Bible, p457.).
+							A project by <a href="http://github.com/alpacaaa/">Marco Sampellegrini</a>.<br />
+							Built in <a href="http://symphony-cms.com/">Symphony CMS</a>.
 						</p>
 					</li>
 				</ul>
 			</div>
 		</body>
 	</html>
+</xsl:template>
+
+<xsl:template match="snippet-list/entry">
+	<li>
+		<a href="{$root}/snippet/all/{uniq-id}/">
+			<xsl:value-of select="title" />
+		</a>
+	</li>
 </xsl:template>
 </xsl:stylesheet>
