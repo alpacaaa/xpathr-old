@@ -10,10 +10,13 @@
 $background: #181b1f;
 $second: #ff6400;
 $second-hover: #ff7922;
-$link: #8FD615;
+//$link: #8FD615;
 $link-hover: rgba(143, 214, 21, 0.8);
 
 $color: #f7f7f7;
+$link: #ffd850;
+
+$link: #ffd02e; //darker
 
 .action {
 	border-bottom: 1px dotted $second-hover;
@@ -104,6 +107,7 @@ body > form {
 input {
 	@include box-sizing(border-box);
 	@include rhythm-borders(1px, 0.25, 14px);
+	//@include border-radius(3px);
 	border-color: #555;
 }
 
@@ -115,6 +119,12 @@ input[type='submit'] {
 	&:hover {
 		background: #333;
 	}
+}
+
+acronym {
+	border-bottom: 1px dotted;
+	font-style: normal;
+	cursor: help;
 }
 
 
@@ -155,9 +165,6 @@ input[type='submit'] {
 
 			acronym {
 				@include adjust-font-size-to(8px, 1, 10px);
-				border-bottom: 1px dotted;
-				font-style: normal;
-				cursor: help;
 			}
 		}
 
@@ -177,6 +184,10 @@ input[type='submit'] {
 
 				&.help {
 					font-weight: bold;
+
+					& a:hover {
+						border-style: dotted;
+					}
 				}
 			}
 		}
@@ -330,5 +341,152 @@ input[type='submit'] {
 			height: $px2em * 16px * 24;
 			margin-top: 0.75em;
 		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* INDEX */
+#index #header {
+	@include leader;
+
+	#nav {
+		@include prefix(5);
+		@include alpha;
+	}
+}
+
+
+#index #logo {
+	@include container;
+	@include leader;
+	@include trailer(2);
+	text-align: center;
+	position: relative;
+
+	h1, p.tagline {
+		@include columns(5);
+		@include prefix(5);
+		@include full;
+		margin-bottom: 0;
+		position: relative;
+		z-index: 3;
+	}
+
+	h1 {
+		@extend .normalize-link;
+		font-family: 'Lobster', serif;
+
+		a {
+			@include adjust-font-size-to(36px);
+		}
+	}
+
+	p.tagline {
+	}
+
+	img {
+		position: absolute;
+		left: 19.7%;
+		top: -50px;
+	}
+}
+
+
+
+#index #use-case {
+	background: $link;
+	color: #000;
+
+	ul {
+		@include container;
+		padding: $base-leader 0;
+	}
+
+	li {
+		@include columns(4);
+
+		&:first-child {
+			@include alpha;
+		}
+
+		&:last-child {
+			@include omega;
+		}
+	}
+
+	dt {
+		@include adjust-font-size-to(21px);
+		//font-weight: bold;
+	}
+
+	dd {
+		//@include adjust-font-size-to(14px);
+	}
+}
+
+
+
+#index #paste-now {
+	@include container;
+	@include leader;
+	@include trailer;
+	@include adjust-font-size-to(36px);
+	text-align: center;
+
+	p {
+		margin: 0;
+		@include full;
+	}
+
+	a {
+		color: $second;
+		//border-bottom: 1px solid;
+
+		&:hover {
+			color: $second-hover;
+			border: 0;
+		}
+	}
+}
+
+
+
+#index #footer {
+	background: #000;
+
+	ul {
+		@include container;
+	}
+
+	li {
+		@include columns(3);
+
+		&:first-child {
+			@include alpha;
+		}
+
+		&:last-child {
+			@include omega;
+		}
+	}
+
+	h5 {
+		@include adjust-font-size-to(21px);
+		padding: $base-rhythm-unit 0 $base-rhythm-unit/3 0;
+		margin: 0;
+	}
+
+	p {
+		@include adjust-font-size-to(14px);
 	}
 }
