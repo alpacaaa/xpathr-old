@@ -64,10 +64,9 @@ h2, h3 {
 	display: inline;
 	font-weight: bold;
 
-	& + a, & + button {
+	& + p > a, & + p > button {
 		@include adjust-font-size-to(12px);
 		@extend .action;
-		float: right;
 		background: none;
 		color: $link;
 		padding: 0;
@@ -94,6 +93,7 @@ fieldset {
 	ul {
 		@include horizontal-list;
 		float: right;
+		line-height: 2.5em;
 	}
 
 	a {
@@ -227,6 +227,14 @@ sup {
 
 	h2 {
 		@include adjust-font-size-to(16px);
+		@include columns(4, 5);
+		margin: 0;
+	}
+
+	p.actions {
+		@include prefix(4, 5);
+		text-align: right;
+		margin: 0;
 	}
 
 	.description {
@@ -242,9 +250,13 @@ sup {
 		background: #272c32;
 	}
 
-	a.process {
-		@extend .action;
-		float: right;
+	p.process {
+		@include prefix(4,5);
+		text-align: right;
+
+		a {
+			@extend .action;
+		}
 	}
 
 	fieldset {
@@ -372,7 +384,7 @@ sup {
 
 /* INDEX */
 #index #header {
-	@include leader;
+	//@include leader;
 
 	#nav {
 		@include prefix(5);
@@ -496,7 +508,7 @@ sup {
 
 
 
-#index #footer {
+/*#index*/ #footer {
 	background: #000;
 	border-top: 1px solid #333;
 	width: 100%;

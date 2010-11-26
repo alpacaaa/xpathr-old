@@ -2,6 +2,8 @@
 <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+<xsl:import href="../utilities/header.xsl" />
+
 <xsl:output method="xml"
 	doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
 	doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"
@@ -21,77 +23,52 @@
 			<link href="http://fonts.googleapis.com/css?family=Lobster:regular|Droid+Sans&amp;subset=latin" rel="stylesheet" type="text/css" />
 			<link id="bespin_base" href="{$workspace}/bespin" />
 			<script src="{$workspace}/bespin/BespinEmbedded.js" type="text/javascript"></script>
+			<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 			<script type="text/javascript">
-				window.onload = function(){
+				$(document).ready(function(){
 					var node = document.getElementById("snippet-resource-content");
 					if (node == null) return;
 					bespin.useBespin(node).then(function(env) {
 						// env.editor.syntax = "xml";
+						var el  = $('.bespin');
+						var add = parseInt(el.css('margin-bottom').replace('px', ''));
+						var uau = parseInt(el.css('height').replace('px', '')) + add;
+						el.css('height', uau + 'px');
+						el.css('overflow', 'hidden');
 					});
-				}
+				})
 			</script>
 
 			<title>XPath of the Ninja</title>
 		</head>
 		<body>
-			<div id="header">
-				<form action="" method="post">
-					<h1>
-						<a href="{$root}/">
-							Xpath <span>of the</span> Ninja
-						</a>
-					</h1>
-					<p class="tagline">
-						paste service for 
-						<acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym> 
-						code
-					</p>
-
-					<ul id="nav">
-						<li>
-							<a href="{$root}">Home</a>
-						</li>
-						<li>
-							<a href="snippets">Snippets</a>
-						</li>
-						<li>
-							<a href="users">Users</a>
-						</li>
-						<li class="help">
-							<a href="help">Help</a>
-						</li>
-					</ul>
-
-					<p class="create">
-						<input type="submit" name="action[new-snippet]" value="Create new" />
-					</p>
-					
-				</form>
-			</div>
-
-			<form action="" method="post">
-				<xsl:apply-templates select="data" />
-			</form>
+			<xsl:call-template name="header" />
+			<xsl:apply-templates select="data" />
 		</body>
+
 	</html>
 </xsl:template>
 
 
 <xsl:template match="data">
-	<div id="snip-info">
-		<xsl:apply-templates select="snippet-information/entry" />
-	</div>
+	<form action="" method="post">
+		<div id="snip-info">
+			<xsl:apply-templates select="snippet-information/entry" />
+		</div>
 
-	<div id="resource">
-		<xsl:call-template name="current-resource" />
-		<xsl:apply-templates select="resources-list" />
-	</div>
+		<div id="resource">
+			<xsl:call-template name="current-resource" />
+			<xsl:apply-templates select="resources-list" />
+		</div>
 
-	<xsl:apply-templates select="events/*/message" />
+		<xsl:apply-templates select="events/*/message | user-flash/message" />
 
-	<div id="main">
-		<xsl:call-template name="main" />
-	</div>
+		<div id="main">
+			<xsl:call-template name="main" />
+		</div>
+	</form>
+
+	<xsl:call-template name="footer" />
 </xsl:template>
 
 
@@ -124,15 +101,17 @@
 			</a>
 		</h2>
 
-		<xsl:if test="$owner = 'true'">
-			<a href="{substring-before($current-url, '?edit=')}?edit=snip-info">
-				edit
-			</a>
-		</xsl:if>
+		<p class="actions">
+			<xsl:if test="$owner = 'true'">
+				<a href="{substring-before($current-url, '?edit=')}?edit=snip-info">
+					edit
+				</a>
+			</xsl:if>
 
-		<xsl:if test="$owner != 'true'">
-			<button type="submit" name="action[fork-snippet]">fork</button>
-		</xsl:if>
+			<xsl:if test="$owner != 'true'">
+				<button type="submit" name="action[fork-snippet]">fork</button>
+			</xsl:if>
+		</p>
 
 		<div class="description">
 			<xsl:value-of select="description" />
@@ -142,9 +121,11 @@
 			by <a href="#">anonymous</a>
 		</p>
 
-		<a href="{$root}/snippet/process/{$user}/{$snip-id}/" class="process">
-			Process
-		</a>
+		<p class="process">	
+			<a href="{$root}/snippet/process/{$user}/{$snip-id}/" class="process">
+				Process
+			</a>
+		</p>
 	</xsl:if>
 </xsl:template>
 
