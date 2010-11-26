@@ -30,6 +30,7 @@
 
 		public function FrontendParamsResolve(&$context)
 		{
+			SnippetUser::init();
 			$user = SnippetUser::getName();
 			$snip = $context['params']['snip-id'];
 			$snippet = Snippet::find($snip, $user);

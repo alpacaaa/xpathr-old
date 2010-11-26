@@ -33,9 +33,10 @@
 		{
 			if ($snip = Snippet::createNew())
 			{
+				SnippetUser::addFlashMsg('Snippet created');
 				$user = SnippetUser::getName();
 				$redirect = 'http://'. DOMAIN. '/snippet/'. $user. '/'. $snip. '/';
-				redirect($redirect);
+				//redirect($redirect);
 			}
 
 			return new XMLElement(

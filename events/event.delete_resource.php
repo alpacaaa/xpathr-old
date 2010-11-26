@@ -46,6 +46,7 @@
 
 			if ($resource->delete())
 			{
+				//SnippetUser::addFlashMsg('Resource deleted');
 				$user = SnippetUser::getName();
 				$redirect = 'http://'. DOMAIN. '/snippet/'. $user. '/'. $snip. '/';
 				redirect($redirect);

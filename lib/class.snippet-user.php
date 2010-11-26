@@ -63,6 +63,30 @@
 		{
 			return self::$data['openid'];
 		}
+
+		public static function addFlashMsg($msg, $type = 'success')
+		{
+			$cookie = self::getCookie();
+			$flash  = $cookie->get('flash');
+			if (!is_array($flash)) $flash = array();
+
+			$flash[] = array('msg' => $msg, 'type' => $type);
+			$cookie->set('flash', $flash);
+		}
+
+		public static function getFlash()
+		{
+			$cookie = self::getCookie();
+			$flash  = $cookie->get('flash');
+			if (!is_array($flash)) $flash = array();
+
+			return $flash;
+		}
+
+		public static function cleanFlash()
+		{
+			self::getCookie()->set('flash', array());
+		}
 	}
 
-	SnippetUser::init();
+	//SnippetUser::init();

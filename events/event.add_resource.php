@@ -62,6 +62,7 @@
 					join('/', array($user, $snippet->get('uniq-id'), $resource->getFile()));
 
 				$_REQUEST['redirect'] = $redirect;
+				SnippetUser::addFlashMsg('Resource created');
 
 				$type = $resource->getType();
 				if ($data['main-resource'] == 'on')

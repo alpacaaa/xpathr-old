@@ -21,6 +21,7 @@
 		public function __construct(array $data = array())
 		{
 			$this->data = $data;
+			//SnippetUser::add($this);
 		}
 		
 		public function listResources()

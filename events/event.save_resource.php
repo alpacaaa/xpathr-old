@@ -86,7 +86,11 @@
 				$status  = 'success';
 				$message = 'Resource saved';
 				if ($redirect)
+				{
 					$_REQUEST['redirect'] = $redirect;
+					SnippetUser::addFlashMsg($message);
+					return;
+				}
 			}
 
 			return self::buildXML($status, $message);
