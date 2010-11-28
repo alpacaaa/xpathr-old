@@ -66,7 +66,7 @@
 
 	class BitterHighlighterDataProcessor extends EncodedDataProcessor
 	{
-		public function aprocessResource(SnippetResource $resource)
+		public function processResource(SnippetResource $resource)
 		{
 			if (!defined('BITTER_LANGUAGE_PATH')) {
 				define('BITTER_LANGUAGE_PATH', EXTENSIONS . '/debugdevkit/lib/bitter/languages');
@@ -85,6 +85,7 @@
 			$bitter->loadFormat('symphony');
 			$bitter->loadLanguage($resource->getType());
 
+if ($asfae) die($bitter->process($resource->getContent()));
 			$result = new XMLElement(
 				'div', $bitter->process($resource->getContent())
 			);

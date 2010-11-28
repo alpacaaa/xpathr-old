@@ -105,7 +105,10 @@
 			$path = SnippetData::getStorage($this)->getUserDataFolder();
 			$resources = $this->getMainResources();
 			$main_xml = $resources['main-xml-file']->getFile();
-			throw new SnippetProcessException($proc, $path, $main_xml);
+
+			$ex = new SnippetProcessException;
+			$ex->buildErrorsNode($proc, $path, $main_xml);
+			throw $ex;
 		}
 
 		public function getParameters()
@@ -311,7 +314,12 @@
 	{
 		public $node;
 
-		public function __construct($proc, $path, $main_xml)
+		public function __construct($msg = null)
+		{
+			$this->node = new XMLElement('message', $msg);
+		}
+
+		public function buildErrorsNode($proc, $path, $main_xml)
 		{
 			$errors_grouped = array();
 
@@ -327,7 +335,7 @@
 				{
 					preg_match_all('/([^.\/]+\.xsl)\s+line\s+(\d+)/i', $val['message'], $matches);
 					$errors_grouped['general'][$matches[1][0]][] = array(
-						'line'=>$matches[2][0], 'message'=>$val['message']
+						'line'=>$matches[2][0], 'message'=> $val['message']
 					);
 				}
 			};
@@ -359,7 +367,7 @@
 							}
 
 							$obj->appendChild(new XMLElement(
-								'message', $message
+								'message', htmlentities($message)
 							));
 						}
 					}
@@ -374,7 +382,7 @@
 					{
 						$xml->setAttribute('line', $e['line']);
 						$xml->appendChild(new XMLElement(
-							'message', $e['raw']['message']
+							'message', htmlentities($e['raw']['message'])
 						));
 					}
 				}

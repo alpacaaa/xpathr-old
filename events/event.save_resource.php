@@ -61,39 +61,34 @@
 			if ($data['main-resource'] == 'on')
 				$_POST['fields']['main-'. $type. '-file'] =  $resource->getFile();
 
-			if ($newfilename == $file) return $this->saveResource($resource);
+			try
+			{
+				if ($newfilename == $file) return $this->saveResource($resource);
 
-			if (!$resource->rename($newfilename))
-				return self::buildXML('error', 'Cannot rename resource', $data);
+				$resource->rename($newfilename);
 
-			if ($_POST['fields']['main-'. $type. '-file'] == $file)
-				$_POST['fields']['main-'. $type. '-file'] =  $resource->getFile(); // rename
+				if ($_POST['fields']['main-'. $type. '-file'] == $file)
+					$_POST['fields']['main-'. $type. '-file'] =  $resource->getFile(); // rename
 
-			$user = SnippetUser::getName();
-			$redirect = 'http://'. DOMAIN. '/snippet/resource/'.
-				join('/', array($user, $snip, $resource->getFile()));
+				$user = SnippetUser::getName();
+				$redirect = 'http://'. DOMAIN. '/snippet/resource/'.
+					join('/', array($user, $snip, $resource->getFile()));
 
-			return $this->saveResource($resource, $redirect);
-		}		
+				return $this->saveResource($resource, $redirect );
+			}
+			catch(SnippetResourceException $ex)
+			{
+				return self::buildXML(
+					'error', 'Cannot save resource: '. $ex->getMessage()
+				);
+			}
+		}
 
 		public function saveResource(SnippetResource $resource, $redirect = null)
 		{
-			$status  = 'error';
-			$message = 'Cannot save resource';
-
-			if ($resource->save())
-			{
-				$status  = 'success';
-				$message = 'Resource saved';
-				if ($redirect)
-				{
-					$_REQUEST['redirect'] = $redirect;
-					SnippetUser::addFlashMsg($message);
-					return;
-				}
-			}
-
-			return self::buildXML($status, $message);
+			$resource->save();
+			SnippetUser::addFlashMsg('Resource saved');
+			if ($redirect) $_REQUEST['redirect'] = $redirect;
 		}
 
 		public static function buildXML($status, $message, $data = null)
