@@ -74,4 +74,10 @@
 		<xsl:value-of select="text()" />
 	</textarea>
 </xsl:template>
+
+<xsl:template match="snippet-resource/resource" mode="main">
+
+	<label for="snippet-resource-content">Resource content</label>
+	<xsl:copy-of select="./*" />
+</xsl:template>
 </xsl:stylesheet>

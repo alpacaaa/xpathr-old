@@ -322,20 +322,42 @@ sup {
 	@include leader;
 	@include adjust-font-size-to(14px);
 	text-align: center;
+	font-weight: bold;
 	padding: 5px 0;
+
+	p {
+		margin: 0;
+		@include leader;
+	}
+
+	ul {
+		@include full;
+		font-weight: normal;
+		text-align: left;
+		background: $color;
+		color: $background;
+		padding: 5px;
+	}
 }
 
 
 .success {
 	background: #98cda1;
 	color: #2f6239;
-	font-weight: bold;
+}
+
+
+.error {
+	background: #be3a3a;
 }
 
 
 
 
 
+#main .message {
+	@include trailer;
+}
 
 
 
@@ -370,6 +392,13 @@ sup {
 			margin-top: 0.75em;
 		}
 	}
+}
+
+
+
+
+#main #source pre {
+	background: none;
 }
 
 
@@ -462,18 +491,11 @@ sup {
 		@include adjust-font-size-to(21px);
 		@include leader(.3);
 		@include trailer(.1);
-		//font-weight: bold;
-
-		span {
-			display: none;
-			@include adjust-font-size-to(14px, 1, 21px);
-			padding-left: 0.2em;
-		}
 	}
 
 	dd {
 		@include adjust-font-size-to(14px);
-		@include trailer(.1);
+		//@include trailer(.1);
 		color: #333;
 	}
 
@@ -526,6 +548,7 @@ sup {
 
 	& > ul > li {
 		@include columns(3);
+		overflow: hidden;
 
 		&:first-child {
 			@include alpha;

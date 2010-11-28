@@ -20,27 +20,29 @@
 	<xsl:if test="snippet-result[@result != 'success']">
 		<div class="message error">
 			Snippet can't be processed due to the following errors.
-			<xsl:apply-templates select="snippet-result/processing-errors" />
+			<xsl:apply-templates select="snippet-result/*" />
 		</div>
 	</xsl:if>
 </xsl:template>
 
 <xsl:template match="processing-errors/general">
-	<p>
+	<ul>
 		<xsl:apply-templates />
-	</p>
+	</ul>
 </xsl:template>
 
 <xsl:template match="processing-errors/stack | processing-errors/xml">
-	<a href="{$root}/snippet/resource/{$user}/{$snip-id}/{@filename}/#{@line}">
-		<xsl:value-of select="@filename" />
-	</a>
 	<p>
-		<xsl:apply-templates />
+		<a href="{$root}/snippet/resource/{$user}/{$snip-id}/{@filename}/#{@line}">
+			<xsl:value-of select="@filename" />
+		</a>
 	</p>
+	<ul>
+		<xsl:apply-templates />
+	</ul>
 </xsl:template>
 
 <xsl:template match="message">
-	<xsl:value-of select="text()" /><br />
+	<li><xsl:value-of select="text()" /></li>
 </xsl:template>
 </xsl:stylesheet>
