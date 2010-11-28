@@ -8,9 +8,6 @@
 	{
 	}
 
-	class SnippetProcessException extends Exception
-	{
-	}
 
 	class Snippet
 	{
@@ -105,12 +102,10 @@
 			$processed = $proc->process($xml, $xsl);
 			if (!$proc->isErrors()) return $processed;
 
-			$errstr = '';
-			while (list($key, $val) = $proc->getError()) {
-				$errstr .= 'Line: ' . $val['line'] . ' - ' . $val['message'] . "\n";
-			};
-
-			throw new SnippetProcessException($errstr);
+			$path = SnippetData::getStorage($this)->getUserDataFolder();
+			$resources = $this->getMainResources();
+			$main_xml = $resources['main-xml-file']->getFile();
+			throw new SnippetProcessException($proc, $path, $main_xml);
 		}
 
 		public function getParameters()
@@ -306,5 +301,94 @@
 		public static function generateUniqId()
 		{
 			return substr(md5(time(). rand()), rand(0, 22), 10);
+		}
+	}
+
+
+
+
+	class SnippetProcessException extends Exception
+	{
+		public $node;
+
+		public function __construct($proc, $path, $main_xml)
+		{
+			$errors_grouped = array();
+
+			while (list($key, $val) = $proc->getError())
+			{
+
+				if (preg_match('/^loadXML\(\)/i', $val['message'])
+				&& preg_match_all('/line:\s+(\d+)/i', $val['message'], $matches))
+				{
+					$errors_grouped['xml'][] = array('line'=>$matches[1][0], 'raw'=>$val);
+				}
+				else
+				{
+					preg_match_all('/([^.\/]+\.xsl)\s+line\s+(\d+)/i', $val['message'], $matches);
+					$errors_grouped['general'][$matches[1][0]][] = array(
+						'line'=>$matches[2][0], 'message'=>$val['message']
+					);
+				}
+			};
+
+
+			$result = new XMLElement('processing-errors');
+
+			foreach ($errors_grouped as $group => $data)
+			{
+				if ($group == 'general')
+				{
+					if (!isset($general)) $general = new XMLElement('general');
+
+					foreach ($data as $filename => $errors)
+					{
+						foreach ($errors as $e)
+						{
+							$message = str_replace($path, '', $e['message']);
+							$line = $e['line'];
+
+							$obj = $general;
+							if ($line)
+							{
+								if (!isset($stack)) $stack = new XMLElement('stack');
+
+								$stack->setAttribute('line', $line);
+								$stack->setAttribute('filename', $filename);
+								$obj = $stack;
+							}
+
+							$obj->appendChild(new XMLElement(
+								'message', $message
+							));
+						}
+					}
+				}
+
+				if ($group == 'xml')
+				{
+					if (!isset($general)) $xml = new XMLElement('xml');
+					$xml->setAttribute('filename', $main_xml);
+
+					foreach ($data as $e)
+					{
+						$xml->setAttribute('line', $e['line']);
+						$xml->appendChild(new XMLElement(
+							'message', $e['raw']['message']
+						));
+					}
+				}
+			}
+
+			if (isset($general)) $result->appendChild($general);
+			if (isset($stack)) $result->appendChild($stack);
+			if (isset($xml)) $result->appendChild($xml);
+
+			$this->node = $result;
+		}
+
+		public function getErrorsAsNode()
+		{
+			return $this->node;
 		}
 	}

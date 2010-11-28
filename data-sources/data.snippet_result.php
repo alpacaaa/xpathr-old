@@ -23,6 +23,8 @@
 		
 		public function grab(&$param_pool=NULL){
 			$result = new XMLElement($this->dsParamROOTELEMENT);
+			$result->setAttribute('result', 'success');
+
 			$url  = $this->_env['env']['url'];
 			$snip = $url['snip-id'];
 			$user = $url['user'];
@@ -35,9 +37,7 @@
 			catch (SnippetProcessException $ex)
 			{
 				$result->setAttribute('result', 'error');
-				$result->appendChild(
-					new XMLElement('message', $ex->getMessage())
-				);
+				$result->appendChild($ex->getErrorsAsNode());
 			}
 
 			return $result;
