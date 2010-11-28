@@ -55,10 +55,12 @@
 				</ul>
 			</li>
 			<li>
-				<h5>Users</h5>
-				<p>
-					This feature is not yet implemented. Stay tuned!
-				</p>
+				<h5>Your snippets</h5>
+				<ul>
+					<xsl:apply-templates select="snippet-list/entry">
+						<xsl:sort select="@id" />
+					</xsl:apply-templates>
+				</ul>
 			</li>
 			<li>
 				<h5>Help</h5>

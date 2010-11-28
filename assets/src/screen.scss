@@ -248,6 +248,7 @@ sup {
 		//font-style: italic;
 		padding: 5px;
 		background: #272c32;
+		display: none;
 	}
 
 	p.process {
@@ -416,6 +417,12 @@ sup {
 	}
 
 	p.tagline {
+		@extend .serif;
+		font-style: italic;
+	}
+
+	acronym {
+		font-size: 0.75em;
 	}
 
 	img {
