@@ -68,6 +68,21 @@
 	{
 		public function processResource(SnippetResource $resource)
 		{
+			$bitter = $this->getBitter();
+			$bitter->loadLanguage($resource->getType());
+
+			$result = new XMLElement(
+				'div', $bitter->process($resource->getContent())
+			);
+			$result->setAttribute('id', 'source');
+
+			return $result->generate();
+		}
+
+		protected function getBitter()
+		{
+			if ($this->bitter) return $this->bitter;
+
 			if (!defined('BITTER_LANGUAGE_PATH')) {
 				define('BITTER_LANGUAGE_PATH', EXTENSIONS . '/debugdevkit/lib/bitter/languages');
 			}
@@ -83,14 +98,8 @@
 			require_once(EXTENSIONS . '/debugdevkit/lib/bitter/bitter.php');
 			$bitter = new Bitter();
 			$bitter->loadFormat('symphony');
-			$bitter->loadLanguage($resource->getType());
 
-if ($asfae) die($bitter->process($resource->getContent()));
-			$result = new XMLElement(
-				'div', $bitter->process($resource->getContent())
-			);
-			$result->setAttribute('id', 'source');
-
-			return $result->generate();
+			$this->bitter = $bitter;
+			return $bitter;
 		}
 	}

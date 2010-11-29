@@ -29,14 +29,14 @@
 			$user = $url['user'];
 			if (!$snip) throw new FrontendPageNotFoundException();
 
-			$encodedProcessor = new EncodedDataProcessor();
+			$processor = new BitterHighlighterDataProcessor;
 
 			try {
 				$snippet = Snippet::find($snip, $user);
 				$main = $snippet->getMainResources();
 				foreach ($main as $resource)
 				{
-					$resource->setProcessor($encodedProcessor);
+					$resource->setProcessor($processor);
 					$result->appendChild($resource->toXMLElement());
 				}
 			}

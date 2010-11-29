@@ -31,8 +31,12 @@
 
 			$snippet = Snippet::find($snip, $user);
 			try {
-				$process = $snippet->process();
-				$result->setValue($process);
+				// fake resource
+				$resource  = new SnippetResource('result.xml', $snippet);
+				$resource->setContent($snippet->process());
+				$resource->setProcessor(new BitterHighlighterDataProcessor);
+
+				$result->setValue($resource->getProcessedContent());
 			}
 			catch (SnippetProcessException $ex)
 			{

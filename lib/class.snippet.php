@@ -104,7 +104,7 @@
 
 			$path = SnippetData::getStorage($this)->getUserDataFolder();
 			$resources = $this->getMainResources();
-			$main_xml = $resources['main-xml-file']->getFile();
+			$main_xml  = $resources['main-xml-file']->getFile();
 
 			$ex = new SnippetProcessException;
 			$ex->buildErrorsNode($proc, $path, $main_xml);
@@ -257,7 +257,12 @@
 			$resources = array(
 				'xml' => array(
 					'file' => 'source.xml',
-					'text' => '<source>Paste here :)</source>'
+					'text' => join("\n", array(
+						'<?xml version="1.0" encoding="utf-8" ?>',
+						'<source>',
+						'	<paste>Paste here :)</paste>',
+						'</source>'
+						))
 				),
 				'xsl' => array(
 					'file' => 'master.xsl',
