@@ -332,6 +332,7 @@ sup {
 
 	ul {
 		@include full;
+		@extend .mono;
 		font-weight: normal;
 		text-align: left;
 		background: $color;
@@ -384,12 +385,24 @@ sup {
 		padding: 0 $base-rhythm-unit;
 	}
 
-	&.split > div {
-		text-align: center;
+	#source {
+		@include trailer;
+		border: 1px solid #303335;
+		background: #111315;
+		font-size: 0.75em;
 
 		pre {
-			height: $px2em * 16px * 24;
-			margin-top: 0.75em;
+			background: none;
+		}
+	}
+
+	&.split > div {
+		text-align: center;
+		#source {
+			max-height: 22em;
+			overflow: auto;
+			@include leader(.3);
+			@include trailer(2);
 		}
 	}
 }
@@ -397,8 +410,10 @@ sup {
 
 
 
-#main #source pre {
-	background: none;
+#main {}
+
+
+#main.split {
 }
 
 

@@ -38,7 +38,7 @@
 						el.css('overflow', 'hidden');
 
 						var hash = window.location.hash;
-						if (hash) env.editor.setLineNumber(parseInt(hash.replace('#', '')));
+						if (hash) env.editor.setLineNumber(parseInt(hash.replace('#line-', '')));
 					});
 				})
 			</script>
@@ -232,10 +232,6 @@
 </xsl:template>
 
 <xsl:template match="resource" mode="main">
-	<pre>
-		<code>
-			<xsl:value-of select="text()" />
-		</code>
-	</pre>
+	<xsl:copy-of select="./*" />
 </xsl:template>
 </xsl:stylesheet>

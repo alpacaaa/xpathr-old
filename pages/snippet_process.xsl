@@ -10,11 +10,7 @@
 
 <xsl:template name="main">
 	<xsl:if test="snippet-result[@result = 'success']">
-		<pre>
-			<code>
-				<xsl:value-of select="snippet-result" />
-			</code>
-		</pre>
+		<xsl:copy-of select="snippet-result/*" />
 	</xsl:if>
 
 	<xsl:if test="snippet-result[@result != 'success']">
@@ -33,7 +29,7 @@
 
 <xsl:template match="processing-errors/stack | processing-errors/xml">
 	<p>
-		<a href="{$root}/snippet/resource/{$user}/{$snip-id}/{@filename}/#{@line}">
+		<a href="{$root}/snippet/resource/{$user}/{$snip-id}/{@filename}/#line-{@line}">
 			<xsl:value-of select="@filename" />
 		</a>
 	</p>
