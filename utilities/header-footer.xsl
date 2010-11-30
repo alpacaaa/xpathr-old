@@ -24,16 +24,16 @@
 
 			<ul id="nav">
 				<li>
-					<a href="{$root}">Home</a>
+					<a href="{$root}/">Home</a>
 				</li>
 				<li>
-					<a href="snippets">Snippets</a>
+					<a href="{$root}/snippets/">Snippets</a>
 				</li>
-				<li>
+				<!-- <li>
 					<a href="users">Users</a>
-				</li>
+				</li> -->
 				<li class="help">
-					<a href="help">Help</a>
+					<a href="{$root}/help/">Help</a>
 				</li>
 			</ul>
 
@@ -51,23 +51,22 @@
 			<li>
 				<h5>Snippets</h5>
 				<ul>
-					<xsl:apply-templates select="snippet-list/entry" />
+					<xsl:apply-templates select="/data/footer-snippet-list/entry" />
 				</ul>
 			</li>
 			<li>
 				<h5>Your snippets</h5>
 				<ul>
-					<xsl:apply-templates select="snippet-list/entry">
+					<xsl:apply-templates select="/data/footer-snippet-list/entry">
 						<xsl:sort select="@id" />
 					</xsl:apply-templates>
 				</ul>
 			</li>
-			<li>
+			<li class="help">
 				<h5>Help</h5>
-				<p>
-					Semantic markup can benefit advanced content management systems. 
-						Bob Boiko (The Content <a href="sadfasd">Management</a> Bible, p457.).
-				</p>
+				<ul>
+					<xsl:apply-templates select="/data/footer-help-notes/entry" />
+				</ul>
 			</li>
 			<li>
 				<h5>About</h5>
@@ -83,11 +82,18 @@
 </xsl:template>
 
 
-<xsl:template match="snippet-list/entry">
+<xsl:template match="footer-snippet-list/entry">
 	<li>
 		<a href="{$root}/snippet/all/{uniq-id}/">
 			<xsl:value-of select="title" />
 		</a>
+	</li>
+</xsl:template>
+
+<xsl:template match="footer-help-notes/entry">
+	<li>
+		<a href="{$root}/help/">#<xsl:value-of select="@id" /></a> - 
+		<xsl:value-of select="question" />
 	</li>
 </xsl:template>
 </xsl:stylesheet>

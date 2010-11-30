@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:import href="../utilities/_master.xsl" />
+<xsl:import href="../utilities/master.xsl" />
 
 <xsl:template name="current-resource">
 	<h3>Processed Result</h3>

@@ -410,16 +410,6 @@ sup {
 
 
 
-#main {}
-
-
-#main.split {
-}
-
-
-
-
-
 
 
 
@@ -552,6 +542,126 @@ sup {
 
 
 
+
+
+
+
+
+
+
+/* SNIPPET LIST */
+#content {
+	@include container;
+	@include leader;
+	@include trailer;
+
+	h2 {
+		@include full;
+		@include adjust-font-size-to(25px);
+		@include trailer;
+	}
+
+	table {
+		@include full;
+		width: 100%;
+		color: #e6e6e6;
+	}
+
+	th {
+		@include adjust-font-size-to(14px);
+		padding-bottom: 0.3em;
+		font-weight: bold;
+	}
+
+	tbody {
+		@include adjust-font-size-to(14px);
+	}
+
+	td {
+		padding: 0.7em;
+	}
+	
+	td.description {
+		@include adjust-font-size-to(12px, 1, 14px);
+	}
+
+	td.date {
+		@include adjust-font-size-to(10px, 1, 14px);
+	}
+
+	tbody tr {
+		background: #202428;
+
+		&:first-child td {
+			border-top: 1px solid #303335;
+		}
+	}
+
+	tbody tr:nth-child(2n+1) {
+		background: #111315;
+
+		td {
+			border-bottom: 1px solid #303335;
+		}
+
+	}
+
+	/*tbody tr:hover {
+		background: #454e58;
+	}*/
+
+
+	ul.pagination {
+		@include full;
+		@include leader;
+		@include adjust-font-size-to(14px);
+		text-align: center;
+
+		li {
+			display: inline;
+			padding: $px2em * 3px;
+		}
+
+		li.disabled {
+			display: none;
+		}
+
+		li.selected a {
+			border-bottom: 1px solid;
+		}
+	}
+
+
+	h5, dl {
+		@include full;
+	}
+
+	dt, dd {
+		@include adjust-font-size-to(14px);
+	}
+
+	dt {
+		font-weight: bold;
+	}
+
+	dd {
+		@include trailer(0.6);
+		padding-bottom: $px2em * 4px;
+		border-bottom: 3px dashed #303335;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /*#index*/ #footer {
 	background: #000;
 	border-top: 1px solid #333;
@@ -583,5 +693,17 @@ sup {
 	li p, li ul {
 		@include adjust-font-size-to(14px);
 		@include trailer;
+	}
+
+	.help a {
+		font-weight: bold;
+	}
+
+	p.all {
+		@include leader(.6);
+		a {
+			color: $color;
+			font-weight: bold;
+		}
 	}
 }

@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:import href="../utilities/header.xsl" />
+<xsl:import href="../utilities/header-footer.xsl" />
 
 <xsl:output method="xml"
 	doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -17,7 +17,7 @@
 </xsl:template>
 
 <xsl:template match="data">
-	<html>	
+	<html>
 
 		<head>
 			<link rel="stylesheet" href="{$workspace}/assets/stylesheets/screen.css" type="text/css" />
@@ -39,7 +39,7 @@
 					<acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym> 
 					code
 				</p>
-				<img src="{$workspace}/assets/images/ninja.png" alt="'Stupid Ninja' by AznJoker2" />
+				<img src="{$workspace}/assets/images/ninja.png" alt="`Stupid Ninja` by AznJoker2" />
 			</div>
 
 			<div id="use-case">

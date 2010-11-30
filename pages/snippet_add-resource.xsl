@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:import href="../utilities/_master.xsl" />
+<xsl:import href="../utilities/master.xsl" />
 
 <xsl:template name="current-resource">
 	<xsl:variable name="filename">
@@ -36,7 +36,7 @@
 </xsl:template>
 
 <xsl:template name="main">
-	<textarea name="snippet[new-resource][content]" rows="30" cols="160">
+	<textarea name="snippet[new-resource][content]" rows="30" cols="160" id="snippet-resource-content">
 		<xsl:choose>
 			<xsl:when test="/data/events/add-resource/post-data">
 				<xsl:value-of select="/data/events/add-resource/post-data/text()" />

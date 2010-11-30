@@ -2,19 +2,19 @@
 
 	require_once(TOOLKIT . '/class.datasource.php');
 	
-	Class datasourcesnippet_list extends Datasource{
+	Class datasourcefooter_help_notes extends Datasource{
 		
-		public $dsParamROOTELEMENT = 'snippet-list';
-		public $dsParamORDER = 'desc';
-		public $dsParamLIMIT = '7';
+		public $dsParamROOTELEMENT = 'footer-help-notes';
+		public $dsParamORDER = 'random';
+		public $dsParamLIMIT = '3';
 		public $dsParamREDIRECTONEMPTY = 'no';
 		public $dsParamSORT = 'system:id';
 		public $dsParamSTARTPAGE = '1';
+		public $dsParamHTMLENCODE = 'yes';
 		public $dsParamASSOCIATEDENTRYCOUNTS = 'no';
 		public $dsParamINCLUDEDELEMENTS = array(
-				'uniq-id',
-				'title',
-				'description'
+				'question',
+				'answer'
 		);
 
 		public function __construct(&$parent, $env=NULL, $process_params=true){
@@ -24,17 +24,17 @@
 		
 		public function about(){
 			return array(
-					 'name' => 'Snippet List',
+					 'name' => 'Footer Help Notes',
 					 'author' => array(
 							'name' => 'Marco Sampellegrini',
 							'website' => 'http://dev/ninja',
 							'email' => 'm@rcosa.mp'),
 					 'version' => '1.0',
-					 'release-date' => '2010-11-25T13:14:37+00:00');	
+					 'release-date' => '2010-11-30T11:26:33+00:00');	
 		}
 		
 		public function getSource(){
-			return '1';
+			return '3';
 		}
 		
 		public function allowEditorToParse(){
