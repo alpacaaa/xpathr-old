@@ -42,6 +42,8 @@
 			$snippet = Snippet::find($snip);
 			if (!$snippet || !SnippetUser::owns($snippet)) return;
 
+			unset($_POST['fields']['user']);
+			$_POST['fields']['last-update'] = ''; //forcing update
 			include(TOOLKIT . '/events/event.section.php');
 			return $result;
 		}

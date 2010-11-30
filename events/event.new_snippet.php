@@ -25,7 +25,7 @@
 			return '';
 		}
 
-		public function load(){		
+		public function load(){
 			if(isset($_POST['action']['new-snippet'])) return $this->__trigger();
 		}
 
@@ -39,9 +39,11 @@
 				redirect($redirect);
 			}
 
-			return new XMLElement(
-				self::ROOTELEMENT, 'Failed to create snippet',
-				array('result' => 'error')
-			);
+			$result = new XMLElement(self::ROOTELEMENT);
+			$result->appendChild(new XMLElement(
+				'message', 'Failed to create snippet', array('result' => 'error')
+			));
+
+			return $result;
 		}
 	}

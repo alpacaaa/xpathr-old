@@ -196,6 +196,8 @@
 
 		protected static function create(array $data, array $resources)
 		{
+			$data['last-update'] = '';
+
 			$code = $data['uniq-id'];
 			if (!$code)
 			{
@@ -209,8 +211,7 @@
 				$data['uniq-id'] = $code;
 			}
 
-			if (SnippetUser::isLoggedIn())
-				$data['user'] = SnippetUser::getId();
+			$data['user'] = SnippetUser::getId();
 
 			$entry = SymWrite(self::$section);
 			foreach ($data as $field => $value)
@@ -268,9 +269,15 @@
 					'file' => 'master.xsl',
 					'text' => join("\n", array(
 						'<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">',
-						'	<xsl:output method="text"/>',
+						'',
+						'	<xsl:output method="xml" indent="yes" />',
+						'',
 						'	<xsl:template match="/">',
-						'		<xsl:apply-templates />',
+						'',
+						'		<result>',
+						'			<xsl:value-of select="source/paste" />',
+						'		</result>',
+						'',
 						'	</xsl:template>',
 						'</xsl:stylesheet>'
 						))

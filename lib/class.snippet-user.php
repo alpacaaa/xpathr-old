@@ -3,6 +3,7 @@
 	class SnippetUser
 	{
 		public static $data = array();
+		public static $section = 'users';
 
 		public static function init()
 		{
@@ -15,6 +16,8 @@
 				$cookie->get('name') : Snippet::anonymousUser();
 
 			self::$data['openid'] = $cookie->get('openid');
+
+			self::$data['id'] = self::getUserId(self::$data['name']);
 		}
 
 		public static function owns(Snippet $snippet)
@@ -48,6 +51,11 @@
 			return self::$data['name'];
 		}
 
+		public static function getId()
+		{
+			return self::$data['id'];
+		}
+
 		public static function getSnippets()
 		{
 			if (self::isLoggedIn())
@@ -57,6 +65,19 @@
 			}
 
 			return self::$data['snippets'];
+		}
+
+		public static function getUserId($name)
+		{
+			$user = SymRead(self::$section)
+				->get(SymRead::SYSTEM_ID)
+				->where('name', $name)
+				->perPage(1);
+
+			$data = $user->readDataIterator()->current();
+			if (!$data) return null;
+
+			return $data['system:id'];
 		}
 
 		public static function isLoggedIn()
