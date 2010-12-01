@@ -6,13 +6,14 @@
 		
 		public $dsParamROOTELEMENT = 'snippet-list-by-user';
 		public $dsParamORDER = 'desc';
-		public $dsParamLIMIT = '4';
+		public $dsParamLIMIT = '10';
 		public $dsParamREDIRECTONEMPTY = 'yes';
 		public $dsParamSORT = 'system:id';
 		public $dsParamSTARTPAGE = '{$url-page:1}';
 		public $dsParamASSOCIATEDENTRYCOUNTS = 'no';
 		
 		public $dsParamFILTERS = array(
+				'1' => '{$ds-user-snippets}',
 				'8' => '{$user}',
 		);
 		
@@ -26,7 +27,7 @@
 
 		public function __construct(&$parent, $env=NULL, $process_params=true){
 			parent::__construct($parent, $env, $process_params);
-			$this->_dependencies = array();
+			$this->_dependencies = array('$ds-user-snippets');
 		}
 		
 		public function about(){
@@ -37,7 +38,7 @@
 							'website' => 'http://dev/ninja',
 							'email' => 'm@rcosa.mp'),
 					 'version' => '1.0',
-					 'release-date' => '2010-11-30T10:11:23+00:00');	
+					 'release-date' => '2010-11-30T14:11:47+00:00');	
 		}
 		
 		public function getSource(){

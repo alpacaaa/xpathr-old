@@ -23,7 +23,7 @@
 
 <xsl:template match="processing-errors/general">
 	<ul>
-		<xsl:apply-templates />
+		<xsl:apply-templates mode="error"/>
 	</ul>
 </xsl:template>
 
@@ -34,11 +34,22 @@
 		</a>
 	</p>
 	<ul>
-		<xsl:apply-templates />
+		<xsl:apply-templates mode="error"/>
 	</ul>
 </xsl:template>
 
-<xsl:template match="message">
+<xsl:template match="message" mode="error">
 	<li><xsl:value-of select="text()" /></li>
+</xsl:template>
+
+
+<xsl:template name="head">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	<script type="text/javascript" src="{$root}/extensions/debugdevkit/assets/devkit.js"></script>
+	<link rel="stylesheet" href="{$root}/extensions/debugdevkit/assets/devkit.css" />
+</xsl:template>
+
+<xsl:template match="data" mode="head">
+	Result of `<xsl:value-of select="snippet-information/entry/title" />`
 </xsl:template>
 </xsl:stylesheet>

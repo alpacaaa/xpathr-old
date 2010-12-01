@@ -4,7 +4,9 @@
 
 <xsl:import href="../utilities/master.xsl" />
 
-<xsl:template match="asd">
-	<h1><xsl:value-of select="$page-title"/></h1>
+<xsl:template name="head">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	<script type="text/javascript" src="{$root}/extensions/debugdevkit/assets/devkit.js"></script>
+	<link rel="stylesheet" href="{$root}/extensions/debugdevkit/assets/devkit.css" />
 </xsl:template>
 </xsl:stylesheet>

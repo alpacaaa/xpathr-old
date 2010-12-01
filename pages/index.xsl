@@ -22,7 +22,7 @@
 		<head>
 			<link rel="stylesheet" href="{$workspace}/assets/stylesheets/screen.css" type="text/css" />
 			<link href="http://fonts.googleapis.com/css?family=Lobster:regular|Droid+Sans&amp;subset=latin" rel="stylesheet" type="text/css" />
-			<title>XPath of the Ninja</title>
+			<title>Home – XPath of the Ninja</title>
 		</head>
 		<body id="index">
 			<xsl:call-template name="header">
@@ -59,7 +59,7 @@
 							<dt>for <strong>chunin</strong></dt>
 							<dd>
 								Paste your most interesting stuff so you 
-								don't need to search your whole codebase.
+								don't need to search your whole codebase everytime.
 							</dd>
 						</dl>
 					</li>

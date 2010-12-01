@@ -14,7 +14,8 @@
 		public $dsParamASSOCIATEDENTRYCOUNTS = 'no';
 		public $dsParamINCLUDEDELEMENTS = array(
 				'question',
-				'answer'
+				'answer',
+				'order'
 		);
 
 		public function __construct(&$parent, $env=NULL, $process_params=true){
@@ -30,7 +31,7 @@
 							'website' => 'http://dev/ninja',
 							'email' => 'm@rcosa.mp'),
 					 'version' => '1.0',
-					 'release-date' => '2010-11-30T11:26:33+00:00');	
+					 'release-date' => '2010-11-30T14:58:42+00:00');	
 		}
 		
 		public function getSource(){

@@ -20,31 +20,10 @@
 
 		<head>
 			<link rel="stylesheet" href="{$workspace}/assets/stylesheets/screen.css" type="text/css" />
-			<link rel="stylesheet" href="{$root}/extensions/debugdevkit/assets/devkit.css" />
 			<link href="http://fonts.googleapis.com/css?family=Lobster:regular|Droid+Sans&amp;subset=latin" rel="stylesheet" type="text/css" />
-			<link id="bespin_base" href="{$workspace}/bespin" />
-			<script src="{$workspace}/bespin/BespinEmbedded.js" type="text/javascript"></script>
-			<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-			<script type="text/javascript">
-				$(document).ready(function(){
-					var node = document.getElementById("snippet-resource-content");
-					if (node == null) return;
-					bespin.useBespin(node).then(function(env) {
-						// env.editor.syntax = "xml";
-						var el  = $('.bespin');
-						var add = parseInt(el.css('margin-bottom').replace('px', ''));
-						var uau = parseInt(el.css('height').replace('px', '')) + add;
-						el.css('height', uau + 'px');
-						el.css('overflow', 'hidden');
+			<xsl:call-template name="head" />
 
-						var hash = window.location.hash;
-						if (hash) env.editor.setLineNumber(parseInt(hash.replace('#line-', '')));
-					});
-				})
-			</script>
-			<script type="text/javascript" src="{$root}/extensions/debugdevkit/assets/devkit.js"></script>
-
-			<title>XPath of the Ninja</title>
+			<title><xsl:apply-templates select="data" mode="head" /> – XPath of the Ninja</title>
 		</head>
 		<body>
 			<xsl:call-template name="header" />
@@ -232,5 +211,10 @@
 
 <xsl:template match="resource" mode="main">
 	<xsl:copy-of select="./*" />
+</xsl:template>
+
+<xsl:template name="head"></xsl:template>
+<xsl:template match="data" mode="head">
+	<xsl:value-of select="snippet-information/entry/title" />
 </xsl:template>
 </xsl:stylesheet>

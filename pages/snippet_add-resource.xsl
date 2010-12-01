@@ -46,4 +46,15 @@
 	</textarea>
 
 </xsl:template>
+
+<xsl:template name="head">
+	<link id="bespin_base" href="{$workspace}/bespin" />
+	<script src="{$workspace}/bespin/BespinEmbedded.js" type="text/javascript"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	<script type="text/javascript" src="{$workspace}/assets/js/main.js"></script>
+	<script type="text/javascript" src="{$root}/extensions/debugdevkit/assets/devkit.js"></script>
+	<link rel="stylesheet" href="{$root}/extensions/debugdevkit/assets/devkit.css" />
+</xsl:template>
+
+<xsl:template match="data" mode="head">New Resource</xsl:template>
 </xsl:stylesheet>

@@ -11,15 +11,15 @@
 <xsl:template match="snippet-list-by-user">
 	<xsl:call-template name="get-snippets">
 		<xsl:with-param name="pagination-url" 
-			select="concat($root, '/snippets/', $user, '?page=$')" />
+			select="concat($root, '/my-snippets/?page=$')" />
 	</xsl:call-template>
 </xsl:template>
 
 
 <xsl:template name="title" mode="content">
-	<h2>All Snippets</h2>
-	<a href="{$root}/my-snippets/">view my snippets</a>
+	<h2>My Snippets</h2>
+	<a href="{$root}/snippets/">view all snippets</a>
 </xsl:template>
 
-<xsl:template match="data" mode="head">Snippets</xsl:template>
+<xsl:template match="data" mode="head">My Snippets</xsl:template>
 </xsl:stylesheet>

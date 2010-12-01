@@ -190,12 +190,21 @@ sup {
 					border-bottom: 1px solid;
 				}
 
+				a span {
+					font-weight: bold;
+					color: $second-hover;
+				}
+
 				&.help {
 					font-weight: bold;
 
 					& a:hover {
 						border-style: dotted;
 					}
+				}
+
+				&.current {
+					border-bottom: 1px solid;
 				}
 			}
 		}
@@ -496,6 +505,16 @@ sup {
 		@include adjust-font-size-to(21px);
 		@include leader(.3);
 		@include trailer(.1);
+
+		.aka {
+			@include adjust-font-size-to(12px);
+			line-height: 1em;
+			display: block;
+			font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+			&:before {
+				content: 'aka ';
+			}
+		}
 	}
 
 	dd {
@@ -558,11 +577,20 @@ sup {
 	h2 {
 		@include full;
 		@include adjust-font-size-to(25px);
-		@include trailer;
+
+		& + a {
+			@include adjust-font-size-to(22px, 1, 25px);
+			color: $second-hover;
+
+			&:hover {
+				border-bottom: 1px dashed;
+			}
+		}
 	}
 
 	table {
 		@include full;
+		@include leader;
 		width: 100%;
 		color: #e6e6e6;
 	}
@@ -575,6 +603,7 @@ sup {
 
 	tbody {
 		@include adjust-font-size-to(14px);
+		@include box-shadow(#111315, 2px, 3px, 5px);
 	}
 
 	td {
@@ -627,13 +656,20 @@ sup {
 		}
 
 		li.selected a {
-			border-bottom: 1px solid;
+			color: $color;
+			font-weight: bold;
 		}
 	}
 
 
 	h5, dl {
 		@include full;
+		@include leader;
+	}
+
+	h5 {
+		color: #e6e6e6;
+		display: none;
 	}
 
 	dt, dd {
@@ -641,13 +677,15 @@ sup {
 	}
 
 	dt {
+		@include columns(6);
 		font-weight: bold;
 	}
 
 	dd {
-		@include trailer(0.6);
+		@include columns(6);
+		@include trailer(1.5);
+		border-bottom: 1px solid #303335;
 		padding-bottom: $px2em * 4px;
-		border-bottom: 3px dashed #303335;
 	}
 }
 
@@ -693,6 +731,14 @@ sup {
 	li p, li ul {
 		@include adjust-font-size-to(14px);
 		@include trailer;
+	}
+
+	li.snippets {
+		@include columns(6);
+
+		.description {
+			display: none;
+		}
 	}
 
 	.help a {

@@ -5,7 +5,6 @@
 <xsl:import href="../utilities/master.xsl" />
 
 <xsl:template match="data">
-
 	<div id="content">
 		<h2>Help</h2>
 		<h5>Just some random notes about this project.</h5>
@@ -17,12 +16,15 @@
 </xsl:template>
 
 <xsl:template match="all-help-notes/entry">
-	<dt>
-		<a href="asdf">#<xsl:value-of select="@id" /></a> - 
+	<dt id="note-{@id}">
+		<a href="{$root}/help/#note-{@id}">#<xsl:value-of select="order" /></a> - 
 		<xsl:value-of select="question" />
 	</dt>
 	<dd>
 		<xsl:value-of select="answer" disable-output-escaping="yes" />
 	</dd>
 </xsl:template>
+
+<xsl:template match="data" mode="head">Help</xsl:template>
+
 </xsl:stylesheet>

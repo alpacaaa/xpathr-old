@@ -54,7 +54,7 @@ CREATE TABLE `sym_authors` (
 
 LOCK TABLES `sym_authors` WRITE;
 /*!40000 ALTER TABLE `sym_authors` DISABLE KEYS */;
-INSERT INTO `sym_authors` VALUES (1,'admin','4ecb9d2b21439d3e2d139b23358140cfa6f14203','Marco','Sampellegrini','m@rcosa.mp','2010-11-30 12:43:08','developer','yes',6,'no',NULL);
+INSERT INTO `sym_authors` VALUES (1,'admin','4ecb9d2b21439d3e2d139b23358140cfa6f14203','Marco','Sampellegrini','m@rcosa.mp','2010-12-01 14:33:25','developer','yes',6,'no',NULL);
 /*!40000 ALTER TABLE `sym_authors` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -105,7 +105,7 @@ CREATE TABLE `sym_entries` (
   KEY `author_id` (`author_id`),
   KEY `creation_date` (`creation_date`),
   KEY `creation_date_gmt` (`creation_date_gmt`)
-) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -114,7 +114,7 @@ CREATE TABLE `sym_entries` (
 
 LOCK TABLES `sym_entries` WRITE;
 /*!40000 ALTER TABLE `sym_entries` DISABLE KEYS */;
-INSERT INTO `sym_entries` VALUES (8,1,1,'2010-10-17 12:30:25','2010-10-17 10:30:25'),(24,1,1,'2010-11-25 15:32:34','2010-11-25 14:32:34'),(23,1,1,'2010-11-25 15:32:07','2010-11-25 14:32:07'),(22,1,1,'2010-11-25 14:48:57','2010-11-25 13:48:57'),(19,1,1,'2010-11-17 10:28:28','2010-11-17 09:28:28'),(21,1,1,'2010-11-25 12:09:57','2010-11-25 11:09:57'),(25,1,1,'2010-11-26 10:26:56','2010-11-26 09:26:56'),(26,1,1,'2010-11-26 10:45:56','2010-11-26 09:45:56'),(28,1,1,'2010-11-29 11:35:32','2010-11-29 10:35:32'),(29,2,1,'2010-11-29 14:34:28','2010-11-29 13:34:28'),(30,1,1,'2010-11-30 11:04:40','2010-11-30 10:04:40'),(31,1,1,'2010-11-30 11:06:43','2010-11-30 10:06:43'),(32,1,1,'2010-11-30 11:20:27','2010-11-30 10:20:27'),(33,1,1,'2010-11-30 11:34:13','2010-11-30 10:34:13'),(34,3,1,'2010-11-30 12:01:59','2010-11-30 11:01:59'),(35,3,1,'2010-11-30 12:05:07','2010-11-30 11:05:07'),(36,3,1,'2010-11-30 12:12:24','2010-11-30 11:12:24'),(37,3,1,'2010-11-30 12:18:34','2010-11-30 11:18:34');
+INSERT INTO `sym_entries` VALUES (8,1,1,'2010-10-17 12:30:25','2010-10-17 10:30:25'),(24,1,1,'2010-11-25 15:32:34','2010-11-25 14:32:34'),(23,1,1,'2010-11-25 15:32:07','2010-11-25 14:32:07'),(22,1,1,'2010-11-25 14:48:57','2010-11-25 13:48:57'),(19,1,1,'2010-11-17 10:28:28','2010-11-17 09:28:28'),(21,1,1,'2010-11-25 12:09:57','2010-11-25 11:09:57'),(25,1,1,'2010-11-26 10:26:56','2010-11-26 09:26:56'),(26,1,1,'2010-11-26 10:45:56','2010-11-26 09:45:56'),(28,1,1,'2010-11-29 11:35:32','2010-11-29 10:35:32'),(29,2,1,'2010-11-29 14:34:28','2010-11-29 13:34:28'),(30,1,1,'2010-11-30 11:04:40','2010-11-30 10:04:40'),(31,1,1,'2010-11-30 11:06:43','2010-11-30 10:06:43'),(32,1,1,'2010-11-30 11:20:27','2010-11-30 10:20:27'),(33,1,1,'2010-11-30 11:34:13','2010-11-30 10:34:13'),(34,3,1,'2010-11-30 12:01:59','2010-11-30 11:01:59'),(35,3,1,'2010-11-30 12:05:07','2010-11-30 11:05:07'),(36,3,1,'2010-11-30 12:12:24','2010-11-30 11:12:24'),(37,3,1,'2010-11-30 12:18:34','2010-11-30 11:18:34'),(38,3,1,'2010-11-30 16:02:27','2010-11-30 15:02:27'),(39,3,1,'2010-11-30 16:04:24','2010-11-30 15:04:24'),(40,3,1,'2010-11-30 16:09:24','2010-11-30 15:09:24'),(41,3,1,'2010-12-01 10:32:07','2010-12-01 09:32:07'),(42,1,1,'2010-12-01 11:25:19','2010-12-01 10:25:19');
 /*!40000 ALTER TABLE `sym_entries` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,7 +134,7 @@ CREATE TABLE `sym_entries_data_1` (
   KEY `entry_id` (`entry_id`),
   KEY `handle` (`handle`),
   KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=504 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=529 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -143,7 +143,7 @@ CREATE TABLE `sym_entries_data_1` (
 
 LOCK TABLES `sym_entries_data_1` WRITE;
 /*!40000 ALTER TABLE `sym_entries_data_1` DISABLE KEYS */;
-INSERT INTO `sym_entries_data_1` VALUES (490,8,'ebf38sjf73','ebf38sjf73'),(494,22,'9da3fec78e','9da3fec78e'),(493,23,'def331f5f2','def331f5f2'),(495,24,'dca3f47559','dca3f47559'),(491,19,'62d73f4e90','62d73f4e90'),(492,21,'a8ababd7a9','a8ababd7a9'),(496,25,'34322c14fd','34322c14fd'),(497,26,'1a53ba5d92','1a53ba5d92'),(481,28,'500abf96c8','500abf96c8'),(501,30,'ada259dc28','ada259dc28'),(500,31,'df7debc84b','df7debc84b'),(499,32,'15cf4f4fe1','15cf4f4fe1'),(503,33,'6bbb7e4b44','6bbb7e4b44');
+INSERT INTO `sym_entries_data_1` VALUES (490,8,'ebf38sjf73','ebf38sjf73'),(494,22,'9da3fec78e','9da3fec78e'),(493,23,'def331f5f2','def331f5f2'),(523,24,'dca3f47559','dca3f47559'),(491,19,'62d73f4e90','62d73f4e90'),(492,21,'a8ababd7a9','a8ababd7a9'),(496,25,'34322c14fd','34322c14fd'),(511,26,'1a53ba5d92','1a53ba5d92'),(481,28,'500abf96c8','500abf96c8'),(501,30,'ada259dc28','ada259dc28'),(512,31,'df7debc84b','df7debc84b'),(499,32,'15cf4f4fe1','15cf4f4fe1'),(521,33,'6bbb7e4b44','6bbb7e4b44'),(528,42,'85c3a7bf93','85c3a7bf93');
 /*!40000 ALTER TABLE `sym_entries_data_1` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,7 +163,7 @@ CREATE TABLE `sym_entries_data_10` (
   KEY `entry_id` (`entry_id`),
   KEY `handle` (`handle`),
   KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,7 +172,7 @@ CREATE TABLE `sym_entries_data_10` (
 
 LOCK TABLES `sym_entries_data_10` WRITE;
 /*!40000 ALTER TABLE `sym_entries_data_10` DISABLE KEYS */;
-INSERT INTO `sym_entries_data_10` VALUES (1,34,'which-version-of-xslt-is-running','Which version of XSLT is running?'),(2,35,'are-there-any-extensions-enabled','Are there any extensions enabled?'),(3,36,'what-is-a-main-resource','What is a Main Resource?'),(4,37,'whats-the-point-of-creating-multiple-files','What\'s the point of creating multiple files?');
+INSERT INTO `sym_entries_data_10` VALUES (6,34,'which-version-of-xslt-is-supported','Which version of XSLT is supported?'),(2,35,'are-there-any-extensions-enabled','Are there any extensions enabled?'),(3,36,'what-is-a-main-resource','What is a Main Resource?'),(5,37,'why-would-i-create-multiple-files','Why would I create multiple files?'),(8,38,'wtf-are-genin-chunin-and-junin','WTF are genin, chunin and junin?'),(9,39,'for-how-long-i-will-be-able-to-edit-my-snippets','For how long I will be able to edit my snippets?'),(10,40,'will-i-be-able-to-create-snippets-as-a-user','Will I be able to create snippets as a user?'),(12,41,'whos-the-author-of-the-image-in-homepage','Who\'s the author of the image in Homepage?');
 /*!40000 ALTER TABLE `sym_entries_data_10` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -191,7 +191,7 @@ CREATE TABLE `sym_entries_data_11` (
   PRIMARY KEY (`id`),
   KEY `entry_id` (`entry_id`),
   FULLTEXT KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -200,8 +200,35 @@ CREATE TABLE `sym_entries_data_11` (
 
 LOCK TABLES `sym_entries_data_11` WRITE;
 /*!40000 ALTER TABLE `sym_entries_data_11` DISABLE KEYS */;
-INSERT INTO `sym_entries_data_11` VALUES (1,34,'It\'s currently supported <a href=\"http://www.w3.org/TR/xslt\">XSLT 1.0</a>.',NULL),(2,35,'Yes, <a href=\"http://www.exslt.org/\">exslt</a> extensions are enabled.',NULL),(3,36,'If you used xslt before, you\'ll know the engine needs both an xml and an xsl document in order to generate a result.\r\nI decided to call those documents Main Resources. They are the <em>entry point</em> of your snippet.',NULL),(4,37,'Along with Main Resources, you can add to your snippet other files. It is possible to use <a href=\"http://www.w3schools.com/Xsl/el_import.asp\">&lt;xsl:import&gt;</a> to import additional xsl files and <a href=\"http://www.w3schools.com/Xsl/func_document.asp\">document()</a> works too.',NULL);
+INSERT INTO `sym_entries_data_11` VALUES (6,34,'It\'s currently supported <a href=\"http://www.w3.org/TR/xslt\">XSLT 1.0</a>.',NULL),(2,35,'Yes, <a href=\"http://www.exslt.org/\">exslt</a> extensions are enabled.',NULL),(3,36,'If you used xslt before, you\'ll know the engine needs both an xml and an xsl document in order to generate a result.\r\nI decided to call those documents Main Resources. They are the <em>entry point</em> of your snippet.',NULL),(5,37,'Along with Main Resources, you can add to your snippet other files. It is possible to use <a href=\"http://www.w3schools.com/Xsl/el_import.asp\">&lt;xsl:import&gt;</a> to import additional xsl files and <a href=\"http://www.w3schools.com/Xsl/func_document.asp\">document()</a> works too.',NULL),(8,38,'Have a look at wikipedia article about <a href=\"http://en.wikipedia.org/wiki/Ninja#Development\">Ninja development</a> :)',NULL),(9,39,'Currently, for two weeks, unless you don\'t clear your cookies.',NULL),(10,40,'Yes. You\'ll be able to login and edit you snippets anywhere and anytime.',NULL),(12,41,'It\'s <a href=\"http://aznjoker2.deviantart.com/\">~AznJoker2</a>. The <a href=\"http://aznjoker2.deviantart.com/art/Stupid-Ninja-147093256\">original image</a> is far way better. I just wanted to have some fun with inkscape :)',NULL);
 /*!40000 ALTER TABLE `sym_entries_data_11` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sym_entries_data_12`
+--
+
+DROP TABLE IF EXISTS `sym_entries_data_12`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sym_entries_data_12` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `entry_id` int(11) unsigned NOT NULL,
+  `value` double DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `entry_id` (`entry_id`),
+  KEY `value` (`value`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sym_entries_data_12`
+--
+
+LOCK TABLES `sym_entries_data_12` WRITE;
+/*!40000 ALTER TABLE `sym_entries_data_12` DISABLE KEYS */;
+INSERT INTO `sym_entries_data_12` VALUES (1,35,2),(2,34,1),(3,36,3),(4,37,4),(6,38,5),(7,39,6),(8,40,7),(10,41,8);
+/*!40000 ALTER TABLE `sym_entries_data_12` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -220,7 +247,7 @@ CREATE TABLE `sym_entries_data_2` (
   KEY `entry_id` (`entry_id`),
   KEY `handle` (`handle`),
   KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=504 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=529 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -229,7 +256,7 @@ CREATE TABLE `sym_entries_data_2` (
 
 LOCK TABLES `sym_entries_data_2` WRITE;
 /*!40000 ALTER TABLE `sym_entries_data_2` DISABLE KEYS */;
-INSERT INTO `sym_entries_data_2` VALUES (490,8,'test','Test'),(494,22,'test','Test'),(493,23,'yet-another-snippet','Yet another snippet'),(495,24,'buashfasdufhasfsafgadsfasdfasdfasdfsdf','Buashfasdufhasfsafgadsfasdfasdfasdfsdf'),(496,25,'yet-another-snippet','Yet another snippet'),(491,19,'yet-another-snippet','Yet another snippet'),(492,21,'teeeeeeeest','TEeeeeeeest'),(497,26,'test','Test'),(481,28,'yet-another-snippet','Yet another snippet'),(501,30,'yet-another-snippet','Yet another snippet'),(500,31,'wa-wa-wawaa','wa wa wawaa'),(499,32,'yet-another-snippet','Yet another snippet'),(503,33,'yet-another-snippet','Yet another snippet');
+INSERT INTO `sym_entries_data_2` VALUES (490,8,'test','Test'),(494,22,'test','Test'),(493,23,'yet-another-snippet','Yet another snippet'),(523,24,'buashfasdufhasfsafgadsfasdfasdfasdfsdf','Buashfasdufhasfsafgadsfasdfasdfasdfsdf'),(496,25,'yet-another-snippet','Yet another snippet'),(491,19,'yet-another-snippet','Yet another snippet'),(492,21,'teeeeeeeest','TEeeeeeeest'),(511,26,'test','Test'),(481,28,'yet-another-snippet','Yet another snippet'),(501,30,'yet-another-snippet','Yet another snippet'),(512,31,'wa-wa-wawaa','wa wa wawaa'),(499,32,'yet-another-snippet','Yet another snippet'),(521,33,'yet-another-snippet','Yet another snippet'),(528,42,'yet-another-snippet','Yet another snippet');
 /*!40000 ALTER TABLE `sym_entries_data_2` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -248,7 +275,7 @@ CREATE TABLE `sym_entries_data_3` (
   PRIMARY KEY (`id`),
   KEY `entry_id` (`entry_id`),
   FULLTEXT KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=504 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=529 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -257,7 +284,7 @@ CREATE TABLE `sym_entries_data_3` (
 
 LOCK TABLES `sym_entries_data_3` WRITE;
 /*!40000 ALTER TABLE `sym_entries_data_3` DISABLE KEYS */;
-INSERT INTO `sym_entries_data_3` VALUES (490,8,'A way too cool descon.\r\nJesus, two rows! of goodness!!!!\r\nA way too cool descon.\r\nJesus, two rows! of goodness!!!!',NULL),(492,21,'a small description',NULL),(491,19,'brand newaaaaaa!\r\nse prendi un parafango e\r\nci metti davanti un\'anatrass',NULL),(494,22,'A way too cool descon.\r\nJesus, two rows! of goodness!!!!\r\nA way too cool descon.\r\nJesus, two rows! of goodness!!!! (fork)',NULL),(493,23,'No description yet...',NULL),(495,24,'una piccola descrizione di sto snippetttt',NULL),(496,25,'asdrubale',NULL),(497,26,'A way too cool descon.\r\nJesus, two rows! of goodness!!!!\r\nA way too cool descon.\r\nJesus, two rows! of goodness!!!! (fork)',NULL),(481,28,'a small description asdfdf',NULL),(501,30,'asdrubale (fork)',NULL),(500,31,'asdfasdf',NULL),(499,32,NULL,NULL),(503,33,NULL,NULL);
+INSERT INTO `sym_entries_data_3` VALUES (490,8,'A way too cool descon.\r\nJesus, two rows! of goodness!!!!\r\nA way too cool descon.\r\nJesus, two rows! of goodness!!!!',NULL),(492,21,'a small description',NULL),(491,19,'brand newaaaaaa!\r\nse prendi un parafango e\r\nci metti davanti un\'anatrass',NULL),(494,22,'A way too cool descon.\r\nJesus, two rows! of goodness!!!!\r\nA way too cool descon.\r\nJesus, two rows! of goodness!!!! (fork)',NULL),(493,23,'No description yet...',NULL),(496,25,'asdrubale',NULL),(511,26,'A way too cool descon.\r\nJesus, two rows! of goodness!!!!\r\nA way too cool descon.\r\nJesus, two rows! of goodness!!!! (fork)',NULL),(481,28,'a small description asdfdf',NULL),(501,30,'asdrubale (fork)',NULL),(512,31,'asdfasdf',NULL),(499,32,NULL,NULL),(521,33,'asdfaeagreg\r\n\r\nagsargaergaisfhsdifh',NULL),(523,24,'una piccola descrizione di sto snippettttuna piccola descrizione di sto snippettttuna piccola descrizione di sto snippettttuna piccola descrizione di sto snippettttuna piccola descrizione di sto snippettttuna piccola descrizione di sto snippettttuna piccola descrizione di sto snippettttuna piccola descrizione di sto snippettttuna piccola descrizione di sto snippettttuna piccola descrizione di sto snippettttuna piccola descrizione di sto snippettt',NULL),(528,42,'sdfasg',NULL);
 /*!40000 ALTER TABLE `sym_entries_data_3` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -277,7 +304,7 @@ CREATE TABLE `sym_entries_data_4` (
   KEY `entry_id` (`entry_id`),
   KEY `handle` (`handle`),
   KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=465 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=490 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -286,7 +313,7 @@ CREATE TABLE `sym_entries_data_4` (
 
 LOCK TABLES `sym_entries_data_4` WRITE;
 /*!40000 ALTER TABLE `sym_entries_data_4` DISABLE KEYS */;
-INSERT INTO `sym_entries_data_4` VALUES (451,8,'stronzoxml','stronzo.xml'),(455,22,'stronzoxml','stronzo.xml'),(454,23,'sourcexml','source.xml'),(456,24,'sourcexml','source.xml'),(452,19,'souracexml','sourace.xml'),(453,21,'souracexml','sourace.xml'),(457,25,'sourcexml','source.xml'),(458,26,'stronzoxml','stronzo.xml'),(442,28,'sourcexml','source.xml'),(462,30,'sourcexml','source.xml'),(461,31,'sourcexml','source.xml'),(460,32,'sourcexml','source.xml'),(464,33,'sourcexml','source.xml');
+INSERT INTO `sym_entries_data_4` VALUES (451,8,'stronzoxml','stronzo.xml'),(455,22,'stronzoxml','stronzo.xml'),(454,23,'sourcexml','source.xml'),(484,24,'sourcexml','source.xml'),(452,19,'souracexml','sourace.xml'),(453,21,'souracexml','sourace.xml'),(457,25,'sourcexml','source.xml'),(472,26,'stronzoxml','stronzo.xml'),(442,28,'sourcexml','source.xml'),(462,30,'sourcexml','source.xml'),(473,31,'sourcexml','source.xml'),(460,32,'sourcexml','source.xml'),(482,33,'sourcexml','source.xml'),(489,42,'sourcexml','source.xml');
 /*!40000 ALTER TABLE `sym_entries_data_4` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -306,7 +333,7 @@ CREATE TABLE `sym_entries_data_5` (
   KEY `entry_id` (`entry_id`),
   KEY `handle` (`handle`),
   KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=489 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=514 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -315,7 +342,7 @@ CREATE TABLE `sym_entries_data_5` (
 
 LOCK TABLES `sym_entries_data_5` WRITE;
 /*!40000 ALTER TABLE `sym_entries_data_5` DISABLE KEYS */;
-INSERT INTO `sym_entries_data_5` VALUES (475,8,'piustronzoxsl','piustronzo.xsl'),(479,22,'piustronzoxsl','piustronzo.xsl'),(478,23,'masterxsl','master.xsl'),(480,24,'masterxsl','master.xsl'),(476,19,'masterxsl','master.xsl'),(477,21,'masterxsl','master.xsl'),(481,25,'maasterxsl','maaster.xsl'),(482,26,'piustronzoxsl','piustronzo.xsl'),(466,28,'masterxsl','master.xsl'),(486,30,'maasterxsl','maaster.xsl'),(485,31,'masterxsl','master.xsl'),(484,32,'masterxsl','master.xsl'),(488,33,'masterxsl','master.xsl');
+INSERT INTO `sym_entries_data_5` VALUES (475,8,'piustronzoxsl','piustronzo.xsl'),(479,22,'piustronzoxsl','piustronzo.xsl'),(478,23,'masterxsl','master.xsl'),(508,24,'masterxsl','master.xsl'),(476,19,'masterxsl','master.xsl'),(477,21,'masterxsl','master.xsl'),(481,25,'maasterxsl','maaster.xsl'),(496,26,'piustronzoxsl','piustronzo.xsl'),(466,28,'masterxsl','master.xsl'),(486,30,'maasterxsl','maaster.xsl'),(497,31,'mastaerxsl','mastaer.xsl'),(484,32,'masterxsl','master.xsl'),(506,33,'masterxsl','master.xsl'),(513,42,'masterxsl','master.xsl');
 /*!40000 ALTER TABLE `sym_entries_data_5` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -391,7 +418,7 @@ CREATE TABLE `sym_entries_data_8` (
   PRIMARY KEY (`id`),
   KEY `entry_id` (`entry_id`),
   KEY `relation_id` (`relation_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=361 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=386 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -400,7 +427,7 @@ CREATE TABLE `sym_entries_data_8` (
 
 LOCK TABLES `sym_entries_data_8` WRITE;
 /*!40000 ALTER TABLE `sym_entries_data_8` DISABLE KEYS */;
-INSERT INTO `sym_entries_data_8` VALUES (347,8,29),(351,22,29),(350,23,29),(352,24,29),(348,19,29),(349,21,29),(353,25,29),(354,26,29),(338,28,29),(358,30,29),(357,31,29),(356,32,29),(360,33,29);
+INSERT INTO `sym_entries_data_8` VALUES (347,8,29),(351,22,29),(350,23,29),(380,24,29),(348,19,29),(349,21,29),(353,25,29),(368,26,29),(338,28,29),(358,30,29),(369,31,29),(356,32,29),(378,33,29),(385,42,29);
 /*!40000 ALTER TABLE `sym_entries_data_8` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -420,7 +447,7 @@ CREATE TABLE `sym_entries_data_9` (
   PRIMARY KEY (`id`),
   KEY `entry_id` (`entry_id`),
   KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -429,7 +456,7 @@ CREATE TABLE `sym_entries_data_9` (
 
 LOCK TABLES `sym_entries_data_9` WRITE;
 /*!40000 ALTER TABLE `sym_entries_data_9` DISABLE KEYS */;
-INSERT INTO `sym_entries_data_9` VALUES (3,28,'2010-11-30T11:04:00+01:00',1291111440,1291111440),(23,30,'2010-11-30T11:04:00+01:00',1291111440,1291111440),(22,31,'2010-11-30T11:10:00+01:00',1291111800,1291111800),(15,23,'2010-11-30T11:13:00+01:00',1291111980,1291111980),(12,8,'2010-11-30T11:13:00+01:00',1291111980,1291111980),(13,19,'2010-11-30T11:13:00+01:00',1291111980,1291111980),(14,21,'2010-11-30T11:14:00+01:00',1291112040,1291112040),(16,22,'2010-11-30T11:14:00+01:00',1291112040,1291112040),(17,24,'2010-11-30T11:14:00+01:00',1291112040,1291112040),(18,25,'2010-11-30T11:14:00+01:00',1291112040,1291112040),(19,26,'2010-11-30T11:14:00+01:00',1291112040,1291112040),(21,32,'2010-11-30T11:20:00+01:00',1291112400,1291112400),(25,33,'2010-11-30T11:35:00+01:00',1291113300,1291113300);
+INSERT INTO `sym_entries_data_9` VALUES (3,28,'2010-11-30T11:04:00+01:00',1291111440,1291111440),(23,30,'2010-11-30T11:04:00+01:00',1291111440,1291111440),(34,31,'2010-12-01T10:19:00+01:00',1291195140,1291195140),(15,23,'2010-11-30T11:13:00+01:00',1291111980,1291111980),(12,8,'2010-11-30T11:13:00+01:00',1291111980,1291111980),(13,19,'2010-11-30T11:13:00+01:00',1291111980,1291111980),(14,21,'2010-11-30T11:14:00+01:00',1291112040,1291112040),(16,22,'2010-11-30T11:14:00+01:00',1291112040,1291112040),(45,24,'2010-12-01T10:47:00+01:00',1291196820,1291196820),(18,25,'2010-11-30T11:14:00+01:00',1291112040,1291112040),(33,26,'2010-12-01T10:07:00+01:00',1291194420,1291194420),(21,32,'2010-11-30T11:20:00+01:00',1291112400,1291112400),(43,33,'2010-12-01T10:43:00+01:00',1291196580,1291196580),(50,42,'2010-12-01T11:28:00+01:00',1291199280,1291199280);
 /*!40000 ALTER TABLE `sym_entries_data_9` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -447,7 +474,7 @@ CREATE TABLE `sym_extensions` (
   `version` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `name` (`name`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -456,7 +483,7 @@ CREATE TABLE `sym_extensions` (
 
 LOCK TABLES `sym_extensions` WRITE;
 /*!40000 ALTER TABLE `sym_extensions` DISABLE KEYS */;
-INSERT INTO `sym_extensions` VALUES (11,'openid_auth','enabled','0.1'),(2,'debugdevkit','enabled','1.0.8'),(4,'symquery','enabled','0.1.0'),(5,'profiledevkit','enabled','1.0.4'),(13,'ninja','enabled','1.0'),(12,'selectbox_link_field','enabled','1.18');
+INSERT INTO `sym_extensions` VALUES (11,'openid_auth','enabled','0.1'),(2,'debugdevkit','enabled','1.0.8'),(4,'symquery','enabled','0.1.0'),(5,'profiledevkit','enabled','1.0.4'),(13,'ninja','enabled','1.0'),(12,'selectbox_link_field','enabled','1.18'),(14,'order_entries','enabled','1.8');
 /*!40000 ALTER TABLE `sym_extensions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -477,7 +504,7 @@ CREATE TABLE `sym_extensions_delegates` (
   KEY `extension_id` (`extension_id`),
   KEY `page` (`page`),
   KEY `delegate` (`delegate`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -486,7 +513,7 @@ CREATE TABLE `sym_extensions_delegates` (
 
 LOCK TABLES `sym_extensions_delegates` WRITE;
 /*!40000 ALTER TABLE `sym_extensions_delegates` DISABLE KEYS */;
-INSERT INTO `sym_extensions_delegates` VALUES (1,2,'/frontend/','FrontendDevKitResolve','frontendDevKitResolve'),(2,2,'/frontend/','ManipulateDevKitNavigation','manipulateDevKitNavigation'),(3,5,'/frontend/','FrontendDevKitResolve','frontendDevKitResolve'),(4,5,'/frontend/','ManipulateDevKitNavigation','manipulateDevKitNavigation'),(5,5,'/frontend/','FrontendOutputPostGenerate','FrontendOutputPostGenerate'),(10,11,'/frontend/','openidAuthComplete','authenticationComplete'),(11,13,'/frontend/','FrontendParamsResolve','FrontendParamsResolve');
+INSERT INTO `sym_extensions_delegates` VALUES (1,2,'/frontend/','FrontendDevKitResolve','frontendDevKitResolve'),(2,2,'/frontend/','ManipulateDevKitNavigation','manipulateDevKitNavigation'),(3,5,'/frontend/','FrontendDevKitResolve','frontendDevKitResolve'),(4,5,'/frontend/','ManipulateDevKitNavigation','manipulateDevKitNavigation'),(5,5,'/frontend/','FrontendOutputPostGenerate','FrontendOutputPostGenerate'),(10,11,'/frontend/','openidAuthComplete','authenticationComplete'),(11,13,'/frontend/','FrontendParamsResolve','FrontendParamsResolve'),(12,14,'/backend/','InitaliseAdminPageHead','appendScriptToHead'),(13,14,'/backend/','AppendElementBelowView','appendOrderFieldId');
 /*!40000 ALTER TABLE `sym_extensions_delegates` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -509,7 +536,7 @@ CREATE TABLE `sym_fields` (
   `show_column` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
   PRIMARY KEY (`id`),
   KEY `index` (`element_name`,`type`,`parent_section`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -518,7 +545,7 @@ CREATE TABLE `sym_fields` (
 
 LOCK TABLES `sym_fields` WRITE;
 /*!40000 ALTER TABLE `sym_fields` DISABLE KEYS */;
-INSERT INTO `sym_fields` VALUES (1,'uniq-id','uniq-id','input',1,'yes',0,'main','yes'),(2,'Title','title','input',1,'no',1,'main','yes'),(3,'Description','description','textarea',1,'no',2,'main','no'),(4,'Main XML file','main-xml-file','input',1,'no',3,'main','yes'),(5,'Main XSL file','main-xsl-file','input',1,'no',4,'main','yes'),(6,'Name','name','input',2,'yes',0,'main','yes'),(7,'OpenID','openid','input',2,'yes',1,'main','yes'),(8,'User','user','selectbox_link',1,'no',5,'main','yes'),(9,'Last update','last-update','date',1,'no',6,'main','yes'),(10,'Question','question','input',3,'no',0,'main','yes'),(11,'Answer','answer','textarea',3,'no',1,'main','no');
+INSERT INTO `sym_fields` VALUES (1,'uniq-id','uniq-id','input',1,'yes',0,'main','yes'),(2,'Title','title','input',1,'no',1,'main','yes'),(3,'Description','description','textarea',1,'no',2,'main','no'),(4,'Main XML file','main-xml-file','input',1,'no',3,'main','yes'),(5,'Main XSL file','main-xsl-file','input',1,'no',4,'main','yes'),(6,'Name','name','input',2,'yes',0,'main','yes'),(7,'OpenID','openid','input',2,'yes',1,'main','yes'),(8,'User','user','selectbox_link',1,'no',5,'main','yes'),(9,'Last update','last-update','date',1,'no',6,'main','yes'),(10,'Question','question','input',3,'no',0,'main','yes'),(11,'Answer','answer','textarea',3,'no',1,'main','no'),(12,'Order','order','order_entries',3,'no',2,'main','yes');
 /*!40000 ALTER TABLE `sym_fields` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -614,7 +641,7 @@ CREATE TABLE `sym_fields_input` (
   `validator` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `field_id` (`field_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -623,8 +650,35 @@ CREATE TABLE `sym_fields_input` (
 
 LOCK TABLES `sym_fields_input` WRITE;
 /*!40000 ALTER TABLE `sym_fields_input` DISABLE KEYS */;
-INSERT INTO `sym_fields_input` VALUES (17,1,NULL),(18,2,NULL),(19,4,NULL),(20,5,NULL),(11,6,NULL),(12,7,NULL),(21,10,NULL);
+INSERT INTO `sym_fields_input` VALUES (17,1,NULL),(18,2,NULL),(19,4,NULL),(20,5,NULL),(11,6,NULL),(12,7,NULL),(22,10,NULL);
 /*!40000 ALTER TABLE `sym_fields_input` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sym_fields_order_entries`
+--
+
+DROP TABLE IF EXISTS `sym_fields_order_entries`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sym_fields_order_entries` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `field_id` int(11) unsigned NOT NULL,
+  `force_sort` enum('yes','no') DEFAULT 'no',
+  `hide` enum('yes','no') DEFAULT 'no',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `field_id` (`field_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sym_fields_order_entries`
+--
+
+LOCK TABLES `sym_fields_order_entries` WRITE;
+/*!40000 ALTER TABLE `sym_fields_order_entries` DISABLE KEYS */;
+INSERT INTO `sym_fields_order_entries` VALUES (1,12,NULL,'yes');
+/*!40000 ALTER TABLE `sym_fields_order_entries` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -723,7 +777,7 @@ CREATE TABLE `sym_fields_textarea` (
   `size` int(3) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `field_id` (`field_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -732,7 +786,7 @@ CREATE TABLE `sym_fields_textarea` (
 
 LOCK TABLES `sym_fields_textarea` WRITE;
 /*!40000 ALTER TABLE `sym_fields_textarea` DISABLE KEYS */;
-INSERT INTO `sym_fields_textarea` VALUES (5,3,NULL,7),(6,11,NULL,10);
+INSERT INTO `sym_fields_textarea` VALUES (5,3,NULL,7),(7,11,NULL,10);
 /*!40000 ALTER TABLE `sym_fields_textarea` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -805,7 +859,7 @@ CREATE TABLE `sym_pages` (
   `sortorder` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `parent` (`parent`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -814,7 +868,7 @@ CREATE TABLE `sym_pages` (
 
 LOCK TABLES `sym_pages` WRITE;
 /*!40000 ALTER TABLE `sym_pages` DISABLE KEYS */;
-INSERT INTO `sym_pages` VALUES (1,NULL,'Home','index',NULL,NULL,'footer_help_notes,footer_snippet_list,user_snippets','new_snippet',8),(16,NULL,'Help','help',NULL,NULL,'all_help_notes,footer_help_notes,footer_snippet_list',NULL,16),(11,NULL,'Snippet','snippet',NULL,'user/snip-id','footer_help_notes,footer_snippet_list,resources_list,snippet_information,snippet_main_resources','delete_resource,fork_snippet,new_snippet,save_snippet_information',11),(12,11,'Resource','resource','snippet','user/snip-id/resource','footer_help_notes,footer_snippet_list,resources_list,snippet_information,snippet_resource,user_flash','delete_resource,fork_snippet,new_snippet,save_resource,save_snippet_information',12),(13,11,'Process','process','snippet','user/snip-id','footer_help_notes,footer_snippet_list,resources_list,snippet_information,snippet_result','fork_snippet,new_snippet,save_snippet_information',13),(14,11,'Add Resource','add-resource','snippet','user/snip-id','footer_help_notes,footer_snippet_list,resources_list,snippet_information','add_resource,new_snippet,save_snippet_information',14),(15,NULL,'Snippets list','snippets',NULL,'user','footer_help_notes,footer_snippet_list,snippet_list_by_user,user_snippets',NULL,15);
+INSERT INTO `sym_pages` VALUES (1,NULL,'Home','index',NULL,NULL,'footer_help_notes,footer_snippet_list,user_snippets','new_snippet',8),(16,NULL,'Help','help',NULL,NULL,'all_help_notes,footer_help_notes,footer_snippet_list',NULL,16),(11,NULL,'Snippet','snippet',NULL,'user/snip-id','footer_help_notes,footer_snippet_list,resources_list,snippet_information,snippet_main_resources,user_flash','delete_resource,fork_snippet,new_snippet,save_snippet_information',11),(12,11,'Resource','resource','snippet','user/snip-id/resource','footer_help_notes,footer_snippet_list,resources_list,snippet_information,snippet_resource,user_flash','delete_resource,fork_snippet,new_snippet,save_resource,save_snippet_information',12),(13,11,'Process','process','snippet','user/snip-id','footer_help_notes,footer_snippet_list,resources_list,snippet_information,snippet_result','fork_snippet,new_snippet,save_snippet_information',13),(14,11,'Add Resource','add-resource','snippet','user/snip-id','footer_help_notes,footer_snippet_list,resources_list,snippet_information','add_resource,new_snippet,save_snippet_information',14),(17,NULL,'My Snippets','my-snippets',NULL,NULL,'footer_help_notes,footer_snippet_list,snippet_list_by_user,user_snippets','new_snippet',17),(15,NULL,'Snippets list','snippets',NULL,'user','footer_help_notes,footer_snippet_list,snippet_list_by_user',NULL,15);
 /*!40000 ALTER TABLE `sym_pages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -871,7 +925,7 @@ CREATE TABLE `sym_sections` (
 
 LOCK TABLES `sym_sections` WRITE;
 /*!40000 ALTER TABLE `sym_sections` DISABLE KEYS */;
-INSERT INTO `sym_sections` VALUES (1,'Snippets','snippets',1,NULL,'asc','no','Content'),(2,'Users','users',2,NULL,'asc','no','Content'),(3,'Help','help',3,NULL,'asc','no','Content');
+INSERT INTO `sym_sections` VALUES (1,'Snippets','snippets',1,NULL,'asc','no','Content'),(2,'Users','users',2,NULL,'asc','no','Content'),(3,'Help','help',3,'12','asc','no','Content');
 /*!40000 ALTER TABLE `sym_sections` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -925,7 +979,7 @@ CREATE TABLE `sym_sessions` (
 
 LOCK TABLES `sym_sessions` WRITE;
 /*!40000 ALTER TABLE `sym_sessions` DISABLE KEYS */;
-INSERT INTO `sym_sessions` VALUES ('scfls48mmnv4emjtbeaqlits47',1291117388,'sym-|a:2:{s:8:\"username\";s:5:\"admin\";s:4:\"pass\";s:40:\"4ecb9d2b21439d3e2d139b23358140cfa6f14203\";}ninja-user|a:2:{s:8:\"snippets\";a:12:{i:0;s:10:\"62d73f4e90\";i:1;s:10:\"a8ababd7a9\";i:2;s:10:\"9da3fec78e\";i:3;s:10:\"def331f5f2\";i:4;s:10:\"dca3f47559\";i:5;s:10:\"1a53ba5d92\";i:6;s:10:\"3c63ac1d9a\";i:7;s:10:\"500abf96c8\";i:8;s:10:\"ada259dc28\";i:9;s:10:\"df7debc84b\";i:10;s:10:\"15cf4f4fe1\";i:11;s:10:\"6bbb7e4b44\";}s:5:\"flash\";a:0:{}}'),('des0l4cseu3vhch2ijopp8nrk6',1290590318,'sym-|a:2:{s:8:\"username\";s:5:\"admin\";s:4:\"pass\";s:40:\"4ecb9d2b21439d3e2d139b23358140cfa6f14203\";}ninja-user|a:1:{s:8:\"snippets\";a:2:{i:0;s:10:\"62d73f4e90\";i:1;s:11:\"3_e759f35b9\";}}'),('3cq458h8dvn2etj2e9ld1dgkh7',1291113351,'sym-|a:0:{}ninja-user|a:2:{s:8:\"snippets\";a:1:{i:0;s:10:\"34322c14fd\";}s:5:\"flash\";a:0:{}}');
+INSERT INTO `sym_sessions` VALUES ('scfls48mmnv4emjtbeaqlits47',1291210405,'sym-|a:2:{s:8:\"username\";s:5:\"admin\";s:4:\"pass\";s:40:\"4ecb9d2b21439d3e2d139b23358140cfa6f14203\";}ninja-user|a:2:{s:8:\"snippets\";a:13:{i:0;s:10:\"62d73f4e90\";i:1;s:10:\"a8ababd7a9\";i:2;s:10:\"9da3fec78e\";i:3;s:10:\"def331f5f2\";i:4;s:10:\"dca3f47559\";i:5;s:10:\"1a53ba5d92\";i:6;s:10:\"3c63ac1d9a\";i:7;s:10:\"500abf96c8\";i:8;s:10:\"ada259dc28\";i:9;s:10:\"df7debc84b\";i:10;s:10:\"15cf4f4fe1\";i:11;s:10:\"6bbb7e4b44\";i:12;s:10:\"85c3a7bf93\";}s:5:\"flash\";a:0:{}}'),('des0l4cseu3vhch2ijopp8nrk6',1290590318,'sym-|a:2:{s:8:\"username\";s:5:\"admin\";s:4:\"pass\";s:40:\"4ecb9d2b21439d3e2d139b23358140cfa6f14203\";}ninja-user|a:1:{s:8:\"snippets\";a:2:{i:0;s:10:\"62d73f4e90\";i:1;s:11:\"3_e759f35b9\";}}'),('3cq458h8dvn2etj2e9ld1dgkh7',1291128675,'sym-|a:0:{}ninja-user|a:2:{s:8:\"snippets\";a:1:{i:0;s:10:\"34322c14fd\";}s:5:\"flash\";a:0:{}}');
 /*!40000 ALTER TABLE `sym_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -938,4 +992,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-11-30 12:43:45
+-- Dump completed on 2010-12-01 14:33:39

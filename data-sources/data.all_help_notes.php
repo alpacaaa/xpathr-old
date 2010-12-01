@@ -8,13 +8,14 @@
 		public $dsParamORDER = 'asc';
 		public $dsParamLIMIT = '20';
 		public $dsParamREDIRECTONEMPTY = 'no';
-		public $dsParamSORT = 'system:id';
+		public $dsParamSORT = 'order';
 		public $dsParamSTARTPAGE = '1';
 		public $dsParamHTMLENCODE = 'yes';
 		public $dsParamASSOCIATEDENTRYCOUNTS = 'no';
 		public $dsParamINCLUDEDELEMENTS = array(
 				'question',
-				'answer'
+				'answer',
+				'order'
 		);
 
 		public function __construct(&$parent, $env=NULL, $process_params=true){
@@ -30,7 +31,7 @@
 							'website' => 'http://dev/ninja',
 							'email' => 'm@rcosa.mp'),
 					 'version' => '1.0',
-					 'release-date' => '2010-11-30T11:13:13+00:00');	
+					 'release-date' => '2010-11-30T14:58:36+00:00');	
 		}
 		
 		public function getSource(){
