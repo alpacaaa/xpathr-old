@@ -142,6 +142,10 @@
 		public static function clean($str)
 		{
 			$str = strtolower($str);
-			return preg_replace("/([^a-z0-9\.\-]+)/", "", $str);
+			$str = preg_replace("/([^a-z0-9\.\-]+)/", "", $str);
+			if (strlen($str) <= 20) return $str;
+
+			$ext = '.'. substr($str, -3);
+			return substr($str, 0, 16). $ext;
 		}
 	}

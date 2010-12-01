@@ -18,13 +18,13 @@
 	class FilesystemStorage implements SnippetDataStorage
 	{
 		protected $context;
-		
+
 		public function store($key, $value)
 		{
 			$path = $this->buildPath($key);
 			return file_put_contents($path, $value);
 		}
-		
+
 		public function retrieve($key)
 		{
 			if (!$this->hasKey($key)) return null;

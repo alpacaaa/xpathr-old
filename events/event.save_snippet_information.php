@@ -44,6 +44,13 @@
 
 			unset($_POST['fields']['user']);
 			$_POST['fields']['last-update'] = ''; //forcing update
+
+			if ($_POST['fields']['title'])
+				$_POST['fields']['title'] = substr($_POST['fields']['title'], 0, 40);
+
+			if ($_POST['fields']['description'])
+				$_POST['fields']['description'] = substr($_POST['fields']['description'], 0, 450);
+
 			include(TOOLKIT . '/events/event.section.php');
 			return $result;
 		}

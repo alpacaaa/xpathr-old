@@ -33,7 +33,7 @@
 		{
 			if ($snip = Snippet::createNew())
 			{
-				//SnippetUser::addFlashMsg('Snippet created');
+				SnippetUser::addFlashMsg('Snippet created');
 				$user = SnippetUser::getName();
 				$redirect = 'http://'. DOMAIN. '/snippet/'. $user. '/'. $snip. '/';
 				redirect($redirect);

@@ -40,7 +40,7 @@
 
 			if ($snip = $snippet->fork())
 			{
-				//SnippetUser::addFlashMsg('Snippet forked');
+				SnippetUser::addFlashMsg('Snippet forked');
 				$user = SnippetUser::getName();
 				$redirect = 'http://'. DOMAIN. '/snippet/'. $user. '/'. $snip. '/';
 				redirect($redirect);
