@@ -6,7 +6,6 @@
 
 <xsl:template name="head">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-	<script type="text/javascript" src="{$root}/extensions/debugdevkit/assets/devkit.js"></script>
-	<link rel="stylesheet" href="{$root}/extensions/debugdevkit/assets/devkit.css" />
+	<link rel="stylesheet" href="{$workspace}/assets/stylesheets/ninja.highlight.css" />
 </xsl:template>
 </xsl:stylesheet>

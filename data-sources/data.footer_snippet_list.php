@@ -5,7 +5,7 @@
 	Class datasourcefooter_snippet_list extends Datasource{
 		
 		public $dsParamROOTELEMENT = 'footer-snippet-list';
-		public $dsParamORDER = 'desc';
+		public $dsParamORDER = 'random';
 		public $dsParamLIMIT = '7';
 		public $dsParamREDIRECTONEMPTY = 'no';
 		public $dsParamSORT = 'system:id';
@@ -30,7 +30,7 @@
 							'website' => 'http://dev/ninja',
 							'email' => 'm@rcosa.mp'),
 					 'version' => '1.0',
-					 'release-date' => '2010-11-30T11:41:43+00:00');	
+					 'release-date' => '2010-12-02T11:01:30+00:00');	
 		}
 		
 		public function getSource(){

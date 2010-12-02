@@ -52,7 +52,7 @@
 	<div id="footer">
 		<ul>
 			<li class="snippets">
-				<h5>Snippets</h5>
+				<h5><a href="{$root}/dev/snippets/">Snippets</a></h5>
 				<ul>
 					<xsl:apply-templates select="/data/footer-snippet-list/entry" />
 				</ul>
@@ -66,7 +66,7 @@
 				</ul>
 			</li> -->
 			<li class="help">
-				<h5>Help</h5>
+				<h5><a href="{$root}/help/">Help</a></h5>
 				<ul>
 					<xsl:apply-templates select="/data/footer-help-notes/entry">
 						<xsl:sort select="order"/>
@@ -92,9 +92,6 @@
 		<a href="{$root}/snippet/all/{uniq-id}/">
 			<xsl:value-of select="title" />
 		</a>
-		<span class="description">
-			<xsl:value-of select="title" />
-		</span>
 	</li>
 </xsl:template>
 

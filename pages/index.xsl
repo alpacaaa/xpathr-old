@@ -47,10 +47,8 @@
 					<li>
 						<dl>
 							<dt>
-								<span class="for">for</span>
-								<span class="aka">aka</span>
-								<span class="term">genin</span>
-								<span class="exp">noobs</span>
+								<p>for <span>genin</span></p>
+								<p>aka <span>noobs</span></p>
 							</dt>
 							<dd>
 								Can't get your head around a compile error?
@@ -62,10 +60,8 @@
 					<li>
 						<dl>
 							<dt>
-								<span class="for">for</span>
-								<span class="aka">aka</span>
-								<span class="term">chunin</span>
-								<span class="exp">mortal developers</span>
+								<p>for <span>chunin</span></p>
+								<p>aka <span>mortal developers</span></p>
 							</dt>
 							<dd>
 								Paste your most interesting stuff so you 
@@ -76,10 +72,8 @@
 					<li>
 						<dl>
 							<dt>
-								<span class="for">for</span>
-								<span class="aka">aka</span>
-								<span class="term">junin</span>
-								<span class="exp">masters</span>
+								<p>for <span>junin</span></p>
+								<p>aka <span>masters</span></p>
 							</dt>
 							<dd>
 								After years of hard trainig, you're able to master

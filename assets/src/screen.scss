@@ -399,8 +399,6 @@ sup {
 
 	pre {
 		@include adjust-font-size-to(14px);
-		background: #eee;
-		color: #000;
 		text-align: start;
 		white-space: pre;
 		overflow: auto;
@@ -408,20 +406,16 @@ sup {
 		padding: 0 $base-rhythm-unit;
 	}
 
-	#source {
+	.source {
 		@include trailer;
 		border: 1px solid #303335;
 		background: #111315;
 		font-size: 0.75em;
-
-		pre {
-			background: none;
-		}
 	}
 
 	&.split > div {
 		text-align: center;
-		#source {
+		.source {
 			max-height: 22em;
 			overflow: auto;
 			@include leader(.3);
@@ -533,35 +527,26 @@ sup {
 		@include leader(.3);
 		@include trailer(.1);
 
-		.aka {
-			display: none;
-		}
-
-		.term {
+		span {
 			font-weight: bold;
 		}
 
-		.exp {
-			display: none;
+		p {
+			margin: 0;
 			cursor: default;
 		}
 
+		p:last-child {
+			display: none;
+		}
+
 		&:hover {
-			.for {
+			p:first-child {
 				display: none;
 			}
 
-			.aka {
+			p:last-child {
 				display: inline;
-			}
-
-			.exp {
-				display: inline;
-				font-weight: bold;
-			}
-
-			.term {
-				display: none;
 			}
 		}
 	}
@@ -775,6 +760,11 @@ sup {
 		@include adjust-font-size-to(21px);
 		padding: $base-rhythm-unit 0 $base-rhythm-unit/3 0;
 		margin: 0;
+
+		a {
+			color: $color;
+			&:hover { border: 0; }
+		}
 	}
 
 	li p, li ul {
@@ -782,15 +772,15 @@ sup {
 		@include trailer;
 	}
 
-	li.snippets {
+	/*li.snippets {
 		@include columns(6);
 
 		.description {
 			display: none;
 		}
-	}
+	}*/
 
-	.help a {
+	.help ul a {
 		font-weight: bold;
 	}
 
