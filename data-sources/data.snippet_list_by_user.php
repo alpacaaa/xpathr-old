@@ -7,7 +7,7 @@
 		public $dsParamROOTELEMENT = 'snippet-list-by-user';
 		public $dsParamORDER = 'desc';
 		public $dsParamLIMIT = '10';
-		public $dsParamREDIRECTONEMPTY = 'yes';
+		public $dsParamREDIRECTONEMPTY = 'no';
 		public $dsParamSORT = 'system:id';
 		public $dsParamSTARTPAGE = '{$url-page:1}';
 		public $dsParamASSOCIATEDENTRYCOUNTS = 'no';
@@ -38,7 +38,7 @@
 							'website' => 'http://dev/ninja',
 							'email' => 'm@rcosa.mp'),
 					 'version' => '1.0',
-					 'release-date' => '2010-11-30T14:11:47+00:00');	
+					 'release-date' => '2010-12-01T14:09:32+00:00');	
 		}
 		
 		public function getSource(){

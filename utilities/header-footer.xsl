@@ -68,7 +68,9 @@
 			<li class="help">
 				<h5>Help</h5>
 				<ul>
-					<xsl:apply-templates select="/data/footer-help-notes/entry" />
+					<xsl:apply-templates select="/data/footer-help-notes/entry">
+						<xsl:sort select="order"/>
+					</xsl:apply-templates>
 				</ul>
 			</li>
 			<li>

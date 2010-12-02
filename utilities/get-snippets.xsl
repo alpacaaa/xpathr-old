@@ -15,26 +15,35 @@
 	<div id="content">
 		<xsl:call-template name="title" mode="content" />
 
-		<table>
-			<thead>
-				<tr>
-					<th>Title</th>
-					<th>Description</th>
-					<th>Last Update</th>
-				</tr>
-			</thead>
-			<tbody>
-				<xsl:for-each select="entry">
-					<xsl:call-template name="snippet-row" />
-				</xsl:for-each>
-			</tbody>
-		</table>
+		<xsl:choose>
+			<xsl:when test="error">
+				<div class="message">No snippet found.</div>
+			</xsl:when>
+			<xsl:otherwise>
+				<table>
 
-		<xsl:call-template name="pagination">
-			<xsl:with-param name="pagination" select="pagination" />
-			<xsl:with-param name="pagination-url"
-				select="$pagination-url" />
-		</xsl:call-template>
+					<thead>
+						<tr>
+							<th>Title</th>
+							<th>Description</th>
+							<th>Last Update</th>
+						</tr>
+					</thead>
+					<tbody>
+						<xsl:for-each select="entry">
+							<xsl:call-template name="snippet-row" />
+						</xsl:for-each>
+					</tbody>
+				</table>
+
+				<xsl:call-template name="pagination">
+					<xsl:with-param name="pagination" select="pagination" />
+					<xsl:with-param name="pagination-url"
+						select="$pagination-url" />
+				</xsl:call-template>
+			
+			</xsl:otherwise>
+		</xsl:choose>
 	</div>
 </xsl:template>
 

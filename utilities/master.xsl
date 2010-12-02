@@ -21,6 +21,7 @@
 		<head>
 			<link rel="stylesheet" href="{$workspace}/assets/stylesheets/screen.css" type="text/css" />
 			<link href="http://fonts.googleapis.com/css?family=Lobster:regular|Droid+Sans&amp;subset=latin" rel="stylesheet" type="text/css" />
+			<link rel="workspace" href="{$workspace}" />
 			<xsl:call-template name="head" />
 
 			<title><xsl:apply-templates select="data" mode="head" /> – XPath of the Ninja</title>

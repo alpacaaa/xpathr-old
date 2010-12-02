@@ -2,18 +2,16 @@
 (function($) {
 	$(document).ready(function(){
 
-			bespin.useBespin("snippet-resource-content").then(function(env) {
+		var workspace = $("head link[rel='workspace']").attr('href');
 
-				var el  = $('.bespin');
-				var add = parseInt(el.css('margin-bottom').replace('px', ''));
-				var uau = parseInt(el.css('height').replace('px', '')) + add;
-				el.css('height', uau + 'px');
-				el.css('overflow', 'hidden');
+		var editor = CodeMirror.fromTextArea('snippet-resource-content', {
 
-				var hash = window.location.hash;
-				if (hash) env.editor.setLineNumber(parseInt(hash.replace('#line-', '')));
-				//env.editor.syntax = "xml";
-				//env.settings.set('theme', 'white');
-			});
+			path: workspace + '/codemirror/js/',
+			parserfile: 'parsexml.js',
+			stylesheet: workspace + '/codemirror/css/xmlcolors.css',
+			lineNumbers: true,
+			tabMode: 'shift',
+			height: '505px'
 		});
+	});
 })(jQuery);

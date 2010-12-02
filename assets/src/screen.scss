@@ -317,6 +317,20 @@ sup {
 	a.new {
 		@extend .action;
 	}
+
+	fieldset > ul.invert {
+		// submit buttons
+		li:first-child {
+			padding-left: 4px;
+			padding-right: 0;
+			float: right;
+		}
+
+		li:last-child {
+			padding-right: 4px;
+			float: left;
+		}
+	}
 }
 
 
@@ -414,9 +428,22 @@ sup {
 			@include trailer(2);
 		}
 	}
+
+	.CodeMirror-wrapping {
+		@include trailer;
+
+		iframe {
+			background: $color;
+		}
+
+		.CodeMirror-line-numbers {
+			background: #111315;
+			border: 1px solid #555;
+			border-top: 0;
+			padding: 0 5px;
+		}
+	}
 }
-
-
 
 
 
@@ -507,12 +534,34 @@ sup {
 		@include trailer(.1);
 
 		.aka {
-			@include adjust-font-size-to(12px);
-			line-height: 1em;
-			display: block;
-			font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-			&:before {
-				content: 'aka ';
+			display: none;
+		}
+
+		.term {
+			font-weight: bold;
+		}
+
+		.exp {
+			display: none;
+			cursor: default;
+		}
+
+		&:hover {
+			.for {
+				display: none;
+			}
+
+			.aka {
+				display: inline;
+			}
+
+			.exp {
+				display: inline;
+				font-weight: bold;
+			}
+
+			.term {
+				display: none;
 			}
 		}
 	}

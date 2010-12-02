@@ -22,10 +22,10 @@
 			</input>
 			<label for="snippet-main-resource">Main resource</label>
 
-			<ul>
+			<ul class="invert">
 				<!-- <li><a href="{$root}/snippet/resource/{$user}/{$snip-id}/{$resource}/">back</a></li> -->
-				<li><input type="submit" name="action[delete-resource]" value="Delete" /></li>
 				<li><input type="submit" name="action[save-snippet]" value="Save" /></li>
+				<li><input type="submit" name="action[delete-resource]" value="Delete" /></li>
 			</ul>
 		</fieldset>
 	</xsl:if>
@@ -82,8 +82,7 @@
 </xsl:template>
 
 <xsl:template name="head">
-	<link id="bespin_base" href="{$workspace}/bespin" />
-	<script src="{$workspace}/bespin/BespinEmbedded.js" type="text/javascript"></script>
+	<script src="{$workspace}/codemirror/js/codemirror.js" type="text/javascript"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 	<script type="text/javascript" src="{$workspace}/assets/js/main.js"></script>
 	<script type="text/javascript" src="{$root}/extensions/debugdevkit/assets/devkit.js"></script>
@@ -94,4 +93,5 @@
 	<xsl:value-of select="snippet-resource/resource/@file" /> from 
 	`<xsl:value-of select="snippet-information/entry/title" />`
 </xsl:template>
+
 </xsl:stylesheet>

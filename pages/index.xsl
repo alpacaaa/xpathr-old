@@ -46,7 +46,12 @@
 				<ul>
 					<li>
 						<dl>
-							<dt>for <strong>genin</strong></dt>
+							<dt>
+								<span class="for">for</span>
+								<span class="aka">aka</span>
+								<span class="term">genin</span>
+								<span class="exp">noobs</span>
+							</dt>
 							<dd>
 								Can't get your head around a compile error?
 								Paste your code and wait for someone to <!-- fork&amp;fix<sup>tm</sup>.-->
@@ -56,7 +61,12 @@
 					</li>
 					<li>
 						<dl>
-							<dt>for <strong>chunin</strong></dt>
+							<dt>
+								<span class="for">for</span>
+								<span class="aka">aka</span>
+								<span class="term">chunin</span>
+								<span class="exp">mortal developers</span>
+							</dt>
 							<dd>
 								Paste your most interesting stuff so you 
 								don't need to search your whole codebase everytime.
@@ -65,7 +75,12 @@
 					</li>
 					<li>
 						<dl>
-							<dt>for <strong>junin</strong></dt>
+							<dt>
+								<span class="for">for</span>
+								<span class="aka">aka</span>
+								<span class="term">junin</span>
+								<span class="exp">masters</span>
+							</dt>
 							<dd>
 								After years of hard trainig, you're able to master
 								very complex techniques. Paste smart snippets and share 
