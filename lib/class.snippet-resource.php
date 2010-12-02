@@ -143,9 +143,11 @@
 		{
 			$str = strtolower($str);
 			$str = preg_replace("/([^a-z0-9\.\-]+)/", "", $str);
-			if (strlen($str) <= 20) return $str;
 
 			$ext = '.'. substr($str, -3);
+			if ($ext == '.php') return '';
+
+			if (strlen($str) <= 20) return $str;
 			return substr($str, 0, 16). $ext;
 		}
 	}

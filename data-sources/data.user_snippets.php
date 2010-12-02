@@ -33,6 +33,7 @@
 				);
 
 			$key = 'ds-' . $this->dsParamROOTELEMENT;
+			if (empty($list)) $list = array(0);
 			$param_pool[$key] = join(',', $list);
 			return $result;
 		}
