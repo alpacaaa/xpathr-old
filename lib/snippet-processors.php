@@ -74,7 +74,7 @@
 			$result = new XMLElement(
 				'div', $bitter->process($resource->getContent())
 			);
-			$result->setAttribute('id', 'source');
+			$result->setAttribute('class', 'source');
 
 			return $result->generate();
 		}
@@ -97,7 +97,7 @@
 
 			require_once(EXTENSIONS . '/debugdevkit/lib/bitter/bitter.php');
 			$bitter = new Bitter();
-			$bitter->loadFormat('symphony');
+			$bitter->loadFormat('ninja');
 
 			$this->bitter = $bitter;
 			return $bitter;
