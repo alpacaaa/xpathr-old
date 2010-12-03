@@ -30,16 +30,13 @@
 			</xsl:call-template>
 
 			<div id="logo">
-				<h1>
-					<!-- <a href="{$root}/">Xpath of the Ninja</a> -->
-					Xpath of the Ninja
-				</h1>
+				<h1>Xpath of the Ninja</h1>
 				<p class="tagline">
 					paste service for 
 					<acronym title="eXtensible Stylesheet Language Transformations">XSLT</acronym> 
 					code
 				</p>
-				<img src="{$workspace}/assets/images/ninja.png" alt="`Stupid Ninja` by AznJoker2" />
+				<img src="{$workspace}/assets/images/ninja.png" alt="A funny ninja image. Based on `Stupid Ninja` by ~AznJoker2" />
 			</div>
 
 			<div id="use-case">
@@ -47,8 +44,8 @@
 					<li>
 						<dl>
 							<dt>
-								<p>for <span>genin</span></p>
-								<p>aka <span>noobs</span></p>
+								<span>for <span>genin</span></span>
+								<span>aka <span>noobs</span></span>
 							</dt>
 							<dd>
 								Can't get your head around a compile error?
@@ -60,8 +57,8 @@
 					<li>
 						<dl>
 							<dt>
-								<p>for <span>chunin</span></p>
-								<p>aka <span>mortal developers</span></p>
+								<span>for <span>chunin</span></span>
+								<span>aka <span>mortal developers</span></span>
 							</dt>
 							<dd>
 								Paste your most interesting stuff so you 
@@ -72,8 +69,8 @@
 					<li>
 						<dl>
 							<dt>
-								<p>for <span>junin</span></p>
-								<p>aka <span>masters</span></p>
+								<span>for <span>junin</span></span>
+								<span>aka <span>masters</span></span>
 							</dt>
 							<dd>
 								After years of hard trainig, you're able to master
@@ -87,9 +84,11 @@
 
 			<div id="paste-now">
 				<form action="" method="post">				
-					And now some pasting!
-					<input type="submit" name="action[new-snippet]" value="Create" />
-					a new snippet.
+					<p>
+						And now some pasting!
+						<input type="submit" name="action[new-snippet]" value="Create" />
+						a new snippet.
+					</p>
 				</form>
 			</div>
 

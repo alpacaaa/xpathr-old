@@ -416,8 +416,8 @@ sup {
 	&.split > div {
 		text-align: center;
 		.source {
-			max-height: 22em;
 			overflow: auto;
+			max-height: 22.5em;
 			@include leader(.3);
 			@include trailer(2);
 		}
@@ -429,12 +429,17 @@ sup {
 		iframe {
 			background: $color;
 		}
-
+		
 		.CodeMirror-line-numbers {
-			background: #111315;
-			border: 1px solid #555;
-			border-top: 0;
-			padding: 0 5px;
+			width: 2.2em;
+			color: #aaa;
+			background-color: #eee;
+			text-align: right;
+			padding-right: .3em;
+			font-size: 10pt;
+			font-family: monospace;
+			padding-top: .4em;
+			line-height: normal;
 		}
 	}
 }
@@ -527,25 +532,25 @@ sup {
 		@include leader(.3);
 		@include trailer(.1);
 
-		span {
+		span > span {
 			font-weight: bold;
 		}
 
-		p {
+		span {
 			margin: 0;
 			cursor: default;
 		}
 
-		p:last-child {
+		& > span:last-child {
 			display: none;
 		}
 
 		&:hover {
-			p:first-child {
+			& > span:first-child {
 				display: none;
 			}
 
-			p:last-child {
+			& > span:last-child {
 				display: inline;
 			}
 		}
@@ -590,6 +595,10 @@ sup {
 			color: $second-hover;
 			//border: 0;
 		}
+	}
+
+	p {
+		margin: 0;
 	}
 }
 

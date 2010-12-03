@@ -11,7 +11,7 @@
 			stylesheet: workspace + '/codemirror/css/xmlcolors.css',
 			lineNumbers: true,
 			tabMode: 'shift',
-			height: '505px'
+			height: '500px'
 		});
 	});
 })(jQuery);
