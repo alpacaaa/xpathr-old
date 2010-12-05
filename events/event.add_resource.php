@@ -47,7 +47,10 @@
 			$data = $_POST['snippet']['new-resource'];
 			$file = SnippetResource::clean($data['filename']);
 
-			if (empty($file)) return;
+			if (empty($file))
+				return self::buildXML(
+					'Filename is empty', $data
+				);
 
 			if (is_object($snippet->getResource($file)))
 				return self::buildXML('Resource already exists', $data);

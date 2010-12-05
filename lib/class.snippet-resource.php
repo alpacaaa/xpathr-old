@@ -106,7 +106,7 @@
 			$newfile = self::clean($newfile);
 			if (empty($newfile))
 				throw new SnippetResourceException(
-					'Bad filename'
+					'Bad filename (extension must be either xml or xsl)'
 				);
 
 			if ($this->storage->hasKey($newfile))
@@ -144,8 +144,8 @@
 			$str = strtolower($str);
 			$str = preg_replace("/([^a-z0-9\.\-]+)/", "", $str);
 
-			$ext = '.'. substr($str, -3);
-			if ($ext == '.php') return '';
+			$ext = substr($str, -4);
+			if (!in_array($ext, array('.xml', '.xsl'))) return '';
 
 			if (strlen($str) <= 20) return $str;
 			return substr($str, 0, 16). $ext;

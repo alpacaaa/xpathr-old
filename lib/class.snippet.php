@@ -259,7 +259,6 @@
 				'xml' => array(
 					'file' => 'source.xml',
 					'text' => join("\n", array(
-						'<?xml version="1.0" encoding="utf-8" ?>',
 						'<source>',
 						'	<paste>Paste here :)</paste>',
 						'</source>'

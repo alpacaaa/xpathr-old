@@ -52,7 +52,10 @@
 			$file = $resource->getFile();
 			$data = $_POST['snippet']['resources'][$file];
 
-			if (empty($data['filename'])) return;
+			if (empty($data['filename']))
+				return self::buildXML(
+					'error', 'Filename is empty', $data
+				);
 
 			$resource->setContent($data['content']);
 			$newfilename = $data['filename'];
@@ -79,7 +82,8 @@
 			catch(SnippetResourceException $ex)
 			{
 				return self::buildXML(
-					'error', 'Cannot save resource: '. $ex->getMessage()
+					'error', 'Cannot save resource: '. $ex->getMessage(),
+					$data + array('file' => $file)
 				);
 			}
 		}
@@ -99,7 +103,12 @@
 			if ($data)
 			{
 				$result->appendChild(new XMLElement(
-					'post-data', $data['content'], array('filename' => $data['filename'])
+					'post-data',
+					htmlentities($data['content']),
+					array(
+						'filename' => $data['filename'], // new filename
+						'file' => $data['file'] // old filename
+					)
 				));
 			}
 
