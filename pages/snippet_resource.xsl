@@ -4,16 +4,37 @@
 
 <xsl:import href="../utilities/master.xsl" />
 
+<xsl:variable name="post-data" select="/data/events/save-resource/post-data" />
+
 <xsl:template name="current-resource">
 	<xsl:apply-templates select="snippet-resource/resource" />
 </xsl:template>
 
 <xsl:template match="snippet-resource/resource">
 	<xsl:if test="$owner = 'true' and $url-edit != 'snip-info'">
+
+		<xsl:variable name="file">
+			<xsl:if test="$post-data">
+
+				<xsl:variable name="same" select="/data/resources-list/resource[@file = $post-data/@filename]" />
+
+				<xsl:if test="$same = true()">
+					<xsl:value-of select="@file" />
+				</xsl:if>
+				<xsl:if test="$same = false()">
+					<xsl:value-of select="$post-data/@filename" />
+				</xsl:if>
+			</xsl:if>
+			<xsl:if test="not($post-data) or $post-data/@filename = ''">
+				<xsl:value-of select="@file" />
+			</xsl:if>
+		</xsl:variable>
+
+
 		<fieldset>
 			<legend>Snippet Resource</legend>
 			<label for="resource-filename">Filename</label>
-			<input type="text" name="snippet[resources][{@file}][filename]" value="{@file}" id="resource-filename" />
+			<input type="text" name="snippet[resources][{@file}][filename]" value="{$file}" id="resource-filename" />
 
 			<input type="checkbox" name="snippet[resources][{@file}][main-resource]" id="snippet-main-resource">
 				<xsl:if test="@main = 'true'">
@@ -59,7 +80,13 @@
 	</xsl:if> -->
 
 	<xsl:if test="$owner = 'true' and $url-edit != 'snip-info'">
-		<xsl:apply-templates select="snippet-resource/resource" mode="textarea" />
+		<xsl:if test="$post-data">
+			<xsl:apply-templates select="$post-data" mode="textarea" />
+		</xsl:if>
+
+		<xsl:if test="not($post-data)">
+			<xsl:apply-templates select="snippet-resource/resource" mode="textarea" />
+		</xsl:if>
 	</xsl:if>
 
 	<xsl:if test="$owner != 'true' or $url-edit = 'snip-info'">
@@ -67,7 +94,7 @@
 	</xsl:if>
 </xsl:template>
 
-<xsl:template match="snippet-resource/resource" mode="textarea">
+<xsl:template match="snippet-resource/resource | save-resource/post-data" mode="textarea">
 
 	<label for="snippet-resource-content">Resource content</label>
 	<textarea name="snippet[resources][{@file}][content]" rows="30" cols="180" id="snippet-resource-content">
@@ -75,13 +102,9 @@
 	</textarea>
 </xsl:template>
 
-<xsl:template match="snippet-resource/resource" mode="main">
-	<xsl:copy-of select="./*" />
-</xsl:template>
-
 <xsl:template name="head">
 	<script src="{$workspace}/codemirror/js/codemirror.js" type="text/javascript"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 	<script type="text/javascript" src="{$workspace}/assets/js/main.js"></script>
 	<link rel="stylesheet" href="{$workspace}/assets/stylesheets/ninja.highlight.css" />
 </xsl:template>

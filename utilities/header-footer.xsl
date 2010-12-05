@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:atom="http://www.w3.org/2005/Atom">
+
 
 <xsl:template name="header">
 
@@ -57,14 +59,12 @@
 					<xsl:apply-templates select="/data/footer-snippet-list/entry" />
 				</ul>
 			</li>
-			<!-- <li>
-				<h5>My snippets</h5>
+			<li class="twitter">
+				<h5><a href="http://twitter.com/search?q=%23spongebob">Twitter</a></h5>
 				<ul>
-					<xsl:apply-templates select="/data/footer-snippet-list/entry">
-						<xsl:sort select="@id" />
-					</xsl:apply-templates>
+					<xsl:apply-templates select="/data/footer-twitter//atom:entry[position() &lt; 4]" />
 				</ul>
-			</li> -->
+			</li>
 			<li class="help">
 				<h5><a href="{$root}/help/">Help</a></h5>
 				<ul>
@@ -99,6 +99,12 @@
 	<li>
 		<a href="{$root}/help/#note-{@id}">#<xsl:value-of select="order" /></a> - 
 		<xsl:value-of select="question" />
+	</li>
+</xsl:template>
+
+<xsl:template match="footer-twitter//atom:entry">
+	<li>
+		<xsl:value-of select="atom:content" disable-output-escaping="yes"/>
 	</li>
 </xsl:template>
 </xsl:stylesheet>

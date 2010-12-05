@@ -13,5 +13,15 @@
 			tabMode: 'shift',
 			height: '500px'
 		});
+
+		var messages = $('.message');
+		if (messages.length)
+		{
+			setTimeout((function(el){
+				return function(){
+					el.addClass('faded');
+				}
+			})(messages), 5000);
+		}
 	});
 })(jQuery);

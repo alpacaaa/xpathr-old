@@ -196,24 +196,11 @@
 </xsl:template>
 
 
-<xsl:template name="main">
-	<xsl:attribute name="class">split</xsl:attribute>
-	<xsl:apply-templates select="snippet-main-resources/resource" />
-</xsl:template>
-
-<xsl:template match="snippet-main-resources/resource">
-	<div>
-		<a href="{$root}/snippet/resource/{$user}/{$snip-id}/{@file}/">
-			<xsl:value-of select="@file" />
-		</a>
-		<xsl:apply-templates select="." mode="main" />
-	</div>
-</xsl:template>
-
 <xsl:template match="resource" mode="main">
 	<xsl:copy-of select="./*" />
 </xsl:template>
 
+<xsl:template name="main"></xsl:template>
 <xsl:template name="head"></xsl:template>
 <xsl:template match="data" mode="head">
 	<xsl:value-of select="snippet-information/entry/title" />
