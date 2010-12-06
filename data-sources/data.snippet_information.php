@@ -22,7 +22,9 @@
 				'title',
 				'description',
 				'main-xml-file',
-				'main-xsl-file'
+				'main-xsl-file',
+				'last-update',
+				'forked-from'
 		);
 
 		public function __construct(&$parent, $env=NULL, $process_params=true){
@@ -38,7 +40,7 @@
 							'website' => 'http://dev/ninja',
 							'email' => 'm@rcosa.mp'),
 					 'version' => '1.0',
-					 'release-date' => '2010-11-22T13:44:15+00:00');	
+					 'release-date' => '2010-12-06T09:47:13+00:00');	
 		}
 		
 		public function getSource(){

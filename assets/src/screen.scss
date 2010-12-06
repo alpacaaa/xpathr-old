@@ -252,13 +252,14 @@ sup {
 		@include trailer(0.5);
 	}
 
-	.author {
+	.info {
 		@include adjust-font-size-to(12px);
 		@include border-radius(5px);
+		@include trailer;
 		//font-style: italic;
 		padding: 5px;
 		background: #272c32;
-		display: none;
+		//display: none;
 	}
 
 	p.process {
@@ -659,7 +660,7 @@ sup {
 		padding: 0.7em;
 	}
 	
-	td.description {
+	td.description, td.fork {
 		@include adjust-font-size-to(12px, 1, 14px);
 	}
 

@@ -22,7 +22,8 @@
 				'uniq-id',
 				'title',
 				'description',
-				'last-update'
+				'last-update',
+				'forked-from'
 		);
 
 		public function __construct(&$parent, $env=NULL, $process_params=true){
@@ -38,7 +39,7 @@
 							'website' => 'http://dev/ninja',
 							'email' => 'm@rcosa.mp'),
 					 'version' => '1.0',
-					 'release-date' => '2010-12-02T10:59:14+00:00');	
+					 'release-date' => '2010-12-06T09:55:39+00:00');	
 		}
 		
 		public function getSource(){

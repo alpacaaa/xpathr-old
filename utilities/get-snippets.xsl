@@ -5,11 +5,12 @@
 
 
 <xsl:import href="../utilities/master.xsl" />
+
 <xsl:import href="../utilities/time-ago.xsl" />
 <xsl:import href="../utilities/pagination.xsl" />
 
+<xsl:variable name="show-fork-column" select="//entry[forked-from != '']" />
 <xsl:template name="get-snippets">
-
 	<xsl:param name="pagination-url" />
 
 	<div id="content">
@@ -27,6 +28,9 @@
 							<th>Title</th>
 							<th>Description</th>
 							<th>Last Update</th>
+							<xsl:if test="$show-fork-column">
+								<th>Forked from</th>
+							</xsl:if>
 						</tr>
 					</thead>
 					<tbody>
@@ -62,6 +66,16 @@
 					select="concat(last-update, 'T', last-update/@time, ':00')" />
 			</xsl:call-template>
 		</td>
+
+		<xsl:if test="$show-fork-column">
+			<td class="fork">
+				<xsl:if test="forked-from">
+						<a href="{$root}/snippet/{forked-from}/">
+							<xsl:value-of select="forked-from" />
+						</a>
+				</xsl:if>
+			</td>
+		</xsl:if>
 	</tr>
 </xsl:template>
 </xsl:stylesheet>

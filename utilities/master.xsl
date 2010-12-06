@@ -2,7 +2,9 @@
 <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:import href="../utilities/header-footer.xsl" />
+<xsl:import href="header-footer.xsl" />
+
+<xsl:import href="time-ago.xsl" />
 
 <xsl:output method="xml"
 	doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -101,9 +103,24 @@
 			<xsl:value-of select="description" />
 		</div>
 
-		<p class="author">
-			by <a href="#">anonymous</a>
-		</p>
+		<ul class="info">
+			<li>
+				Last update 
+				<xsl:call-template name="time-ago">
+					<xsl:with-param name="date-and-time"
+						select="concat(last-update, 'T', last-update/@time, ':00')" />
+				</xsl:call-template>
+			</li>
+
+			<xsl:if test="forked-from">
+					<li>
+						Forked from 
+						<a href="{$root}/snippet/{forked-from}/">
+							<xsl:value-of select="forked-from" />
+						</a>
+					</li>
+			</xsl:if>
+		</ul>
 
 		<p class="process">	
 			<a href="{$root}/snippet/process/{$user}/{$snip-id}/" class="process">
