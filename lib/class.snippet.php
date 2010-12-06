@@ -307,6 +307,7 @@
 			$resources = $this->listResources();
 			$data = $this->get();
 			$data['description'] .= ' (fork)';
+			$data['forked-from']  = $this->getUser(). '/'. $this->get('uniq-id');
 			if ($anonymous) unset($data['uniq-id']);
 
 			return self::create($data, $resources);

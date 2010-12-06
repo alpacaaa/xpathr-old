@@ -43,6 +43,7 @@
 			if (!$snippet || !SnippetUser::owns($snippet)) return;
 
 			unset($_POST['fields']['user']);
+			unset($_POST['fields']['forked-from']);
 			$_POST['fields']['last-update'] = ''; //forcing update
 
 			if ($_POST['fields']['title'])
