@@ -82,7 +82,7 @@
 
 	<xsl:if test="$url-edit != 'snip-info'">
 		<h2>
-			<a href="{$root}/snippet/{$user}/{$snip-id}/">
+			<a href="{$root}/snippets/{$user}/{$snip-id}/">
 				<xsl:value-of select="title" />
 			</a>
 		</h2>
@@ -115,7 +115,7 @@
 			<xsl:if test="forked-from">
 					<li>
 						Forked from 
-						<a href="{$root}/snippet/{forked-from}/">
+						<a href="{$root}/snippets/{forked-from}/">
 							<xsl:value-of select="forked-from" />
 						</a>
 					</li>
@@ -123,7 +123,7 @@
 		</ul>
 
 		<p class="process">	
-			<a href="{$root}/snippet/process/{$user}/{$snip-id}/" class="process">
+			<a href="{$root}/snippets/{$user}/{$snip-id}/process/" class="process">
 				Process
 			</a>
 		</p>
@@ -138,7 +138,7 @@
 <xsl:template match="resources-list">
 	<xsl:variable name="link">
 		<xsl:if test="$owner = 'true'">
-			<a href="{$root}/snippet/add-resource/{$user}/{$snip-id}/" class="new">
+			<a href="{$root}/snippets/{$user}/{$snip-id}/add-resource/" class="new">
 				new file
 			</a>
 		</xsl:if>
@@ -186,7 +186,7 @@
 			</xsl:attribute>
 		</xsl:if>
 
-		<a href="{$root}/snippet/resource/{$user}/{$snip-id}/{@file}/" >
+		<a href="{$root}/snippets/{$user}/{$snip-id}/{@file}/" >
 			<xsl:value-of select="@file" />
 		</a>
 

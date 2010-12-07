@@ -55,7 +55,7 @@
 <xsl:template name="snippet-row">
 	<tr>
 		<td>
-			<a href="{$root}/snippet/all/{uniq-id}/">
+			<a href="{$root}/snippets/all/{uniq-id}/">
 				<xsl:value-of select="title" />
 			</a>
 		</td>
@@ -70,7 +70,7 @@
 		<xsl:if test="$show-fork-column">
 			<td class="fork">
 				<xsl:if test="forked-from">
-						<a href="{$root}/snippet/{forked-from}/">
+						<a href="{$root}/snippets/{forked-from}/">
 							<xsl:value-of select="forked-from" />
 						</a>
 				</xsl:if>

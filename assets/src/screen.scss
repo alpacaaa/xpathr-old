@@ -381,6 +381,10 @@ sup {
 	@include adjust-font-size-to(12px);
 	background: #e4e4e0;
 	color: #555;
+
+	a {
+		color: $second;
+	}
 }
 
 

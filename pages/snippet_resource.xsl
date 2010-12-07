@@ -53,7 +53,7 @@
 
 	<xsl:if test="$url-edit = 'snip-info' or $owner != 'true'">
 		<h3>
-			<a href="{$root}/snippet/resource/{$user}/{$snip-id}/{$resource}/">
+			<a href="{$root}/snippets/{$user}/{$snip-id}/{$resource}/">
 				<xsl:value-of select="@file" />
 			</a>
 		</h3>
@@ -63,7 +63,7 @@
 		</xsl:if>
 
 		<xsl:if test="$owner = 'atrue'">
-			<a href="{$root}/snippet/resource/{$user}/{$snip-id}/{$resource}/?edit=snip-resource">
+			<a href="{$root}/snippets/{$user}/{$snip-id}/{$resource}/?edit=snip-resource">
 				edit
 			</a>
 		</xsl:if>

@@ -29,7 +29,7 @@
 		<label for="snippet-main-resource">Main resource</label>
 
 		<ul>
-			<li><a href="{$root}/snippet/{$user}/{$snip-id}/">back</a></li>
+			<li><a href="{$root}/snippets/{$user}/{$snip-id}/">back</a></li>
 			<li><input type="submit" name="action[save-snippet]" value="Save" /></li>
 		</ul>
 	</fieldset>

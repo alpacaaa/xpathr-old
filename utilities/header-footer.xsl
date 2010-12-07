@@ -54,7 +54,7 @@
 	<div id="footer">
 		<ul>
 			<li class="snippets">
-				<h5><a href="{$root}/dev/snippets/">Snippets</a></h5>
+				<h5><a href="{$root}/snippets/">Snippets</a></h5>
 				<ul>
 					<xsl:apply-templates select="/data/footer-snippet-list/entry" />
 				</ul>
@@ -89,7 +89,7 @@
 
 <xsl:template match="footer-snippet-list/entry">
 	<li>
-		<a href="{$root}/snippet/all/{uniq-id}/">
+		<a href="{$root}/snippets/all/{uniq-id}/">
 			<xsl:value-of select="title" />
 		</a>
 	</li>

@@ -29,7 +29,7 @@
 
 <xsl:template match="processing-errors/stack | processing-errors/xml">
 	<p>
-		<a href="{$root}/snippet/resource/{$user}/{$snip-id}/{@filename}/#line-{@line}">
+		<a href="{$root}/snippets/{$user}/{$snip-id}/{@filename}/#line-{@line}">
 			<xsl:value-of select="@filename" />
 		</a>
 	</p>
