@@ -66,6 +66,8 @@
 
 	class BitterHighlighterDataProcessor extends EncodedDataProcessor
 	{
+		protected $bitter;
+
 		public function processResource(SnippetResource $resource)
 		{
 			$bitter = $this->getBitter();

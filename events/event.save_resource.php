@@ -74,7 +74,7 @@
 					$_POST['fields']['main-'. $type. '-file'] =  $resource->getFile(); // rename
 
 				$user = SnippetUser::getName();
-				$redirect = 'http://'. DOMAIN. '/snippet/resource/'.
+				$redirect = 'http://'. DOMAIN. '/snippets/'.
 					join('/', array($user, $snip, $resource->getFile()));
 
 				return $this->saveResource($resource, $redirect );

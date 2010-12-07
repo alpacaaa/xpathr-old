@@ -29,7 +29,7 @@
 			$user = $url['user'];
 			if (!$snip) throw new FrontendPageNotFoundException();
 
-			$processor = new BitterHighlighterDataProcessor;
+			$processor = new BitterHighlighterDataProcessor();
 
 			try {
 				$snippet = Snippet::find($snip, $user);

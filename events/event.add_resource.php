@@ -61,7 +61,7 @@
 			if ($resource->save())
 			{
 				$user = SnippetUser::getName();
-				$redirect = 'http://'. DOMAIN. '/snippet/resource/'. 
+				$redirect = 'http://'. DOMAIN. '/snippets/'. 
 					join('/', array($user, $snippet->get('uniq-id'), $resource->getFile()));
 
 				$_REQUEST['redirect'] = $redirect;
