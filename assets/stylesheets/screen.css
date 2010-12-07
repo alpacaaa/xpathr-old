@@ -638,13 +638,13 @@ sup {
   line-height: 2.5em;
 }
 /* line 325, ../src/screen.scss */
-#resource fieldset > ul.invert li:first-child {
+#resource fieldset > ul li:first-child {
   padding-left: 4px;
   padding-right: 0;
   float: right;
 }
 /* line 331, ../src/screen.scss */
-#resource fieldset > ul.invert li:last-child {
+#resource fieldset > ul li:last-child {
   padding-right: 4px;
   float: left;
 }

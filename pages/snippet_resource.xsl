@@ -43,7 +43,7 @@
 			</input>
 			<label for="snippet-main-resource">Main resource</label>
 
-			<ul class="invert">
+			<ul>
 				<!-- <li><a href="{$root}/snippet/resource/{$user}/{$snip-id}/{$resource}/">back</a></li> -->
 				<li><input type="submit" name="action[save-snippet]" value="Save" /></li>
 				<li><input type="submit" name="action[delete-resource]" value="Delete" /></li>
