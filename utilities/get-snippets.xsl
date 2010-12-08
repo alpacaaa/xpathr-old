@@ -27,10 +27,10 @@
 						<tr>
 							<th>Title</th>
 							<th>Description</th>
-							<th>Last Update</th>
 							<xsl:if test="$show-fork-column">
 								<th>Forked from</th>
 							</xsl:if>
+							<th>Last Update</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -60,12 +60,6 @@
 			</a>
 		</td>
 		<td class="description"><xsl:value-of select="description" /></td>
-		<td class="date">
-			<xsl:call-template name="time-ago">
-				<xsl:with-param name="date-and-time"
-					select="concat(last-update, 'T', last-update/@time, ':00')" />
-			</xsl:call-template>
-		</td>
 
 		<xsl:if test="$show-fork-column">
 			<td class="fork">
@@ -76,6 +70,13 @@
 				</xsl:if>
 			</td>
 		</xsl:if>
+
+		<td class="date">
+			<xsl:call-template name="time-ago">
+				<xsl:with-param name="date-and-time"
+					select="concat(last-update, 'T', last-update/@time, ':00')" />
+			</xsl:call-template>
+		</td>
 	</tr>
 </xsl:template>
 </xsl:stylesheet>

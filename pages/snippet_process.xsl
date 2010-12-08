@@ -45,7 +45,7 @@
 
 <xsl:template name="head">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-	<script type="text/javascript" src="{$workspace}/assets/js/main.js"></script>
+	<!-- <script type="text/javascript" src="{$workspace}/assets/js/main.js"></script> -->
 	<link rel="stylesheet" href="{$workspace}/assets/stylesheets/ninja.highlight.css" />
 </xsl:template>
 

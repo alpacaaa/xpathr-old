@@ -153,9 +153,11 @@
 					<xsl:sort select="@main" order="descending" />
 				</xsl:apply-templates>
 
-				<li>
-					<xsl:copy-of select="$link" />
-				</li>
+				<xsl:if test="$owner = 'true'">
+					<li>
+						<xsl:copy-of select="$link" />
+					</li>
+				</xsl:if>
 			</ul>
 
 		</xsl:when>
@@ -166,7 +168,7 @@
 		</xsl:otherwise>
 
 	</xsl:choose>
-	
+
 </xsl:template>
 
 <xsl:template match="resources-list/resource">

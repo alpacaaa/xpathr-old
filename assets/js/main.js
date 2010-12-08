@@ -37,14 +37,10 @@
 			})(messages), 5000);
 		}
 
-		var buttons = $('#resource input:submit');
-		if (buttons.length)
-		{
-			buttons.click(function(e){
-				if ($(this).val().toLowerCase().indexOf('delete') !== -1
-				&& !confirm('Are you sure you want to delete this resource?'))
-					return e.preventDefault();
-			});
-		}
+		$('#resource #resource-delete').click(function(e){
+			if (!confirm('Are you sure you want to delete this resource?'))
+				return e.preventDefault();
+		});
+
 	});
 })(jQuery);

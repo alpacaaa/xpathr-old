@@ -190,6 +190,13 @@ sup {
 				a:hover {
 					border-bottom: 1px solid;
 				}
+				
+				a:active
+				{
+				  outline: none;
+				  top: 1px;
+				  position: relative;
+				}
 
 				a span {
 					font-weight: bold;
@@ -645,7 +652,8 @@ sup {
 
 	table {
 		@include leader;
-		width: 60em;
+		width: 59em;
+		max-width: 96.7%;
 		color: #e6e6e6;
 	}
 
