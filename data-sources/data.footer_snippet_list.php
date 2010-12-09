@@ -1,8 +1,8 @@
 <?php
 
-	require_once(TOOLKIT . '/class.datasource.php');
+	 require_once(EXTENSIONS . '/cacheabledatasource/lib/class.cacheabledatasource.php');
 	
-	Class datasourcefooter_snippet_list extends Datasource{
+	Class datasourcefooter_snippet_list extends CacheableDatasource{
 		
 		public $dsParamROOTELEMENT = 'footer-snippet-list';
 		public $dsParamORDER = 'random';
@@ -16,6 +16,7 @@
 				'title',
 				'description'
 		);
+		public $dsParamCACHE = 58;
 
 		public function __construct(&$parent, $env=NULL, $process_params=true){
 			parent::__construct($parent, $env, $process_params);
@@ -38,10 +39,10 @@
 		}
 		
 		public function allowEditorToParse(){
-			return true;
+			return false;
 		}
 		
-		public function grab(&$param_pool=NULL){
+		public function _grab(&$param_pool=NULL){
 			$result = new XMLElement($this->dsParamROOTELEMENT);
 				
 			try{

@@ -14,4 +14,9 @@
 		</p>
 	</div>
 </xsl:template>
+
+
+<xsl:template match="data" mode="head">Not Found</xsl:template>
+
+
 </xsl:stylesheet>
