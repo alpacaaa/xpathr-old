@@ -92,6 +92,8 @@
 		{
 			$resource->save();
 			SnippetUser::addFlashMsg('Resource saved');
+			SnippetCache::purge($resource->getSnippet());
+
 			if ($redirect) $_REQUEST['redirect'] = $redirect;
 		}
 

@@ -1,7 +1,7 @@
 <?php
 
 	require_once('class.snippet-resource.php');
-	require_once('class.snippet-parameters.php');
+	require_once('class.snippet-cache.php');
 	require_once('class.snippet-user.php');
 
 	class SnippetException extends Exception

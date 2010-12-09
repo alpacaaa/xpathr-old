@@ -42,6 +42,8 @@
 			$snippet = Snippet::find($snip);
 			if (!$snippet || !SnippetUser::owns($snippet)) return;
 
+			SnippetCache::purge($snippet);
+
 			unset($_POST['fields']['user']);
 			unset($_POST['fields']['forked-from']);
 			$_POST['fields']['last-update'] = ''; //forcing update

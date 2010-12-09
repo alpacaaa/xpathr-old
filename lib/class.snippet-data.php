@@ -35,5 +35,10 @@
 			self::$storageClass = $class;
 		}
 
+		public function getSnippet()
+		{
+			return $this->snippet;
+		}
+
 		abstract public function save();
 	}

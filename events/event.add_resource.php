@@ -71,6 +71,7 @@
 				if ($data['main-resource'] == 'on')
 					$_POST['fields']['main-'. $type. '-file'] =  $resource->getFile();
 
+				SnippetCache::purge($snippet);
 				return;
 			}
 
