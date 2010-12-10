@@ -63,8 +63,17 @@
 
 		public function cacheLitePreExecute(&$context)
 		{
+			if (
+				$_SERVER['REQUEST_METHOD'] == 'POST' ||
+				count(SnippetUser::getFlash()) > 0
+			)
+			{
+				$context['continue'] = false;
+				return;
+			}
+
 			$snippet = self::getSnippet();
-			if (!$snippet) return false;
+			if (!$snippet) return;
 
 			$owner = self::userIsOwner();
 			$context['url'] .= 'owner='. ($owner ? 'true' : 'false');
