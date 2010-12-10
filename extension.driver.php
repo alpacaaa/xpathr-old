@@ -43,13 +43,8 @@
 				),
 				array(
 					'page' => '/frontend/',
-					'delegate' => 'cacheLiteManipulateUrl',
-					'callback' => 'cacheLiteManipulateUrl'
-				),
-				array(
-					'page' => '/frontend/',
-					'delegate' => 'cacheLiteManipulateGroup',
-					'callback' => 'cacheLiteManipulateGroup'
+					'delegate' => 'cacheLitePreExecute',
+					'callback' => 'cacheLitePreExecute'
 				),
 			);
 		}
@@ -66,17 +61,13 @@
 			$context['params']['owner'] = $owner ? 'true' : 'false';
 		}
 
-		public function cacheLiteManipulateUrl(&$context)
-		{
-			$owner = self::userIsOwner();
-			$context['url'] .= 'owner='. ($owner ? 'true' : 'false');
-		}
-
-		public function cacheLiteManipulateGroup(&$context)
+		public function cacheLitePreExecute(&$context)
 		{
 			$snippet = self::getSnippet();
 			if (!$snippet) return false;
 
+			$owner = self::userIsOwner();
+			$context['url'] .= 'owner='. ($owner ? 'true' : 'false');
 			$context['group'] = $snippet->getUser(). '/'. $snippet->get('uniq-id');
 		}
 

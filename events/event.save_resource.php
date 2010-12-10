@@ -32,7 +32,9 @@
 		}
 		
 		public function load(){		
-			if(isset($_POST['action']['save-snippet'])) return $this->__trigger();
+			if(isset($_POST['action']['save-snippet'])
+			&& isset($_POST['snippet']['resources']))
+				return $this->__trigger();
 		}
 		
 		protected function __trigger()
