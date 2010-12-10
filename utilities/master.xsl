@@ -4,7 +4,7 @@
 
 <xsl:import href="header-footer.xsl" />
 
-<xsl:import href="time-ago.xsl" />
+<xsl:import href="date-time.xsl" />
 
 <xsl:output method="xml"
 	doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -106,9 +106,9 @@
 		<ul class="info">
 			<li>
 				Last update 
-				<xsl:call-template name="time-ago">
-					<xsl:with-param name="date-and-time"
-						select="concat(last-update, 'T', last-update/@time, ':00')" />
+				<xsl:call-template name="format-date">
+					<xsl:with-param name="date"	select="last-update" />
+					<xsl:with-param name="format" select="'D M Y'"/>
 				</xsl:call-template>
 			</li>
 
