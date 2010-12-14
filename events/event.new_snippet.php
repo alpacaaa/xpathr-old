@@ -39,11 +39,8 @@
 				redirect($redirect);
 			}
 
-			$result = new XMLElement(self::ROOTELEMENT);
-			$result->appendChild(new XMLElement(
-				'message', 'Failed to create snippet', array('result' => 'error')
-			));
-
+			$ex = new SnippetException('Failed to create snippet');
+			$result = $ex->getErrorsAsNode(self::ROOTELEMENT);
 			return $result;
 		}
 	}

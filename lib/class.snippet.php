@@ -4,15 +4,9 @@
 	require_once('class.snippet-cache.php');
 	require_once('class.snippet-user.php');
 
-	class SnippetException extends Exception
-	{
-	}
-
-
 	class Snippet
 	{
 		public static $section = 'snippets';
-
 		protected $data;
 
 		public function __construct(array $data = array())
@@ -165,22 +159,19 @@
 			return $this->save($data);
 		}
 
-		public static function findFromEnv($env)
+		public static function findFromEnv()
 		{
-			$url  = $env['env']['url'];
-			$snip = $url['snip-id'];
-			$user = $url['user'];
-			if (!$user) $user = 'all';
+			return extension_Ninja::getSnippet();
+		}
 
-			$obj = self::find($snip, $user);
-			if (!is_object($obj))
-			{
-				throw new SnippetException(
-					'Snippet does not exist'
-				);
-			}
+		public static function findResourceFromEnv()
+		{
+			return extension_Ninja::getResource();
+		}
 
-			return $obj;
+		public static function userIsOwner()
+		{
+			return extension_Ninja::userIsOwner();
 		}
 
 		public static function keepValue($el)
@@ -324,10 +315,11 @@
 
 	class SnippetProcessException extends Exception
 	{
-		public $node;
+		protected $node;
 
 		public function __construct($msg = null)
 		{
+			parent::__construct($msg);
 			$this->node = new XMLElement('message', $msg);
 		}
 
@@ -410,5 +402,46 @@
 		public function getErrorsAsNode()
 		{
 			return $this->node;
+		}
+	}
+
+
+
+
+	class SnippetException extends Exception
+	{
+		protected $post;
+
+		public function __construct($msg, array $data = array())
+		{
+			parent::__construct($msg);
+			if ($data) $this->setData($data);
+		}
+
+		public function setData(array $data)
+		{
+			$post = new XMLElement('post-data');
+			if ($data['content'])
+			{
+				$post->setValue(htmlentities($data['content']));
+				unset($data['content']);
+			}
+
+			foreach ($data as $k => $v)
+				$post->setAttribute($k, $v);
+
+			$this->post = $post;
+		}
+
+		public function getErrorsAsNode($root = 'errorNode')
+		{
+			$node = new XMLElement($root);
+			$node->setAttribute('result', 'error');
+			$node->appendChild(
+				new XMLElement('message', $this->getMessage())
+			);
+
+			if ($this->post) $node->appendChild($this->post);
+			return $node;
 		}
 	}

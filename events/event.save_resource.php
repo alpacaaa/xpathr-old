@@ -39,35 +39,29 @@
 		
 		protected function __trigger()
 		{
-			$url  = $this->_env['env']['url'];
-			$snip = $url['snip-id'];
-			$resource = $url['resource'];
+			if (!Snippet::userIsOwner()) return;
+			if (!$resource = Snippet::findResourceFromEnv()) return;
 
-			if (empty($resource)) return;
-
-			$snippet = Snippet::find($snip);
-			if (!$snippet || !SnippetUser::owns($snippet)) return;
-
-			$resource = $snippet->getResource($resource);
-			if (!$resource) return;
+			$snippet = Snippet::findFromEnv();
 
 			$file = $resource->getFile();
 			$data = $_POST['snippet']['resources'][$file];
-
-			if (empty($data['filename']))
-				return self::buildXML(
-					'error', 'Filename is empty', $data
-				);
-
-			$resource->setContent($data['content']);
-			$newfilename = $data['filename'];
-
-			$type = $resource->getType();
-			if ($data['main-resource'] == 'on')
-				$_POST['fields']['main-'. $type. '-file'] =  $resource->getFile();
+			$data['file'] = $file;
 
 			try
 			{
+				if (empty($data['filename']))
+					throw new SnippetException(
+						'Filename is empty', $data
+					);
+
+				$resource->setContent($data['content']);
+				$newfilename = $data['filename'];
+
+				$type = $resource->getType();
+				if ($data['main-resource'] == 'on')
+					$_POST['fields']['main-'. $type. '-file'] =  $resource->getFile();
+
 				if ($newfilename == $file) return $this->saveResource($resource);
 
 				$resource->rename($newfilename);
@@ -77,16 +71,15 @@
 
 				$user = SnippetUser::getName();
 				$redirect = 'http://'. DOMAIN. '/snippets/'.
-					join('/', array($user, $snip, $resource->getFile()));
+					join('/', array($user, $snippet->get('uniq-id'), $resource->getFile()));
 
-				return $this->saveResource($resource, $redirect );
+				return $this->saveResource($resource, $redirect);
 			}
-			catch(SnippetResourceException $ex)
+			catch (SnippetException $ex)
 			{
-				return self::buildXML(
-					'error', 'Cannot save resource: '. $ex->getMessage(),
-					$data + array('file' => $file)
-				);
+				$ex->setData($data);
+				$result = $ex->getErrorsAsNode(self::ROOTELEMENT);
+				return $result;
 			}
 		}
 
@@ -97,25 +90,5 @@
 			SnippetCache::purge($resource->getSnippet());
 
 			if ($redirect) $_REQUEST['redirect'] = $redirect;
-		}
-
-		public static function buildXML($status, $message, $data = null)
-		{
-			$result = new XMLElement(self::ROOTELEMENT);
-			$result->setAttribute('result', $status);
-			$result->appendChild(new XMLElement('message', $message));
-			if ($data)
-			{
-				$result->appendChild(new XMLElement(
-					'post-data',
-					htmlentities($data['content']),
-					array(
-						'filename' => $data['filename'], // new filename
-						'file' => $data['file'] // old filename
-					)
-				));
-			}
-
-			return $result;
 		}
 	}

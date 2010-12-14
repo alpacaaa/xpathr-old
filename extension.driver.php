@@ -82,10 +82,10 @@
 
 		public static function userIsOwner()
 		{
-			$snippet = self::getSnippet();
-			if (!$snippet) return false;
-
 			if (isset(self::$owner)) return self::$owner;
+
+			$snippet = self::getSnippet();
+			if (!$snippet) return self::$owner = false;
 
 			$owner = SnippetUser::owns($snippet);
 			return self::$owner = $owner;
@@ -94,10 +94,23 @@
 		public static function getSnippet()
 		{
 			if (isset(self::$snippet)) return self::$snippet;
-			$env  = Frontend::instance()->Page()->Env();
+			$env  = self::getEnv();
 
-			$user = SnippetUser::getName();
+			$user = $env['url']['user'];
 			$snip = $env['url']['snip-id'];
 			return self::$snippet = Snippet::find($snip, $user);
+		}
+
+		public static function getResource()
+		{
+			$env  = self::getEnv();
+
+			$file = $env['url']['resource'];
+			return self::getSnippet()->getResource($file);
+		}
+
+		public static function getEnv()
+		{
+			return Frontend::instance()->Page()->Env();
 		}
 	}

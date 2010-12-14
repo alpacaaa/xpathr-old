@@ -24,19 +24,13 @@
 		public function grab(&$param_pool=NULL){
 			$result = new XMLElement($this->dsParamROOTELEMENT);
 
-			$url  = $this->_env['env']['url'];
-			$snip = $url['snip-id'];
-			$user = $url['user'];
-			$file = $url['resource'];
-
 			try {
-				$snippet  = Snippet::find($snip, $user);
-				$resource = $snippet->getResource($file);
+				$resource = Snippet::findResourceFromEnv();
 				if (!$resource) throw new Exception(
 					'The resource does not exist'
 				);
 
-				if (SnippetUser::owns($snippet))
+				if (Snippet::userIsOwner())
 					$processor = new EncodedDataProcessor();
 				else
 					$processor = new BitterHighlighterDataProcessor();

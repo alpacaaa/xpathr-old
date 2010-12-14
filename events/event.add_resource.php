@@ -47,57 +47,48 @@
 			$data = $_POST['snippet']['new-resource'];
 			$file = SnippetResource::clean($data['filename']);
 
-			if (empty($file))
-				return self::buildXML(
-					'Filename is empty', $data
-				);
+			try {
+				if (empty($file))
+					throw new SnippetException(
+						'Bad Filename', $data
+					);
 
-			if (is_object($snippet->getResource($file)))
-				return self::buildXML('Resource already exists', $data);
+				if (is_object($snippet->getResource($file)))
+					throw new SnippetException('Resource already exists', $data);
 
-			$resource = new SnippetResource($file, $snippet);
-			$resource->setContent($data['content']);
+				$resource = new SnippetResource($file, $snippet);
+				$resource->setContent($data['content']);
 
-			if ($resource->save())
-			{
-				$user = SnippetUser::getName();
-				$redirect = 'http://'. DOMAIN. '/snippets/'. 
-					join('/', array($user, $snippet->get('uniq-id'), $resource->getFile()));
+				if ($resource->save())
+				{
+					$user = SnippetUser::getName();
+					$redirect = 'http://'. DOMAIN. '/snippets/'. 
+						join('/', array($user, $snippet->get('uniq-id'), $resource->getFile()));
 
-				$_REQUEST['redirect'] = $redirect;
-				SnippetUser::addFlashMsg('Resource created');
+					$_REQUEST['redirect'] = $redirect;
+					SnippetUser::addFlashMsg('Resource created');
 
-				$type = $resource->getType();
-				if ($data['main-resource'] == 'on')
-					$_POST['fields']['main-'. $type. '-file'] =  $resource->getFile();
+					$type = $resource->getType();
+					if ($data['main-resource'] == 'on')
+						$_POST['fields']['main-'. $type. '-file'] =  $resource->getFile();
 
-				SnippetCache::purge($snippet);
-				return;
+					SnippetCache::purge($snippet);
+					return;
+				}
+
+				throw new SnippetException('Failed to save resource', $data);
+
 			}
-
-			return self::buildXML('Failed to save resource', $data);
-		}
-		
-		public static function buildXML($message, $data)
-		{
-			$result = new XMLElement(self::ROOTELEMENT);
-			$result->setAttribute('result', 'error');
-			$result->appendChild(new XMLElement('message', $message));
-			$result->appendChild(new XMLElement(
-				'post-data', htmlentities($data['content']), array('filename' => $data['filename'])
-			));
-
-			return $result;
+			catch (SnippetException $ex)
+			{
+				$result = $ex->getErrorsAsNode(self::ROOTELEMENT);
+				return $result;
+			}
 		}
 
 		public function getSnippet()
 		{
-			$url  = $this->_env['env']['url'];
-			$snip = $url['snip-id'];
-
-			$snippet = Snippet::find($snip);
-			if (!$snippet || !SnippetUser::owns($snippet)) return false;
-
-			return $snippet;
+			if (!Snippet::userIsOwner()) return false;
+			return Snippet::findFromEnv();
 		}
 	}

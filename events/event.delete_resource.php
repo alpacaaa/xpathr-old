@@ -32,17 +32,10 @@
 		
 		protected function __trigger()
 		{
-			$url  = $this->_env['env']['url'];
-			$snip = $url['snip-id'];
-			$resource = $url['resource'];
+			if (!Snippet::userIsOwner()) return;
+			if (!$resource = Snippet::findResourceFromEnv()) return;
 
-			if (empty($resource)) return;
-
-			$snippet = Snippet::find($snip);
-			if (!$snippet || !SnippetUser::owns($snippet)) return;
-
-			$resource = $snippet->getResource($resource);
-			if (!$resource) return;
+			$snippet = Snippet::findFromEnv();
 
 			if ($resource->delete())
 			{
@@ -50,13 +43,13 @@
 				SnippetCache::purge($snippet);
 
 				$user = SnippetUser::getName();
+				$snip = $snippet->get('uniq-id');
 				$redirect = 'http://'. DOMAIN. '/snippets/'. $user. '/'. $snip. '/';
 				redirect($redirect);
 			}
 
-			$result = new XMLElement(self::ROOTELEMENT);
-			$result->setAttribute('result', 'error');
-			$result->appendChild(new XMLElement('message', 'Failed to delete resource'));
+			$ex = new SnippetException('Failed to delete resource');
+			$result = $ex->getErrorsAsNode(self::ROOTELEMENT);
 			return $result;
 		}
 	}

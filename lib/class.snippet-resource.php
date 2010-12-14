@@ -1,6 +1,6 @@
 <?php
 
-	class SnippetResourceException extends Exception
+	class SnippetResourceException extends SnippetException
 	{
 	}
 

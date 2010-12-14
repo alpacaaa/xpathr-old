@@ -31,11 +31,7 @@
 
 		protected function __trigger()
 		{
-			$url  = $this->_env['env']['url'];
-			$snip = $url['snip-id'];
-			$user = $url['user'];
-
-			$snippet = Snippet::find($snip, $user);
+			$snippet = Snippet::findFromEnv();
 			if (!$snippet) return;
 
 			if ($snip = $snippet->fork())
@@ -48,9 +44,8 @@
 				redirect($redirect);
 			}
 
-			return new XMLElement(
-				self::ROOTELEMENT, 'Failed to fork snippet',
-				array('result' => 'error')
-			);
+			$ex = new SnippetException('Failed to fork snippet');
+			$result = $ex->getErrorsAsNode(self::ROOTELEMENT);
+			return $result;
 		}
 	}

@@ -25,12 +25,9 @@
 			$result = new XMLElement($this->dsParamROOTELEMENT);
 			$result->setAttribute('result', 'success');
 
-			$url  = $this->_env['env']['url'];
-			$snip = $url['snip-id'];
-			$user = $url['user'];
-
-			$snippet = Snippet::find($snip, $user);
 			try {
+				$snippet = Snippet::findFromEnv();
+
 				// fake resource
 				$resource  = new SnippetResource('result.xml', $snippet);
 				$resource->setContent($snippet->process());

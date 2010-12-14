@@ -24,15 +24,12 @@
 		public function grab(&$param_pool=NULL){
 			$result = new XMLElement($this->dsParamROOTELEMENT);
 
-			$url  = $this->_env['env']['url'];
-			$snip = $url['snip-id'];
-			$user = $url['user'];
-			if (!$snip) throw new FrontendPageNotFoundException();
+			$snippet = Snippet::findFromEnv();;
+			if (!$snippet) throw new FrontendPageNotFoundException();
 
 			$processor = new BitterHighlighterDataProcessor();
 
 			try {
-				$snippet = Snippet::find($snip, $user);
 				$main = $snippet->getMainResources();
 				foreach ($main as $resource)
 				{

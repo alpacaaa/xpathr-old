@@ -24,14 +24,12 @@
 		public function grab(&$param_pool=NULL){
 			$result = new XMLElement($this->dsParamROOTELEMENT);
 
+			$snippet = Snippet::findFromEnv();
+			if (!$snippet) return $result;
+
 			$emptyProcessor = new EmptyDataProcessor();
-			$url  = $this->_env['env']['url'];
-			$snip = $url['snip-id'];
-			$user = $url['user'];
 				
 			try {
-				$snippet = Snippet::find($snip, $user);
-				if (!$snippet) return $result;
 				$list = $snippet->listResources();
 
 				foreach ($list as $resource)
