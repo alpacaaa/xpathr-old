@@ -33,7 +33,7 @@
 
 		public function getUser()
 		{
-			return 'all';
+			return self::anonymousUser();
 		}
 
 		public function isMainResource(SnippetResource $resource)
@@ -75,23 +75,15 @@
 			{
 				if ($resource->isXML())
 					$xml = $resource->getContent();
-					//$xml = $resource->toDomDocument();
 
 				if ($resource->isXSL())
 				{
-					//$xsl = $resource->toDomDocument();
-					//$proc->importStyleSheet($xsl);
 					$xsl = '<?xml version="1.0" encoding="UTF-8"?>
 					<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 						<xsl:import href="'. $resource->getPath(). '"/>
 					</xsl:stylesheet>';
 				}
 			}
-
-			/*
-			$parameters = $this->getParameters()->getData();
-			$proc->setParameter('', $parameters);
-			*/
 
 			$processed = $proc->process($xml, $xsl);
 			if (!$proc->isErrors()) return $processed;
@@ -103,15 +95,6 @@
 			$ex = new SnippetProcessException;
 			$ex->buildErrorsNode($proc, $path, $main_xml);
 			throw $ex;
-		}
-
-		public function getParameters()
-		{
-			try {
-				return SnippetParameters::find($this);
-			}catch (SnippetParametersException $ex) {
-				return new SnippetParameters($this);
-			}
 		}
 
 		public static function find($snip, $user = null)
@@ -127,36 +110,6 @@
 
 			$data = array_map(array('self', 'keepValue'), $data);
 			return new self($data);
-		}
-
-		public function save($data)
-		{
-			$fields = array(
-				'uniq-id', 'title', 'description',
-				'main-xml-file', 'main-xsl-file'
-			);
-
-			$query = SymWrite(self::$section);
-			foreach ($fields as $f)
-			{
-				if (isset($data[$f])) $data[$f] = $this->get($f);
-				$query->set($f, $data[$f]);
-			}
-			
-			
-			return $query->write();
-		}
-
-		public function setAsMainResource(SnippetResource $resource)
-		{
-			$data = array();
-
-			if ($resource->isXML())
-				$data['main-xml-file'] = $file;
-			else
-				$data['main-xsl-file'] = $file;
-
-			return $this->save($data);
 		}
 
 		public static function findFromEnv()

@@ -73,7 +73,7 @@
 
 		public function getProcessedContent()
 		{
-			return $this->processor->processResource($this);
+			return $this->processor->process($this);
 		}
 
 		public function setProcessor(SnippetDataProcessor $processor)
