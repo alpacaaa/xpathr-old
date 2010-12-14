@@ -44,7 +44,6 @@
 			<label for="snippet-main-resource">Main resource</label>
 
 			<ul>
-				<!-- <li><a href="{$root}/snippet/resource/{$user}/{$snip-id}/{$resource}/">back</a></li> -->
 				<li><input type="submit" name="action[save-snippet]" value="Save" /></li>
 				<li><input type="submit" name="action[delete-resource]" value="Delete" id="resource-delete" /></li>
 			</ul>
@@ -71,13 +70,6 @@
 </xsl:template>
 
 <xsl:template name="main">
-	<!-- <xsl:if test="$url-edit = 'snip-resource'">
-		<xsl:apply-templates select="snippet-resource/resource" mode="textarea" />
-	</xsl:if>
-
-	<xsl:if test="$url-edit != 'snip-resource'">
-		<xsl:apply-templates select="snippet-resource/resource" mode="main" />
-	</xsl:if> -->
 
 	<xsl:if test="$owner = 'true' and $url-edit != 'snip-info'">
 		<xsl:if test="$post-data">

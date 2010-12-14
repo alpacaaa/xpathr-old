@@ -29,9 +29,9 @@
 			<title><xsl:apply-templates select="data" mode="head" /> – XPath of the Ninja</title>
 		</head>
 		<body>
-			<xsl:call-template name="header" />
+			<xsl:apply-templates select="data" mode="header" />
 			<xsl:apply-templates select="data" />
-			<xsl:call-template name="footer" />
+			<xsl:apply-templates select="data" mode="footer" />
 		</body>
 
 	</html>
@@ -219,8 +219,10 @@
 	<xsl:copy-of select="./*" />
 </xsl:template>
 
+
 <xsl:template name="main"></xsl:template>
 <xsl:template name="head"></xsl:template>
+
 <xsl:template match="data" mode="head">
 	<xsl:value-of select="snippet-information/entry/title" />
 </xsl:template>

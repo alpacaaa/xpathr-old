@@ -4,7 +4,7 @@
 	xmlns:atom="http://www.w3.org/2005/Atom">
 
 
-<xsl:template name="header">
+<xsl:template match="data" mode="header">
 
 	<xsl:param name="show-logo" select="true()" />
 	
@@ -50,25 +50,25 @@
 	</div>
 </xsl:template>
 
-<xsl:template name="footer">
+<xsl:template match="data" mode="footer">
 	<div id="footer">
 		<ul>
 			<li class="snippets">
 				<h5><a href="{$root}/snippets/">Snippets</a></h5>
 				<ul>
-					<xsl:apply-templates select="/data/footer-snippet-list/entry" />
+					<xsl:apply-templates select="footer-snippet-list/entry" />
 				</ul>
 			</li>
 			<li class="twitter">
 				<h5><a href="http://twitter.com/search?q=%23spongebob">Twitter</a></h5>
 				<ul>
-					<xsl:apply-templates select="/data/footer-twitter//atom:entry[position() &lt; 4]" />
+					<xsl:apply-templates select="footer-twitter//atom:entry[position() &lt; 4]" />
 				</ul>
 			</li>
 			<li class="help">
 				<h5><a href="{$root}/help/">Help</a></h5>
 				<ul>
-					<xsl:apply-templates select="/data/footer-help-notes/entry">
+					<xsl:apply-templates select="footer-help-notes/entry">
 						<xsl:sort select="order"/>
 					</xsl:apply-templates>
 				</ul>

@@ -38,8 +38,8 @@
 <xsl:template name="main">
 	<textarea name="snippet[new-resource][content]" rows="30" cols="160" id="snippet-resource-content">
 		<xsl:choose>
-			<xsl:when test="/data/events/add-resource/post-data">
-				<xsl:value-of select="/data/events/add-resource/post-data/text()" />
+			<xsl:when test="events/add-resource/post-data">
+				<xsl:value-of select="events/add-resource/post-data/text()" />
 			</xsl:when>
 			<xsl:otherwise>&lt;source&gt;Paste here :)&lt;/source&gt;</xsl:otherwise>
 		</xsl:choose>

@@ -25,9 +25,9 @@
 			<title>Home – XPath of the Ninja</title>
 		</head>
 		<body id="index">
-			<xsl:call-template name="header">
+			<xsl:apply-templates select="." mode="header">
 				<xsl:with-param name="show-logo" select="false()" />
-			</xsl:call-template>
+			</xsl:apply-templates>
 
 			<div id="logo">
 				<h1>Xpath of the Ninja</h1>
@@ -73,7 +73,7 @@
 								<span>aka <span>masters</span></span>
 							</dt>
 							<dd>
-								After years of hard trainig, you're able to master
+								After years of hard training, you're able to master
 								very complex techniques. Paste smart snippets and share 
 								the knowledge.
 							</dd>
@@ -92,7 +92,7 @@
 				</form>
 			</div>
 
-			<xsl:call-template name="footer" />
+			<xsl:apply-templates select="." mode="footer" />
 		</body>
 	</html>
 </xsl:template>
