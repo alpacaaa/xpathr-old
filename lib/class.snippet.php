@@ -6,8 +6,12 @@
 
 	class Snippet
 	{
-		public static $section = 'snippets';
 		protected $data;
+		protected static $sections = array(
+			'snippets' => 'snippets',
+			'users' => 'users'
+		);
+		protected static $reload;
 
 		public function __construct(array $data = array())
 		{
@@ -99,7 +103,7 @@
 
 		public static function find($snip, $user = null)
 		{
-			$snippet = SymRead(self::$section)
+			$snippet = SymRead(self::$sections['snippets'])
 				->getAll()
 				->where('uniq-id', $snip)
 				//->where('user', $user);
@@ -114,7 +118,9 @@
 
 		public static function findFromEnv()
 		{
-			return extension_Ninja::getSnippet();
+			$reload = self::$reload;
+			self::$reload = false;
+			return extension_Ninja::getSnippet($reload);
 		}
 
 		public static function findResourceFromEnv()
@@ -125,6 +131,11 @@
 		public static function userIsOwner()
 		{
 			return extension_Ninja::userIsOwner();
+		}
+
+		public static function reload()
+		{
+			self::$reload = true;
 		}
 
 		public static function keepValue($el)
@@ -157,7 +168,7 @@
 
 			$data['user'] = SnippetUser::getId();
 
-			$entry = SymWrite(self::$section);
+			$entry = SymWrite(self::$sections['snippets']);
 			foreach ($data as $field => $value)
 				$entry->set($field, $value);
 
@@ -260,6 +271,11 @@
 		public static function generateUniqId()
 		{
 			return substr(md5(time(). rand()), rand(0, 22), 10);
+		}
+
+		public static function getUserSection()
+		{
+			return self::$sections['users'];
 		}
 	}
 

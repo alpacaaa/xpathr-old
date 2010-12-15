@@ -36,11 +36,8 @@
 		}
 
 		protected function __trigger(){
-			$url  = $this->_env['env']['url'];
-			$snip = $url['snip-id'];
-
-			$snippet = Snippet::find($snip);
-			if (!$snippet || !SnippetUser::owns($snippet)) return;
+			if (!Snippet::userIsOwner()) return;
+			$snippet = Snippet::findFromEnv();
 
 			SnippetCache::purge($snippet);
 
@@ -53,6 +50,8 @@
 
 			if ($_POST['fields']['description'])
 				$_POST['fields']['description'] = substr($_POST['fields']['description'], 0, 450);
+
+			Snippet::reload();
 
 			include(TOOLKIT . '/events/event.section.php');
 			return $result;

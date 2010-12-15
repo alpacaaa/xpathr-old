@@ -91,13 +91,15 @@
 			return self::$owner = $owner;
 		}
 
-		public static function getSnippet()
+		public static function getSnippet($reload = false)
 		{
-			if (isset(self::$snippet)) return self::$snippet;
-			$env  = self::getEnv();
+			if (isset(self::$snippet) && !$reload)
+				return self::$snippet;
 
+			$env  = self::getEnv();
 			$user = $env['url']['user'];
 			$snip = $env['url']['snip-id'];
+
 			return self::$snippet = Snippet::find($snip, $user);
 		}
 

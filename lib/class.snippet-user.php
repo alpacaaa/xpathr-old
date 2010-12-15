@@ -3,7 +3,6 @@
 	class SnippetUser
 	{
 		public static $data = array();
-		public static $section = 'users';
 
 		public static function init()
 		{
@@ -69,7 +68,7 @@
 
 		public static function getUserId($name)
 		{
-			$user = SymRead(self::$section)
+			$user = SymRead(Snippet::getUserSection())
 				->get(SymRead::SYSTEM_ID)
 				->where('name', $name)
 				->perPage(1);
