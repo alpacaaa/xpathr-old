@@ -60,12 +60,6 @@
 		<xsl:if test="@main = 'true'">
 			<span>(main)</span>
 		</xsl:if>
-
-		<xsl:if test="$owner = 'atrue'">
-			<a href="{$root}/snippets/{$user}/{$snip-id}/{$resource}/?edit=snip-resource">
-				edit
-			</a>
-		</xsl:if>
 	</xsl:if>
 </xsl:template>
 
