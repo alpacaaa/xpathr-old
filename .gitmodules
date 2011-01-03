@@ -27,7 +27,7 @@
 	url = git://github.com/nickdunn/cacheabledatasource.git
 [submodule "extensions/cachelite"]
 	path = extensions/cachelite
-	url = git://github.com/makenosound/cachelite.git
+	url = git://github.com/bauhouse/cachelite.git
 [submodule "extensions/ninja"]
 	path = extensions/ninja
 	url = git://github.com/bauhouse/xpathr.git
