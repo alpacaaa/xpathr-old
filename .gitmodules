@@ -22,3 +22,24 @@
 [submodule "extensions/xssfilter"]
 	path = extensions/xssfilter
 	url = git://github.com/symphonycms/xssfilter.git
+[submodule "extensions/cacheabledatasource"]
+	path = extensions/cacheabledatasource
+	url = git://github.com/nickdunn/cacheabledatasource.git
+[submodule "extensions/cachelite"]
+	path = extensions/cachelite
+	url = git://github.com/makenosound/cachelite.git
+[submodule "extensions/ninja"]
+	path = extensions/ninja
+	url = git://github.com/bauhouse/xpathr.git
+[submodule "extensions/openid_auth"]
+	path = extensions/openid_auth
+	url = git://github.com/alpacaaa/openid_auth.git
+[submodule "extensions/order_entries"]
+	path = extensions/order_entries
+	url = git://github.com/nickdunn/order_entries.git
+[submodule "extensions/router"]
+	path = extensions/router
+	url = git://github.com/robphilp/Symphony-2-Router.git
+[submodule "extensions/symquery"]
+	path = extensions/symquery
+	url = git://github.com/rowan-lewis/symquery.git
