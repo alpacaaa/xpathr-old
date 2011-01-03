@@ -1,0 +1,8 @@
+<student_list>
+        <student>
+                <name>George Washington</name>
+                <major>Politics</major>
+                <phone>312-123-4567</phone>
+                <email>gw@example.edu</email>
+        </student>
+</student_list>

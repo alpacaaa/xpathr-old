@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+    <events />
+    <resources-list>
+        <resource file="aaas.xsl" main="false" type="xsl" />
+        <resource file="eeeeeeeeo.xml" main="false" type="xml" />
+        <resource file="master.xsl" main="true" type="xsl" />
+        <resource file="sourace.xml" main="true" type="xml" />
+    </resources-list>
+    <snippet-information>
+        <section id="1" handle="snippets">Snippets</section>
+        <entry id="19">
+            <title handle="yet-another-snippet">Yet another snippet</title>
+            <description>brand newaaaaaa!
+se prendi un parafango e
+ci metti davanti un'anatrass</description>
+            <main-xml-file handle="souracexml">sourace.xml</main-xml-file>
+            <main-xsl-file handle="masterxsl">master.xsl</main-xsl-file>
+        </entry>
+    </snippet-information>
+    <snippet-list>
+        <section id="1" handle="snippets">Snippets</section>
+        <entry id="26">
+            <uniq-id handle="1a53ba5d92">1a53ba5d92</uniq-id>
+            <title handle="test">Test</title>
+            <description>A way too cool descon.
+Jesus, two rows! of goodness!!!!
+A way too cool descon.
+Jesus, two rows! of goodness!!!! (fork)</description>
+        </entry>
+        <entry id="25">
+            <uniq-id handle="34322c14fd">34322c14fd</uniq-id>
+            <title handle="yet-another-snippet">Yet another snippet</title>
+            <description>asdrubale</description>
+        </entry>
+        <entry id="24">
+            <uniq-id handle="dca3f47559">dca3f47559</uniq-id>
+            <title handle="buashfasdufh">Buashfasdufh</title>
+            <description>una piccola descrizione di sto snippetttt</description>
+        </entry>
+        <entry id="23">
+            <uniq-id handle="def331f5f2">def331f5f2</uniq-id>
+            <title handle="yet-another-snippet">Yet another snippet</title>
+            <description>No description yet...</description>
+        </entry>
+        <entry id="22">
+            <uniq-id handle="9da3fec78e">9da3fec78e</uniq-id>
+            <title handle="test">Test</title>
+            <description>A way too cool descon.
+Jesus, two rows! of goodness!!!!
+A way too cool descon.
+Jesus, two rows! of goodness!!!! (fork)</description>
+        </entry>
+        <entry id="21">
+            <uniq-id handle="a8ababd7a9">a8ababd7a9</uniq-id>
+            <title handle="teeeeeeeest">TEeeeeeeest</title>
+            <description>a small description</description>
+        </entry>
+        <entry id="19">
+            <uniq-id handle="62d73f4e90">62d73f4e90</uniq-id>
+            <title handle="yet-another-snippet">Yet another snippet</title>
+            <description>brand newaaaaaa!
+se prendi un parafango e
+ci metti davanti un'anatrass</description>
+        </entry>
+    </snippet-list>
+    <snippet-main-resources>
+        <resource file="sourace.xml" main="true" type="xml">
+&lt;student_list&gt;
+    &lt;student&gt;
+        &lt;name&gt;George Washington&lt;/name&gt;
+        &lt;major&gt;Politics&lt;/major&gt;
+        &lt;phone&gt;312-123-4567&lt;/phone&gt;
+        &lt;email&gt;gw@easdfxample.edu&lt;/email&gt;
+    &lt;/student&gt;
+
+    &lt;student&gt;
+        &lt;name&gt;Janet Jones&lt;/name&gt;
+        &lt;major&gt;Undeclared&lt;/major&gt;
+        &lt;phone&gt;311-122-2233&lt;/phone&gt;
+        &lt;email&gt;janetj@example.edu&lt;/email&gt;
+    &lt;/student&gt;
+    &lt;student&gt;
+
+        &lt;name&gt;Joe Taylor&lt;/name&gt;
+        &lt;major&gt;Engineering&lt;/major&gt;
+        &lt;phone&gt;211-111-2333&lt;/phone&gt;
+        &lt;email&gt;joe@example.edu&lt;/email&gt;
+    &lt;/student&gt;
+&lt;/student_list&gt;</resource>
+        <resource file="master.xsl" main="true" type="xsl">
+&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;1.0&quot;&gt;
+
+&lt;xsl:import href=&quot;aaas.xsl&quot; /&gt;
+
+&lt;xsl:output method=&quot;text&quot;/&gt;
+
+
+
+&lt;xsl:template match=&quot;/&quot;&gt;
+    &lt;xsl:apply-templates /&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template match=&quot;student_list&quot;&gt;
+    Student Directory for example.edu
+    &lt;xsl:apply-templates /&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template match=&quot;name&quot;&gt;
+    Name: &lt;xsl:apply-templates /&gt;
+
+&lt;/xsl:template&gt;
+
+&lt;xsl:template match=&quot;major&quot;&gt;
+    Major: &lt;xsl:apply-templates /&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template match=&quot;phone&quot;&gt;
+    Phone: &lt;xsl:apply-templates /&gt;
+&lt;/xsl:template&gt;
+
+
+
+&lt;/xsl:stylesheet&gt;</resource>
+    </snippet-main-resources>
+</data>
