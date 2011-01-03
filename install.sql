@@ -155,10 +155,15 @@ CREATE TABLE `tbl_entries_data_1` (
   KEY `entry_id` (`entry_id`),
   KEY `handle` (`handle`),
   KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=685 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=690 DEFAULT CHARSET=latin1;
 
 -- *** DATA: `tbl_entries_data_1` ***
 INSERT INTO `tbl_entries_data_1` (`id`, `entry_id`, `handle`, `value`) VALUES (684, 53, '69c84f932b', '69c84f932b');
+INSERT INTO `tbl_entries_data_1` (`id`, `entry_id`, `handle`, `value`) VALUES (685, 54, '315e167c43', '315e167c43');
+INSERT INTO `tbl_entries_data_1` (`id`, `entry_id`, `handle`, `value`) VALUES (686, 55, '4874def60f', '4874def60f');
+INSERT INTO `tbl_entries_data_1` (`id`, `entry_id`, `handle`, `value`) VALUES (687, 56, '00121b251c', '00121b251c');
+INSERT INTO `tbl_entries_data_1` (`id`, `entry_id`, `handle`, `value`) VALUES (688, 57, 'a3b6c7e743', 'a3b6c7e743');
+INSERT INTO `tbl_entries_data_1` (`id`, `entry_id`, `handle`, `value`) VALUES (689, 58, '12cc50e7da', '12cc50e7da');
 
 -- *** STRUCTURE: `tbl_entries_data_10` ***
 DROP TABLE IF EXISTS `tbl_entries_data_10`;
@@ -258,10 +263,15 @@ CREATE TABLE `tbl_entries_data_2` (
   KEY `entry_id` (`entry_id`),
   KEY `handle` (`handle`),
   KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=685 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=690 DEFAULT CHARSET=latin1;
 
 -- *** DATA: `tbl_entries_data_2` ***
 INSERT INTO `tbl_entries_data_2` (`id`, `entry_id`, `handle`, `value`) VALUES (684, 53, 'yet-another-snippet', 'Yet another snippet');
+INSERT INTO `tbl_entries_data_2` (`id`, `entry_id`, `handle`, `value`) VALUES (685, 54, 'yet-another-snippet', 'Yet another snippet');
+INSERT INTO `tbl_entries_data_2` (`id`, `entry_id`, `handle`, `value`) VALUES (686, 55, 'yet-another-snippet', 'Yet another snippet');
+INSERT INTO `tbl_entries_data_2` (`id`, `entry_id`, `handle`, `value`) VALUES (687, 56, 'yet-another-snippet', 'Yet another snippet');
+INSERT INTO `tbl_entries_data_2` (`id`, `entry_id`, `handle`, `value`) VALUES (688, 57, 'yet-another-snippet', 'Yet another snippet');
+INSERT INTO `tbl_entries_data_2` (`id`, `entry_id`, `handle`, `value`) VALUES (689, 58, 'yet-another-snippet', 'Yet another snippet');
 
 -- *** STRUCTURE: `tbl_entries_data_3` ***
 DROP TABLE IF EXISTS `tbl_entries_data_3`;
@@ -273,10 +283,15 @@ CREATE TABLE `tbl_entries_data_3` (
   PRIMARY KEY (`id`),
   KEY `entry_id` (`entry_id`),
   FULLTEXT KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=685 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=690 DEFAULT CHARSET=latin1;
 
 -- *** DATA: `tbl_entries_data_3` ***
 INSERT INTO `tbl_entries_data_3` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (684, 53, NULL, NULL);
+INSERT INTO `tbl_entries_data_3` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (685, 54, NULL, NULL);
+INSERT INTO `tbl_entries_data_3` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (686, 55, NULL, NULL);
+INSERT INTO `tbl_entries_data_3` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (687, 56, NULL, NULL);
+INSERT INTO `tbl_entries_data_3` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (688, 57, NULL, NULL);
+INSERT INTO `tbl_entries_data_3` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (689, 58, NULL, NULL);
 
 -- *** STRUCTURE: `tbl_entries_data_4` ***
 DROP TABLE IF EXISTS `tbl_entries_data_4`;
@@ -289,10 +304,15 @@ CREATE TABLE `tbl_entries_data_4` (
   KEY `entry_id` (`entry_id`),
   KEY `handle` (`handle`),
   KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=646 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=651 DEFAULT CHARSET=latin1;
 
 -- *** DATA: `tbl_entries_data_4` ***
 INSERT INTO `tbl_entries_data_4` (`id`, `entry_id`, `handle`, `value`) VALUES (645, 53, 'sourcexml', 'source.xml');
+INSERT INTO `tbl_entries_data_4` (`id`, `entry_id`, `handle`, `value`) VALUES (646, 54, 'sourcexml', 'source.xml');
+INSERT INTO `tbl_entries_data_4` (`id`, `entry_id`, `handle`, `value`) VALUES (647, 55, 'sourcexml', 'source.xml');
+INSERT INTO `tbl_entries_data_4` (`id`, `entry_id`, `handle`, `value`) VALUES (648, 56, 'sourcexml', 'source.xml');
+INSERT INTO `tbl_entries_data_4` (`id`, `entry_id`, `handle`, `value`) VALUES (649, 57, 'sourcexml', 'source.xml');
+INSERT INTO `tbl_entries_data_4` (`id`, `entry_id`, `handle`, `value`) VALUES (650, 58, 'sourcexml', 'source.xml');
 
 -- *** STRUCTURE: `tbl_entries_data_5` ***
 DROP TABLE IF EXISTS `tbl_entries_data_5`;
@@ -305,10 +325,15 @@ CREATE TABLE `tbl_entries_data_5` (
   KEY `entry_id` (`entry_id`),
   KEY `handle` (`handle`),
   KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=670 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=675 DEFAULT CHARSET=latin1;
 
 -- *** DATA: `tbl_entries_data_5` ***
 INSERT INTO `tbl_entries_data_5` (`id`, `entry_id`, `handle`, `value`) VALUES (669, 53, 'mastserxsl', 'mastser.xsl');
+INSERT INTO `tbl_entries_data_5` (`id`, `entry_id`, `handle`, `value`) VALUES (670, 54, 'masterxsl', 'master.xsl');
+INSERT INTO `tbl_entries_data_5` (`id`, `entry_id`, `handle`, `value`) VALUES (671, 55, 'masterxsl', 'master.xsl');
+INSERT INTO `tbl_entries_data_5` (`id`, `entry_id`, `handle`, `value`) VALUES (672, 56, 'masterxsl', 'master.xsl');
+INSERT INTO `tbl_entries_data_5` (`id`, `entry_id`, `handle`, `value`) VALUES (673, 57, 'masterxsl', 'master.xsl');
+INSERT INTO `tbl_entries_data_5` (`id`, `entry_id`, `handle`, `value`) VALUES (674, 58, 'masterxsl', 'master.xsl');
 
 -- *** STRUCTURE: `tbl_entries_data_6` ***
 DROP TABLE IF EXISTS `tbl_entries_data_6`;
@@ -351,10 +376,15 @@ CREATE TABLE `tbl_entries_data_8` (
   PRIMARY KEY (`id`),
   KEY `entry_id` (`entry_id`),
   KEY `relation_id` (`relation_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=542 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=547 DEFAULT CHARSET=latin1;
 
 -- *** DATA: `tbl_entries_data_8` ***
 INSERT INTO `tbl_entries_data_8` (`id`, `entry_id`, `relation_id`) VALUES (541, 53, 29);
+INSERT INTO `tbl_entries_data_8` (`id`, `entry_id`, `relation_id`) VALUES (542, 54, 29);
+INSERT INTO `tbl_entries_data_8` (`id`, `entry_id`, `relation_id`) VALUES (543, 55, 29);
+INSERT INTO `tbl_entries_data_8` (`id`, `entry_id`, `relation_id`) VALUES (544, 56, 29);
+INSERT INTO `tbl_entries_data_8` (`id`, `entry_id`, `relation_id`) VALUES (545, 57, 29);
+INSERT INTO `tbl_entries_data_8` (`id`, `entry_id`, `relation_id`) VALUES (546, 58, 29);
 
 -- *** STRUCTURE: `tbl_entries_data_9` ***
 DROP TABLE IF EXISTS `tbl_entries_data_9`;
@@ -367,10 +397,15 @@ CREATE TABLE `tbl_entries_data_9` (
   PRIMARY KEY (`id`),
   KEY `entry_id` (`entry_id`),
   KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=207 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=212 DEFAULT CHARSET=latin1;
 
 -- *** DATA: `tbl_entries_data_9` ***
 INSERT INTO `tbl_entries_data_9` (`id`, `entry_id`, `value`, `local`, `gmt`) VALUES (206, 53, '2010-12-12T19:36:00+01:00', 1292178960, 1292178960);
+INSERT INTO `tbl_entries_data_9` (`id`, `entry_id`, `value`, `local`, `gmt`) VALUES (207, 54, '2010-12-13T11:58:00-08:00', 1292270280, 1292270280);
+INSERT INTO `tbl_entries_data_9` (`id`, `entry_id`, `value`, `local`, `gmt`) VALUES (208, 55, '2010-12-13T11:59:00-08:00', 1292270340, 1292270340);
+INSERT INTO `tbl_entries_data_9` (`id`, `entry_id`, `value`, `local`, `gmt`) VALUES (209, 56, '2010-12-13T12:00:00-08:00', 1292270400, 1292270400);
+INSERT INTO `tbl_entries_data_9` (`id`, `entry_id`, `value`, `local`, `gmt`) VALUES (210, 57, '2010-12-13T12:01:00-08:00', 1292270460, 1292270460);
+INSERT INTO `tbl_entries_data_9` (`id`, `entry_id`, `value`, `local`, `gmt`) VALUES (211, 58, '2011-01-01T09:42:00-08:00', 1293903720, 1293903720);
 
 -- *** DATA: `tbl_entries` ***
 INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (29, 2, 1, '2010-11-29 14:34:28', '2010-11-29 13:34:28');
@@ -385,6 +420,11 @@ INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `cr
 INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (45, 3, 1, '2010-12-04 20:29:45', '2010-12-04 19:29:45');
 INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (46, 3, 1, '2010-12-04 20:31:16', '2010-12-04 19:31:16');
 INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (53, 1, 1, '2010-12-12 19:36:24', '2010-12-12 18:36:24');
+INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (54, 1, 1, '2010-12-13 11:58:01', '2010-12-13 19:58:01');
+INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (55, 1, 1, '2010-12-13 11:59:27', '2010-12-13 19:59:27');
+INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (56, 1, 1, '2010-12-13 12:00:17', '2010-12-13 20:00:17');
+INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (57, 1, 1, '2010-12-13 12:01:05', '2010-12-13 20:01:05');
+INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (58, 1, 1, '2011-01-01 09:42:52', '2011-01-01 17:42:52');
 
 -- *** DATA: `tbl_extensions` ***
 INSERT INTO `tbl_extensions` (`id`, `name`, `status`, `version`) VALUES (2, 'debugdevkit', 'enabled', '1.0.8');
@@ -452,21 +492,8 @@ INSERT INTO `tbl_sections` (`id`, `name`, `handle`, `sortorder`, `entry_order`, 
 -- *** DATA: `tbl_sections_association` ***
 INSERT INTO `tbl_sections_association` (`id`, `parent_section_id`, `parent_section_field_id`, `child_section_id`, `child_section_field_id`, `cascading_deletion`) VALUES (5, 2, 6, 1, 8, 'no');
 
---
-
-CREATE TABLE IF NOT EXISTS `tbl_router` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `from` varchar(255) NOT NULL,
-  `to` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=81 ;
-
---
--- Dump dei dati per la tabella `sym_router`
---
-
-INSERT INTO `tbl_router` (`id`, `from`, `to`) VALUES
-(77, '/\\/snippets\\/([^\\/]+)\\/([^\\/]+)\\/process/i', '/snippet/process/$1/$2'),
-(78, '/\\/snippets\\/([^\\/]+)\\/([^\\/]+)\\/add-resource/i', '/snippet/add-resource/$1/$2'),
-(79, '/\\/snippets\\/([^\\/]+)\\/([^\\/]+)\\/([^\\/]+)/i', '/snippet/resource/$1/$2/$3'),
-(80, '/\\/snippets\\/([^\\/]+)\\/([^\\/]+)/i', '/snippet/$1/$2');
+-- *** DATA: `tbl_router` ***
+INSERT INTO `tbl_router` (`id`, `from`, `to`) VALUES (77, '/\\/snippets\\/([^\\/]+)\\/([^\\/]+)\\/process/i', '/snippet/process/$1/$2');
+INSERT INTO `tbl_router` (`id`, `from`, `to`) VALUES (78, '/\\/snippets\\/([^\\/]+)\\/([^\\/]+)\\/add-resource/i', '/snippet/add-resource/$1/$2');
+INSERT INTO `tbl_router` (`id`, `from`, `to`) VALUES (79, '/\\/snippets\\/([^\\/]+)\\/([^\\/]+)\\/([^\\/]+)/i', '/snippet/resource/$1/$2/$3');
+INSERT INTO `tbl_router` (`id`, `from`, `to`) VALUES (80, '/\\/snippets\\/([^\\/]+)\\/([^\\/]+)/i', '/snippet/$1/$2');
