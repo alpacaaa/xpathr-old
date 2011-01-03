@@ -197,7 +197,7 @@
 		$conf['symphony']['pages_table_nest_children'] = 'yes';
 		$conf['log']['archive'] = '1';
 		$conf['log']['maxsize'] = '102400';
-		$conf['general']['sitename'] = 'Symphony CMS';
+		$conf['general']['sitename'] = 'XPathr';
 		$conf['image']['cache'] = '1';
 		$conf['image']['quality'] = '90';
 		$conf['database']['driver'] = 'mysql';

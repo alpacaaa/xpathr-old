@@ -238,3 +238,12 @@ CREATE TABLE `tbl_sections_association` (
   PRIMARY KEY (`id`),
   KEY `parent_section_id` (`parent_section_id`,`child_section_id`,`child_section_field_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- *** STRUCTURE: `tbl_router` ***
+DROP TABLE IF EXISTS `tbl_router`;
+CREATE TABLE IF NOT EXISTS `tbl_router` (
+    `id` int(11) NOT NULL auto_increment,
+    `from` varchar(255) NOT NULL,
+    `to` varchar(255) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
