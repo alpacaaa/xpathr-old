@@ -43,3 +43,6 @@
 [submodule "extensions/symquery"]
 	path = extensions/symquery
 	url = git://github.com/rowan-lewis/symquery.git
+[submodule "workspace"]
+	path = workspace
+	url = git://github.com/bauhouse/xpathr.git
