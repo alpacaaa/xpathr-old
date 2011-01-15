@@ -155,15 +155,9 @@ CREATE TABLE `tbl_entries_data_1` (
   KEY `entry_id` (`entry_id`),
   KEY `handle` (`handle`),
   KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=690 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- *** DATA: `tbl_entries_data_1` ***
-INSERT INTO `tbl_entries_data_1` (`id`, `entry_id`, `handle`, `value`) VALUES (684, 53, '69c84f932b', '69c84f932b');
-INSERT INTO `tbl_entries_data_1` (`id`, `entry_id`, `handle`, `value`) VALUES (685, 54, '315e167c43', '315e167c43');
-INSERT INTO `tbl_entries_data_1` (`id`, `entry_id`, `handle`, `value`) VALUES (686, 55, '4874def60f', '4874def60f');
-INSERT INTO `tbl_entries_data_1` (`id`, `entry_id`, `handle`, `value`) VALUES (687, 56, '00121b251c', '00121b251c');
-INSERT INTO `tbl_entries_data_1` (`id`, `entry_id`, `handle`, `value`) VALUES (688, 57, 'a3b6c7e743', 'a3b6c7e743');
-INSERT INTO `tbl_entries_data_1` (`id`, `entry_id`, `handle`, `value`) VALUES (689, 58, '12cc50e7da', '12cc50e7da');
 
 -- *** STRUCTURE: `tbl_entries_data_10` ***
 DROP TABLE IF EXISTS `tbl_entries_data_10`;
@@ -176,19 +170,19 @@ CREATE TABLE `tbl_entries_data_10` (
   KEY `entry_id` (`entry_id`),
   KEY `handle` (`handle`),
   KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- *** DATA: `tbl_entries_data_10` ***
-INSERT INTO `tbl_entries_data_10` (`id`, `entry_id`, `handle`, `value`) VALUES (6, 34, 'which-version-of-xslt-is-supported', 'Which version of XSLT is supported?');
-INSERT INTO `tbl_entries_data_10` (`id`, `entry_id`, `handle`, `value`) VALUES (2, 35, 'are-there-any-extensions-enabled', 'Are there any extensions enabled?');
-INSERT INTO `tbl_entries_data_10` (`id`, `entry_id`, `handle`, `value`) VALUES (3, 36, 'what-is-a-main-resource', 'What is a Main Resource?');
-INSERT INTO `tbl_entries_data_10` (`id`, `entry_id`, `handle`, `value`) VALUES (5, 37, 'why-would-i-create-multiple-files', 'Why would I create multiple files?');
-INSERT INTO `tbl_entries_data_10` (`id`, `entry_id`, `handle`, `value`) VALUES (8, 38, 'wtf-are-genin-chunin-and-junin', 'WTF are genin, chunin and junin?');
-INSERT INTO `tbl_entries_data_10` (`id`, `entry_id`, `handle`, `value`) VALUES (9, 39, 'for-how-long-i-will-be-able-to-edit-my-snippets', 'For how long I will be able to edit my snippets?');
-INSERT INTO `tbl_entries_data_10` (`id`, `entry_id`, `handle`, `value`) VALUES (10, 40, 'will-i-be-able-to-create-snippets-as-a-user', 'Will I be able to create snippets as a user?');
-INSERT INTO `tbl_entries_data_10` (`id`, `entry_id`, `handle`, `value`) VALUES (15, 41, 'whos-the-author-of-the-image-in-homepage', 'Who\'s the author of the image in Homepage?');
-INSERT INTO `tbl_entries_data_10` (`id`, `entry_id`, `handle`, `value`) VALUES (16, 45, 'is-there-some-kind-of-versioning-behind-each-snippet', 'Is there some kind of versioning behind each snippet?');
-INSERT INTO `tbl_entries_data_10` (`id`, `entry_id`, `handle`, `value`) VALUES (20, 46, 'what-is-a-fork', 'What is a Fork?');
+INSERT INTO `tbl_entries_data_10` (`id`, `entry_id`, `handle`, `value`) VALUES (1, 2, 'which-version-of-xslt-is-supported', 'Which version of XSLT is supported?');
+INSERT INTO `tbl_entries_data_10` (`id`, `entry_id`, `handle`, `value`) VALUES (2, 3, 'are-there-any-extensions-enabled', 'Are there any extensions enabled?');
+INSERT INTO `tbl_entries_data_10` (`id`, `entry_id`, `handle`, `value`) VALUES (3, 4, 'what-is-a-main-resource', 'What is a Main Resource?');
+INSERT INTO `tbl_entries_data_10` (`id`, `entry_id`, `handle`, `value`) VALUES (4, 5, 'why-would-i-create-multiple-files', 'Why would I create multiple files?');
+INSERT INTO `tbl_entries_data_10` (`id`, `entry_id`, `handle`, `value`) VALUES (5, 6, 'wtf-are-genin-chunin-and-junin', 'WTF are genin, chunin and junin?');
+INSERT INTO `tbl_entries_data_10` (`id`, `entry_id`, `handle`, `value`) VALUES (6, 7, 'how-long-i-will-be-able-to-edit-my-snippets', 'How long I will be able to edit my snippets?');
+INSERT INTO `tbl_entries_data_10` (`id`, `entry_id`, `handle`, `value`) VALUES (7, 8, 'will-i-be-able-to-create-snippets-as-a-user', 'Will I be able to create snippets as a user?');
+INSERT INTO `tbl_entries_data_10` (`id`, `entry_id`, `handle`, `value`) VALUES (8, 9, 'is-there-some-kind-of-versioning-system-for-snippets', 'Is there some kind of versioning system for snippets?');
+INSERT INTO `tbl_entries_data_10` (`id`, `entry_id`, `handle`, `value`) VALUES (9, 10, 'what-is-a-fork', 'What is a fork?');
+INSERT INTO `tbl_entries_data_10` (`id`, `entry_id`, `handle`, `value`) VALUES (10, 11, 'whos-the-author-of-the-image-on-the-home-page', 'Who\'s the author of the image on the home page?');
 
 -- *** STRUCTURE: `tbl_entries_data_11` ***
 DROP TABLE IF EXISTS `tbl_entries_data_11`;
@@ -200,19 +194,19 @@ CREATE TABLE `tbl_entries_data_11` (
   PRIMARY KEY (`id`),
   KEY `entry_id` (`entry_id`),
   FULLTEXT KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- *** DATA: `tbl_entries_data_11` ***
-INSERT INTO `tbl_entries_data_11` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (6, 34, 'It\'s currently supported <a href=\"http://www.w3.org/TR/xslt\">XSLT 1.0</a>.', NULL);
-INSERT INTO `tbl_entries_data_11` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (2, 35, 'Yes, <a href=\"http://www.exslt.org/\">exslt</a> extensions are enabled.', NULL);
-INSERT INTO `tbl_entries_data_11` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (3, 36, 'If you used xslt before, you\'ll know the engine needs both an xml and an xsl document in order to generate a result.\r\nI decided to call those documents Main Resources. They are the <em>entry point</em> of your snippet.', NULL);
-INSERT INTO `tbl_entries_data_11` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (5, 37, 'Along with Main Resources, you can add to your snippet other files. It is possible to use <a href=\"http://www.w3schools.com/Xsl/el_import.asp\">&lt;xsl:import&gt;</a> to import additional xsl files and <a href=\"http://www.w3schools.com/Xsl/func_document.asp\">document()</a> works too.', NULL);
-INSERT INTO `tbl_entries_data_11` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (8, 38, 'Have a look at wikipedia article about <a href=\"http://en.wikipedia.org/wiki/Ninja#Development\">Ninja development</a> :)', NULL);
-INSERT INTO `tbl_entries_data_11` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (9, 39, 'Currently, for two weeks, unless you don\'t clear your cookies.', NULL);
-INSERT INTO `tbl_entries_data_11` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (10, 40, 'Yes. You\'ll be able to login and edit you snippets anywhere and anytime.', NULL);
-INSERT INTO `tbl_entries_data_11` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (15, 41, 'I had some fun with inkscape messing around with the work of <a href=\"http://aznjoker2.deviantart.com/\">~AznJoker2</a>. The <a href=\"http://aznjoker2.deviantart.com/art/Stupid-Ninja-147093256\">original image</a> is far way better :)', NULL);
-INSERT INTO `tbl_entries_data_11` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (16, 45, 'No, not currently.', NULL);
-INSERT INTO `tbl_entries_data_11` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (20, 46, 'When you fork an existing snippet, you get an indipendent specular copy of it. Again, no git magic involved, for now.', NULL);
+INSERT INTO `tbl_entries_data_11` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (1, 2, 'XPathr currently supports <a href=\"http://www.w3.org/TR/xslt\">XSLT 1.0</a>.', NULL);
+INSERT INTO `tbl_entries_data_11` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (2, 3, 'Yes, <a href=\"http://www.exslt.org/\">exslt</a> extensions are enabled.', NULL);
+INSERT INTO `tbl_entries_data_11` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (3, 4, 'If you have used XSLT before, you\'ll know the engine needs both an XML and an XSL document in order to generate a result. XPathr refers to these documents as Main Resources. They are the <em>entry point</em> of your snippet.', NULL);
+INSERT INTO `tbl_entries_data_11` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (4, 5, 'Along with the Main Resources, you can add other files to your snippet. It is possible to use <a href=\"http://www.w3schools.com/Xsl/el_import.asp\">&lt;xsl:import&gt;</a> to import additional XSL files and the <a href=\"http://www.w3schools.com/Xsl/func_document.asp\">document()</a> function works as well.', NULL);
+INSERT INTO `tbl_entries_data_11` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (5, 6, 'Have a look at Wikipedia article about <a href=\"http://en.wikipedia.org/wiki/Ninja#Development\">Ninja development</a> :)', NULL);
+INSERT INTO `tbl_entries_data_11` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (6, 7, 'Currently, for two weeks, unless you clear your cookies.', NULL);
+INSERT INTO `tbl_entries_data_11` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (7, 8, 'Yes. You\'ll be able to login and edit your snippets anywhere, anytime.', NULL);
+INSERT INTO `tbl_entries_data_11` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (8, 9, 'No, not currently.', NULL);
+INSERT INTO `tbl_entries_data_11` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (9, 10, 'When you fork an existing snippet, an independent specular copy of the original snippet will be created. No git magic involved, for now.', NULL);
+INSERT INTO `tbl_entries_data_11` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (10, 11, 'I had some fun with inkscape messing around with the work of <a href=\"http://aznjoker2.deviantart.com/\">~AznJoker2</a>. The <a href=\"http://aznjoker2.deviantart.com/art/Stupid-Ninja-147093256\">original image</a> is far better :)', NULL);
 
 -- *** STRUCTURE: `tbl_entries_data_12` ***
 DROP TABLE IF EXISTS `tbl_entries_data_12`;
@@ -223,19 +217,19 @@ CREATE TABLE `tbl_entries_data_12` (
   PRIMARY KEY (`id`),
   KEY `entry_id` (`entry_id`),
   KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- *** DATA: `tbl_entries_data_12` ***
-INSERT INTO `tbl_entries_data_12` (`id`, `entry_id`, `value`) VALUES (1, 35, 2);
-INSERT INTO `tbl_entries_data_12` (`id`, `entry_id`, `value`) VALUES (2, 34, 1);
-INSERT INTO `tbl_entries_data_12` (`id`, `entry_id`, `value`) VALUES (3, 36, 3);
-INSERT INTO `tbl_entries_data_12` (`id`, `entry_id`, `value`) VALUES (4, 37, 4);
-INSERT INTO `tbl_entries_data_12` (`id`, `entry_id`, `value`) VALUES (6, 38, 5);
-INSERT INTO `tbl_entries_data_12` (`id`, `entry_id`, `value`) VALUES (7, 39, 6);
-INSERT INTO `tbl_entries_data_12` (`id`, `entry_id`, `value`) VALUES (8, 40, 7);
-INSERT INTO `tbl_entries_data_12` (`id`, `entry_id`, `value`) VALUES (13, 41, 10);
-INSERT INTO `tbl_entries_data_12` (`id`, `entry_id`, `value`) VALUES (14, 45, 8);
-INSERT INTO `tbl_entries_data_12` (`id`, `entry_id`, `value`) VALUES (18, 46, 9);
+INSERT INTO `tbl_entries_data_12` (`id`, `entry_id`, `value`) VALUES (1, 2, 1);
+INSERT INTO `tbl_entries_data_12` (`id`, `entry_id`, `value`) VALUES (2, 3, 2);
+INSERT INTO `tbl_entries_data_12` (`id`, `entry_id`, `value`) VALUES (3, 4, 3);
+INSERT INTO `tbl_entries_data_12` (`id`, `entry_id`, `value`) VALUES (4, 5, 4);
+INSERT INTO `tbl_entries_data_12` (`id`, `entry_id`, `value`) VALUES (5, 6, 5);
+INSERT INTO `tbl_entries_data_12` (`id`, `entry_id`, `value`) VALUES (6, 7, 6);
+INSERT INTO `tbl_entries_data_12` (`id`, `entry_id`, `value`) VALUES (7, 8, 7);
+INSERT INTO `tbl_entries_data_12` (`id`, `entry_id`, `value`) VALUES (8, 9, 8);
+INSERT INTO `tbl_entries_data_12` (`id`, `entry_id`, `value`) VALUES (9, 10, 9);
+INSERT INTO `tbl_entries_data_12` (`id`, `entry_id`, `value`) VALUES (10, 11, 10);
 
 -- *** STRUCTURE: `tbl_entries_data_13` ***
 DROP TABLE IF EXISTS `tbl_entries_data_13`;
@@ -248,7 +242,7 @@ CREATE TABLE `tbl_entries_data_13` (
   KEY `entry_id` (`entry_id`),
   KEY `handle` (`handle`),
   KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- *** DATA: `tbl_entries_data_13` ***
 
@@ -263,15 +257,9 @@ CREATE TABLE `tbl_entries_data_2` (
   KEY `entry_id` (`entry_id`),
   KEY `handle` (`handle`),
   KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=690 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- *** DATA: `tbl_entries_data_2` ***
-INSERT INTO `tbl_entries_data_2` (`id`, `entry_id`, `handle`, `value`) VALUES (684, 53, 'yet-another-snippet', 'Yet another snippet');
-INSERT INTO `tbl_entries_data_2` (`id`, `entry_id`, `handle`, `value`) VALUES (685, 54, 'yet-another-snippet', 'Yet another snippet');
-INSERT INTO `tbl_entries_data_2` (`id`, `entry_id`, `handle`, `value`) VALUES (686, 55, 'yet-another-snippet', 'Yet another snippet');
-INSERT INTO `tbl_entries_data_2` (`id`, `entry_id`, `handle`, `value`) VALUES (687, 56, 'yet-another-snippet', 'Yet another snippet');
-INSERT INTO `tbl_entries_data_2` (`id`, `entry_id`, `handle`, `value`) VALUES (688, 57, 'yet-another-snippet', 'Yet another snippet');
-INSERT INTO `tbl_entries_data_2` (`id`, `entry_id`, `handle`, `value`) VALUES (689, 58, 'yet-another-snippet', 'Yet another snippet');
 
 -- *** STRUCTURE: `tbl_entries_data_3` ***
 DROP TABLE IF EXISTS `tbl_entries_data_3`;
@@ -283,15 +271,9 @@ CREATE TABLE `tbl_entries_data_3` (
   PRIMARY KEY (`id`),
   KEY `entry_id` (`entry_id`),
   FULLTEXT KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=690 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- *** DATA: `tbl_entries_data_3` ***
-INSERT INTO `tbl_entries_data_3` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (684, 53, NULL, NULL);
-INSERT INTO `tbl_entries_data_3` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (685, 54, NULL, NULL);
-INSERT INTO `tbl_entries_data_3` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (686, 55, NULL, NULL);
-INSERT INTO `tbl_entries_data_3` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (687, 56, NULL, NULL);
-INSERT INTO `tbl_entries_data_3` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (688, 57, NULL, NULL);
-INSERT INTO `tbl_entries_data_3` (`id`, `entry_id`, `value`, `value_formatted`) VALUES (689, 58, NULL, NULL);
 
 -- *** STRUCTURE: `tbl_entries_data_4` ***
 DROP TABLE IF EXISTS `tbl_entries_data_4`;
@@ -304,15 +286,9 @@ CREATE TABLE `tbl_entries_data_4` (
   KEY `entry_id` (`entry_id`),
   KEY `handle` (`handle`),
   KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=651 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- *** DATA: `tbl_entries_data_4` ***
-INSERT INTO `tbl_entries_data_4` (`id`, `entry_id`, `handle`, `value`) VALUES (645, 53, 'sourcexml', 'source.xml');
-INSERT INTO `tbl_entries_data_4` (`id`, `entry_id`, `handle`, `value`) VALUES (646, 54, 'sourcexml', 'source.xml');
-INSERT INTO `tbl_entries_data_4` (`id`, `entry_id`, `handle`, `value`) VALUES (647, 55, 'sourcexml', 'source.xml');
-INSERT INTO `tbl_entries_data_4` (`id`, `entry_id`, `handle`, `value`) VALUES (648, 56, 'sourcexml', 'source.xml');
-INSERT INTO `tbl_entries_data_4` (`id`, `entry_id`, `handle`, `value`) VALUES (649, 57, 'sourcexml', 'source.xml');
-INSERT INTO `tbl_entries_data_4` (`id`, `entry_id`, `handle`, `value`) VALUES (650, 58, 'sourcexml', 'source.xml');
 
 -- *** STRUCTURE: `tbl_entries_data_5` ***
 DROP TABLE IF EXISTS `tbl_entries_data_5`;
@@ -325,15 +301,9 @@ CREATE TABLE `tbl_entries_data_5` (
   KEY `entry_id` (`entry_id`),
   KEY `handle` (`handle`),
   KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=675 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- *** DATA: `tbl_entries_data_5` ***
-INSERT INTO `tbl_entries_data_5` (`id`, `entry_id`, `handle`, `value`) VALUES (669, 53, 'mastserxsl', 'mastser.xsl');
-INSERT INTO `tbl_entries_data_5` (`id`, `entry_id`, `handle`, `value`) VALUES (670, 54, 'masterxsl', 'master.xsl');
-INSERT INTO `tbl_entries_data_5` (`id`, `entry_id`, `handle`, `value`) VALUES (671, 55, 'masterxsl', 'master.xsl');
-INSERT INTO `tbl_entries_data_5` (`id`, `entry_id`, `handle`, `value`) VALUES (672, 56, 'masterxsl', 'master.xsl');
-INSERT INTO `tbl_entries_data_5` (`id`, `entry_id`, `handle`, `value`) VALUES (673, 57, 'masterxsl', 'master.xsl');
-INSERT INTO `tbl_entries_data_5` (`id`, `entry_id`, `handle`, `value`) VALUES (674, 58, 'masterxsl', 'master.xsl');
 
 -- *** STRUCTURE: `tbl_entries_data_6` ***
 DROP TABLE IF EXISTS `tbl_entries_data_6`;
@@ -349,7 +319,7 @@ CREATE TABLE `tbl_entries_data_6` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- *** DATA: `tbl_entries_data_6` ***
-INSERT INTO `tbl_entries_data_6` (`id`, `entry_id`, `handle`, `value`) VALUES (1, 29, 'all', 'All');
+INSERT INTO `tbl_entries_data_6` (`id`, `entry_id`, `handle`, `value`) VALUES (1, 1, 'all', 'All');
 
 -- *** STRUCTURE: `tbl_entries_data_7` ***
 DROP TABLE IF EXISTS `tbl_entries_data_7`;
@@ -365,7 +335,7 @@ CREATE TABLE `tbl_entries_data_7` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- *** DATA: `tbl_entries_data_7` ***
-INSERT INTO `tbl_entries_data_7` (`id`, `entry_id`, `handle`, `value`) VALUES (1, 29, 0, 0);
+INSERT INTO `tbl_entries_data_7` (`id`, `entry_id`, `handle`, `value`) VALUES (1, 1, 0, 0);
 
 -- *** STRUCTURE: `tbl_entries_data_8` ***
 DROP TABLE IF EXISTS `tbl_entries_data_8`;
@@ -376,15 +346,9 @@ CREATE TABLE `tbl_entries_data_8` (
   PRIMARY KEY (`id`),
   KEY `entry_id` (`entry_id`),
   KEY `relation_id` (`relation_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=547 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- *** DATA: `tbl_entries_data_8` ***
-INSERT INTO `tbl_entries_data_8` (`id`, `entry_id`, `relation_id`) VALUES (541, 53, 29);
-INSERT INTO `tbl_entries_data_8` (`id`, `entry_id`, `relation_id`) VALUES (542, 54, 29);
-INSERT INTO `tbl_entries_data_8` (`id`, `entry_id`, `relation_id`) VALUES (543, 55, 29);
-INSERT INTO `tbl_entries_data_8` (`id`, `entry_id`, `relation_id`) VALUES (544, 56, 29);
-INSERT INTO `tbl_entries_data_8` (`id`, `entry_id`, `relation_id`) VALUES (545, 57, 29);
-INSERT INTO `tbl_entries_data_8` (`id`, `entry_id`, `relation_id`) VALUES (546, 58, 29);
 
 -- *** STRUCTURE: `tbl_entries_data_9` ***
 DROP TABLE IF EXISTS `tbl_entries_data_9`;
@@ -397,34 +361,22 @@ CREATE TABLE `tbl_entries_data_9` (
   PRIMARY KEY (`id`),
   KEY `entry_id` (`entry_id`),
   KEY `value` (`value`)
-) ENGINE=MyISAM AUTO_INCREMENT=212 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- *** DATA: `tbl_entries_data_9` ***
-INSERT INTO `tbl_entries_data_9` (`id`, `entry_id`, `value`, `local`, `gmt`) VALUES (206, 53, '2010-12-12T19:36:00+01:00', 1292178960, 1292178960);
-INSERT INTO `tbl_entries_data_9` (`id`, `entry_id`, `value`, `local`, `gmt`) VALUES (207, 54, '2010-12-13T11:58:00-08:00', 1292270280, 1292270280);
-INSERT INTO `tbl_entries_data_9` (`id`, `entry_id`, `value`, `local`, `gmt`) VALUES (208, 55, '2010-12-13T11:59:00-08:00', 1292270340, 1292270340);
-INSERT INTO `tbl_entries_data_9` (`id`, `entry_id`, `value`, `local`, `gmt`) VALUES (209, 56, '2010-12-13T12:00:00-08:00', 1292270400, 1292270400);
-INSERT INTO `tbl_entries_data_9` (`id`, `entry_id`, `value`, `local`, `gmt`) VALUES (210, 57, '2010-12-13T12:01:00-08:00', 1292270460, 1292270460);
-INSERT INTO `tbl_entries_data_9` (`id`, `entry_id`, `value`, `local`, `gmt`) VALUES (211, 58, '2011-01-01T09:42:00-08:00', 1293903720, 1293903720);
 
 -- *** DATA: `tbl_entries` ***
-INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (29, 2, 1, '2010-11-29 14:34:28', '2010-11-29 13:34:28');
-INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (34, 3, 1, '2010-11-30 12:01:59', '2010-11-30 11:01:59');
-INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (35, 3, 1, '2010-11-30 12:05:07', '2010-11-30 11:05:07');
-INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (36, 3, 1, '2010-11-30 12:12:24', '2010-11-30 11:12:24');
-INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (37, 3, 1, '2010-11-30 12:18:34', '2010-11-30 11:18:34');
-INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (38, 3, 1, '2010-11-30 16:02:27', '2010-11-30 15:02:27');
-INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (39, 3, 1, '2010-11-30 16:04:24', '2010-11-30 15:04:24');
-INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (40, 3, 1, '2010-11-30 16:09:24', '2010-11-30 15:09:24');
-INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (41, 3, 1, '2010-12-01 10:32:07', '2010-12-01 09:32:07');
-INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (45, 3, 1, '2010-12-04 20:29:45', '2010-12-04 19:29:45');
-INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (46, 3, 1, '2010-12-04 20:31:16', '2010-12-04 19:31:16');
-INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (53, 1, 1, '2010-12-12 19:36:24', '2010-12-12 18:36:24');
-INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (54, 1, 1, '2010-12-13 11:58:01', '2010-12-13 19:58:01');
-INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (55, 1, 1, '2010-12-13 11:59:27', '2010-12-13 19:59:27');
-INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (56, 1, 1, '2010-12-13 12:00:17', '2010-12-13 20:00:17');
-INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (57, 1, 1, '2010-12-13 12:01:05', '2010-12-13 20:01:05');
-INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (58, 1, 1, '2011-01-01 09:42:52', '2011-01-01 17:42:52');
+INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (1, 2, 1, '2011-01-15 09:14:11', '2011-01-15 17:14:11');
+INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (2, 3, 1, '2011-01-15 09:15:21', '2011-01-15 17:15:21');
+INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (3, 3, 1, '2011-01-15 09:15:57', '2011-01-15 17:15:57');
+INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (4, 3, 1, '2011-01-15 09:18:45', '2011-01-15 17:18:45');
+INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (5, 3, 1, '2011-01-15 09:20:44', '2011-01-15 17:20:44');
+INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (6, 3, 1, '2011-01-15 09:21:51', '2011-01-15 17:21:51');
+INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (7, 3, 1, '2011-01-15 09:22:40', '2011-01-15 17:22:40');
+INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (8, 3, 1, '2011-01-15 09:24:05', '2011-01-15 17:24:05');
+INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (9, 3, 1, '2011-01-15 09:25:31', '2011-01-15 17:25:31');
+INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (10, 3, 1, '2011-01-15 09:28:37', '2011-01-15 17:28:37');
+INSERT INTO `tbl_entries` (`id`, `section_id`, `author_id`, `creation_date`, `creation_date_gmt`) VALUES (11, 3, 1, '2011-01-15 09:29:29', '2011-01-15 17:29:29');
 
 -- *** DATA: `tbl_extensions` ***
 INSERT INTO `tbl_extensions` (`id`, `name`, `status`, `version`) VALUES (2, 'debugdevkit', 'enabled', '1.0.8');
