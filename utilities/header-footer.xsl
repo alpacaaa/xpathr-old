@@ -76,7 +76,9 @@
 			<li>
 				<h5>About</h5>
 				<p>
-					A project by <a href="http://github.com/alpacaaa/">Marco Sampellegrini</a>.<br />
+					A project by <a href="http://github.com/alpacaaa/">Marco Sampellegrini</a> 
+					and <a href="http://github.com/bauhouse/">Stephen Bau</a>.<br />
+
 					Built in <a href="http://symphony-cms.com/">Symphony CMS</a>.
 				</p>
 			</li>
