@@ -1,5 +1,6 @@
 <?php
 
+	require_once(EXTENSIONS. '/symquery/extension.driver.php');
 	require_once(EXTENSIONS. '/ninja/lib/class.snippet.php');
 
 	class extension_Ninja extends Extension
@@ -12,6 +13,7 @@
 			if (!class_exists('Frontend')) return;
 			SnippetUser::init();
 
+return;
 			$em = new ExtensionManager(Frontend::instance());
 			$ex = $em->create('cachelite', array(), true); //silent
 			if (!is_object($ex)) return;
